@@ -11,6 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SXPRStyleTailorPage" customModule="JusperXdweSpein" customModuleProvider="target">
             <connections>
+                <outlet property="PloggerMail" destination="TIH-Aw-jrg" id="W6E-EO-77e"/>
+                <outlet property="SmartPrompts" destination="iYc-yq-V4F" id="viG-RA-LEy"/>
+                <outlet property="contentSpark" destination="Rss-fG-ayn" id="FaO-jK-Dxh"/>
+                <outlet property="genius" destination="ekb-aa-Ce7" id="V9B-Jc-j38"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -96,6 +100,9 @@
                     </constraints>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" backgroundImage="sionauwer"/>
+                    <connections>
+                        <action selector="tailorStyleBegin:" destination="-1" eventType="touchUpInside" id="3Sp-cA-GUW"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekb-aa-Ce7">
                     <rect key="frame" x="20" y="768" width="22" height="22"/>
@@ -106,9 +113,12 @@
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" image="nog"/>
                     <state key="selected" image="nogyues"/>
+                    <connections>
+                        <action selector="LayoutGenius:" destination="-1" eventType="touchUpInside" id="ptz-Md-eE5"/>
+                    </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By continuing you agree to our &lt;Terms of Service&gt; and &lt;Privacy Policy&gt;." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rss-fG-ayn">
-                    <rect key="frame" x="50" y="765" width="323" height="28"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rss-fG-ayn">
+                    <rect key="frame" x="50" y="779" width="323" height="0.0"/>
                     <fontDescription key="fontDescription" name="HoeflerText-Black" family="Hoefler Text" pointSize="14"/>
                     <color key="textColor" systemColor="underPageBackgroundColor"/>
                     <nil key="highlightedColor"/>

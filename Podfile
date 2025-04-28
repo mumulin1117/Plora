@@ -9,6 +9,7 @@ target 'JusperXdweSpein' do
 pod 'SDWebImage'
 pod 'SwiftyStoreKit'
 pod "IQKeyboardManager"
+pod "SwiftyJSON"
 
 
 end
