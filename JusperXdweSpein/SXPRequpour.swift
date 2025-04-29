@@ -51,7 +51,7 @@ class DBNSeddingTrkop {
     }
     
     var appBaseUrlAVoutWEB: String {
-        return "http://www.moonbeam7890.xyz"
+        return "http://www.moonbeam7890.xyz/#"
     }
     
     // MARK: - Core Request Method

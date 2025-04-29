@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-let transformer = SDImageResizingTransformer(
+let podImageSIZE = SDImageResizingTransformer(
     size: CGSize(width: 450, height: 450),
     scaleMode: .aspectFill
 )
@@ -45,7 +45,7 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
                 plora.usertBiag.sd_setImage(with: uri,
                                       placeholderImage: nil,
                                      options: .continueInBackground,
-                                     context: [.imageTransformer: transformer,.storeCacheType : SDImageCacheType.memory.rawValue])
+                                     context: [.imageTransformer: podImageSIZE,.storeCacheType : SDImageCacheType.memory.rawValue])
             }
            
             return plora
@@ -56,10 +56,10 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
             plora.monmentBiag.sd_setImage(with: uri,
                                   placeholderImage: nil,
                                  options: .continueInBackground,
-                                 context: [.imageTransformer: transformer,.storeCacheType : SDImageCacheType.memory.rawValue])
+                                 context: [.imageTransformer: podImageSIZE,.storeCacheType : SDImageCacheType.memory.rawValue])
         }
         
-        
+        plora.reorinttrAloi.addTarget(self, action: #selector(aestheticRespect), for: .touchUpInside)
         plora.esetilletlbel.text = (momentDataPlora[indexPath.row]["visualGrants"] as? String)
         plora.faveriteView.isHighlighted = ((momentDataPlora[indexPath.row]["plogAPI"] as? Int) == 1)
         
@@ -81,15 +81,42 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.topuserNarrativeNFTs {
-            
-            
+            guard let userid = ploraUserData[indexPath.row]["visualDiary"] as? Int else { return  }
+            //用户个人中心
+            let linkader = DBNSeddingTrkop.shared.appBaseUrlAVoutWEB + "pages/HomePage/index?userId=\(userid)"
+            reactionDensity(linkader:linkader)
         }
+        
+        
+        guard let itemid = momentDataPlora[indexPath.row]["aestheticAds"] as? Int else { return  }
+        
+        let linkader = DBNSeddingTrkop.shared.appBaseUrlAVoutWEB + "pages/DynamicDetails/index?dynamicId=\(itemid)"
+        reactionDensity(linkader:linkader)
+        
     }
     
     @IBOutlet weak var topuserNarrativeNFTs: UICollectionView!
     
     
     @IBOutlet weak var momentMicroLicensesView: UICollectionView!
+    
+    
+    
+    private func reactionDensity(linkader:String)  {
+      
+        //用户个人中心
+//        var centr = DBNSeddingTrkop.shared.appBaseUrlAVoutWEB + "pages/HomePage/index?userId=\(userid)"
+        
+      let  centr = linkader +  "&token=" +  (loguserMofdal?.echozoa ?? "") + "&appID=" +  DBNSeddingTrkop.shared.appQuicklyId
+       
+        self.navigationController?.pushViewController(SXPRequcgsdnm.init(_moodGlyph: centr), animated: true)
+    }
+    
+    @objc func aestheticRespect()  {
+    
+        reactionDensity(linkader:DBNSeddingTrkop.shared.appBaseUrlAVoutWEB + "pages/Report/index")
+     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -235,8 +262,7 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
         }
         
         
-        
-        
+  
        
        
     }

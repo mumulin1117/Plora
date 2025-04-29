@@ -41,7 +41,7 @@ class SXPRMainbarPage: UITabBarController{
         
         // 1. Home
         let homeVC = JPIDPlaoertContrerle()
-        let homeNav = UINavigationController(rootViewController: homeVC)
+        let homeNav = SXPRMoodVRGuideController(rootViewController: homeVC)
         homeNav.tabBarItem = UITabBarItem(
             title: nil,
             image: UIImage(systemName: "house_XSPR")?.withRenderingMode(.alwaysTemplate),
@@ -50,7 +50,7 @@ class SXPRMainbarPage: UITabBarController{
         
         // 2. DYM
         let plogdyumVC = JPIDPlaoertContrerle()
-        let plogNav = UINavigationController(rootViewController: plogdyumVC)
+        let plogNav = SXPRMoodVRGuideController(rootViewController: plogdyumVC)
         plogdyumVC.tabBarItem = UITabBarItem(
             title: nil,
             image: UIImage(systemName: "squre_XSPR")?.withRenderingMode(.alwaysTemplate),
@@ -67,7 +67,7 @@ class SXPRMainbarPage: UITabBarController{
         
         // 2. Video
         let videoVC = JPIDVideonContrerle()
-        let videoNav = UINavigationController(rootViewController: videoVC)
+        let videoNav = SXPRMoodVRGuideController(rootViewController: videoVC)
         videoNav.tabBarItem = UITabBarItem(
             title: nil,
             image: UIImage(systemName: "video_XSPR")?.withRenderingMode(.alwaysTemplate),
@@ -79,7 +79,7 @@ class SXPRMainbarPage: UITabBarController{
         
         // 5. Profile
         let profileVC = JPIDUssContrerle()
-        let profileNav = UINavigationController(rootViewController: profileVC)
+        let profileNav = SXPRMoodVRGuideController(rootViewController: profileVC)
         profileNav.tabBarItem = UITabBarItem(
             title: nil,
             image: UIImage(systemName: "person_XSPR")?.withRenderingMode(.alwaysTemplate),

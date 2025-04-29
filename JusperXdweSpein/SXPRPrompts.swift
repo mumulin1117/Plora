@@ -17,20 +17,20 @@ class DBHUs_er {
     var frameluxe:String?//"userId"
     var echoverse:String?//"userImgUrl"
     var echozoa:String?//"token"
-    //用户列表
-    var brickAssembly:String?//userId
-    var creativeCollaboration:String?//userImgUrl
-    var modularDesign:String?//userName
+//    //用户列表
+//    var brickAssembly:String?//userId
+//    var creativeCollaboration:String?//userImgUrl
+//    var modularDesign:String?//userName
     //用户详细情况
-    var skillBadges:String?//"userName"
-    var achievementSystem:String?//"userId"
-    var leaderboardRanking:String?//"userImgUrl"
-    
-    var subscriptionModel:String?//"userFans"
-    var virtualCurrency:String?//"userFriends"
-    var lootBoxMechanics:String?//"lootBoxMechanics"
-    
-    
+//    var skillBadges:String?//"userName"
+//    var achievementSystem:String?//"userId"
+//    var leaderboardRanking:String?//"userImgUrl"
+//    
+//    var subscriptionModel:String?//"userFans"
+//    var virtualCurrency:String?//"userFriends"
+//    var lootBoxMechanics:String?//"lootBoxMechanics"
+//    
+//    
     
 
     init(dic:Dictionary<String,Any>?,isfromLocal:Bool = false) {
@@ -45,20 +45,20 @@ class DBHUs_er {
         self.pixelism = dic?["pixelism"] as? String
         
         ///
-        self.brickAssembly = "\(dic?["brickAssembly"] as? Int ?? 0)"
-        self.creativeCollaboration = dic?["creativeCollaboration"]  as? String
-        self.modularDesign = dic?["modularDesign"] as? String
-        
+//        self.brickAssembly = "\(dic?["brickAssembly"] as? Int ?? 0)"
+//        self.creativeCollaboration = dic?["creativeCollaboration"]  as? String
+//        self.modularDesign = dic?["modularDesign"] as? String
+//        
         //
         
-        self.achievementSystem = "\(dic?["achievementSystem"] as? Int ?? 0)"
-        self.skillBadges = dic?["skillBadges"]  as? String
-        self.leaderboardRanking = dic?["leaderboardRanking"] as? String
-        self.subscriptionModel = "\(dic?["subscriptionModel"] as? Int ?? 0)"
-        self.virtualCurrency = "\(dic?["virtualCurrency"] as? Int ?? 0)"
-        self.lootBoxMechanics = "\(dic?["lootBoxMechanics"] as? Int ?? 0)"
-       
-        
+//        self.achievementSystem = "\(dic?["achievementSystem"] as? Int ?? 0)"
+//        self.skillBadges = dic?["skillBadges"]  as? String
+//        self.leaderboardRanking = dic?["leaderboardRanking"] as? String
+//        self.subscriptionModel = "\(dic?["subscriptionModel"] as? Int ?? 0)"
+//        self.virtualCurrency = "\(dic?["virtualCurrency"] as? Int ?? 0)"
+//        self.lootBoxMechanics = "\(dic?["lootBoxMechanics"] as? Int ?? 0)"
+//       
+//        
        
     }
     
