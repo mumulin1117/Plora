@@ -49,7 +49,7 @@ class SXPRMainbarPage: UITabBarController{
         )
         
         // 2. DYM
-        let plogdyumVC = JPIDPlaoertContrerle()
+        let plogdyumVC = JPIDViolationContrerle()
         let plogNav = SXPRMoodVRGuideController(rootViewController: plogdyumVC)
         plogdyumVC.tabBarItem = UITabBarItem(
             title: nil,
@@ -116,7 +116,7 @@ class SXPRMainbarPage: UITabBarController{
         
     @objc private func middleButtonAction() {
         let publishVC = JPIDPosttContrerle()
-        let nav = UINavigationController(rootViewController: publishVC)
+        let nav = SXPRMoodVRGuideController(rootViewController: publishVC)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true)
     }

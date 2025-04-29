@@ -20,12 +20,12 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
     
     private var activetyIndicator:UIActivityIndicatorView?
     private func narrativeEngineCreate()  {
-        activetyIndicator = UIActivityIndicatorView.init(style: .medium)
+        activetyIndicator = UIActivityIndicatorView.init(style: .large)
         activetyIndicator?.hidesWhenStopped = true
         activetyIndicator?.color = UIColor.purple
         
         self.view.addSubview(activetyIndicator!)
-        activetyIndicator?.frame = CGRect.init(x: 0, y: 0, width: 50, height: 50)
+        activetyIndicator?.frame = CGRect.init(x: 0, y: 0, width: 70, height: 70)
         activetyIndicator?.center = self.view.center
         
     }
@@ -88,7 +88,7 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
         }
         
         
-        guard let itemid = momentDataPlora[indexPath.row]["aestheticAds"] as? Int else { return  }
+        guard let itemid = ploraUserData[indexPath.row]["visualDiary"] as? String else { return  }//userId
         
         let linkader = DBNSeddingTrkop.shared.appBaseUrlAVoutWEB + "pages/DynamicDetails/index?dynamicId=\(itemid)"
         reactionDensity(linkader:linkader)
@@ -103,10 +103,7 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
     
     
     private func reactionDensity(linkader:String)  {
-      
-        //用户个人中心
-//        var centr = DBNSeddingTrkop.shared.appBaseUrlAVoutWEB + "pages/HomePage/index?userId=\(userid)"
-        
+    
       let  centr = linkader +  "&token=" +  (loguserMofdal?.echozoa ?? "") + "&appID=" +  DBNSeddingTrkop.shared.appQuicklyId
        
         self.navigationController?.pushViewController(SXPRequcgsdnm.init(_moodGlyph: centr), animated: true)
@@ -114,7 +111,7 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
     
     @objc func aestheticRespect()  {
     
-        reactionDensity(linkader:DBNSeddingTrkop.shared.appBaseUrlAVoutWEB + "pages/Report/index")
+        reactionDensity(linkader:DBNSeddingTrkop.shared.appBaseUrlAVoutWEB + "pages/Report/index?")
      }
     
     
@@ -179,6 +176,7 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
     
     //message
     @objc func VisualGrants() {
+        reactionDensity(linkader:DBNSeddingTrkop.shared.appBaseUrlAVoutWEB + "pages/information/index?")
         
         
     }

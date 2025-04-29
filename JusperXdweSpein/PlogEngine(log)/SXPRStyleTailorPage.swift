@@ -23,12 +23,12 @@ class SXPRStyleTailorPage: UIViewController {
     
     private var activetyIndicator:UIActivityIndicatorView?
     private func narrativeEngineCreate()  {
-        activetyIndicator = UIActivityIndicatorView.init(style: .medium)
+        activetyIndicator = UIActivityIndicatorView.init(style: .large)
         activetyIndicator?.hidesWhenStopped = true
         activetyIndicator?.color = UIColor.purple
         
         self.view.addSubview(activetyIndicator!)
-        activetyIndicator?.frame = CGRect.init(x: 0, y: 0, width: 50, height: 50)
+        activetyIndicator?.frame = CGRect.init(x: 0, y: 0, width: 70, height: 70)
         activetyIndicator?.center = self.view.center
         
     }
