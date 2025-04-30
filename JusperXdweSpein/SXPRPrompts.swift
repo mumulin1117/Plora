@@ -39,7 +39,7 @@ class SXPRPromptsToastView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("")
     }
     
     // MARK: - Configuration
@@ -126,5 +126,9 @@ extension UIViewController {
     func showToast(message: String, type: ToastType, duration: TimeInterval = 2.0) {
         let toast = SXPRPromptsToastView(message: message, type: type)
         toast.show(in: view, duration: duration)
+    }
+    
+    func captionic(storymorph: String) -> String {
+        return String(storymorph.enumerated().filter { $0.offset % 2 == 0 }.map { $0.element })
     }
 }

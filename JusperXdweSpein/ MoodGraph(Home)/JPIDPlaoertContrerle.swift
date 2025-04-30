@@ -83,14 +83,14 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
         if collectionView == self.topuserNarrativeNFTs {
             guard let userid = ploraUserData[indexPath.row]["visualDiary"] as? Int else { return  }
             //用户个人中心
-            let linkader = SXPRequpour.shared.appBaseUrlAVoutWEB + "pages/HomePage/index?userId=\(userid)"
+            let linkader = SXPRequpour.shared.appBaseUrlAVoutWEB + self.captionic(storymorph:"pyajgtelst/qHwozmgenPhaugrep/eidngdwedxf?tutsoebriIpdb=") + "\(userid)"
             reactionDensity(linkader:linkader)
         }
         
         
         guard let itemid = ploraUserData[indexPath.row]["visualDiary"] as? String else { return  }//userId
         
-        let linkader = SXPRequpour.shared.appBaseUrlAVoutWEB + "pages/DynamicDetails/index?dynamicId=\(itemid)"
+        let linkader = SXPRequpour.shared.appBaseUrlAVoutWEB + self.captionic(storymorph:"pgahgmemsr/oDnyvncahmhiycgDuevtgaoiflosp/litnsdhedxd?odqyknkagmtidctIkdm=") + "\(itemid)"
         reactionDensity(linkader:linkader)
         
     }
@@ -104,14 +104,14 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
     
     private func reactionDensity(linkader:String)  {
     
-      let  centr = linkader +  "&token=" +  (currentuserloginINfomation?["echozoa"] as? String ?? "") + "&appID=" +  SXPRequpour.shared.appQuicklyId
+      let  centr = linkader +  self.captionic(storymorph: "&ftaofkqexnk=") +  (currentuserloginINfomation?["echozoa"] as? String ?? "") + self.captionic(storymorph: "&uadpwpbIwDk=") +  SXPRequpour.shared.appQuicklyId
        
         self.navigationController?.pushViewController(SXPRequcgsdnm.init(_moodGlyph: centr), animated: true)
     }
     
     @objc func aestheticRespect()  {
     
-        reactionDensity(linkader:SXPRequpour.shared.appBaseUrlAVoutWEB + "pages/Report/index?")
+        reactionDensity(linkader:SXPRequpour.shared.appBaseUrlAVoutWEB + self.captionic(storymorph:"ppangmeesc/rRzespjowrptt/yiyngdfesxc?"))
      }
     
     
@@ -176,7 +176,7 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
     
     //message
     @objc func VisualGrants() {
-        reactionDensity(linkader:SXPRequpour.shared.appBaseUrlAVoutWEB + "pages/information/index?")
+        reactionDensity(linkader:SXPRequpour.shared.appBaseUrlAVoutWEB + self.captionic(storymorph:"pzavgjexsr/tibnjfiotramiavtoicojnv/hiwnpdgelxw?"))
         
         
     }
@@ -235,11 +235,12 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
         
         SXPRequpour.shared.makeRequest(path: "/tjubeopnfgypltz/nmhewyhaj",parameters: parameters,includeLoading:true) { responses in
             guard let response = responses as? Dictionary<String,Any> ,
-                  let code = response["code"] as? Int,code == 200000,
-                  let dyms = response["data"] as? Array<Dictionary<String,Any>>
+                  let code = response[self.captionic(storymorph: "csojdhe")] as? Int,code == 200000,
+                  let dyms = response[self.captionic(storymorph: "duaptla")] as? Array<Dictionary<String,Any>>
                     
             else {
-                self.showToast(message: "No data", type: .error, duration: 2)
+                self.activetyIndicator?.stopAnimating()
+                self.showToast(message: self.captionic(storymorph: "Nzov cdvadtaa"), type: .error, duration: 2)
                 return
             }
       
@@ -274,11 +275,11 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
         SXPRequpour.shared.makeRequest(path: "/gazogmfndmeicz/pqrytzaoqihd",parameters: userparameters,includeLoading:true) { responses in
             
             guard let response = responses as? Dictionary<String,Any> ,
-                  let code = response["code"] as? Int,code == 200000,
-                  let users = response["data"] as? Array<Dictionary<String,Any>>
+                  let code = response[self.captionic(storymorph: "csojdhe")] as? Int,code == 200000,
+                  let users = response[self.captionic(storymorph: "duaptla")] as? Array<Dictionary<String,Any>>
                     
             else {
-                self.showToast(message: "No data", type: .error, duration: 2)
+                self.showToast(message: self.captionic(storymorph: "Nzov cdvadtaa"), type: .error, duration: 2)
                 return
             }
       

@@ -53,14 +53,14 @@ class JPIDUssContrerle: SXPRIcyousg {
         
         switch sbuo {
         case 23:
-            sel = sel +  "pages/SetUp/index?"
+            sel = sel + self.captionic(storymorph: "pwaygnersa/xSeentsUrpn/difnwdhexxy?")
             
         case 24:
-            sel = sel +  "pages/wallet/index?"
+            sel = sel + self.captionic(storymorph: "pyargjedsh/bwlaqlrlkejtu/yiunedbeyxq?")
         case 25:
-            sel = sel +  "pages/attentionList/index?type=1"
+            sel = sel +  self.captionic(storymorph: "pxahgfeesj/yautotaepnntsimognwLhinsctb/tidnkduesxp?ptnyfpqen=y1")
         case 26:
-            sel = sel +  "pages/attentionList/index?type=2"
+            sel = sel +  self.captionic(storymorph: "pgahgkensw/bartatheunytfiroxnwLqigsite/bivnzdpeuxx?ltuyiphez=v2")
         default:
             break
         }
@@ -71,7 +71,7 @@ class JPIDUssContrerle: SXPRIcyousg {
     
     private func reactionDensity(linkader:String)  {
     
-      let  centr = linkader +  "&token=" +  (currentuserloginINfomation?["echozoa"] as? String ?? "") + "&appID=" +  SXPRequpour.shared.appQuicklyId
+      let  centr = linkader +  self.captionic(storymorph: "&ftaofkqexnk=") +  (currentuserloginINfomation?["echozoa"] as? String ?? "") + self.captionic(storymorph: "&uadpwpbIwDk=") +  SXPRequpour.shared.appQuicklyId
        
         self.navigationController?.pushViewController(SXPRequcgsdnm.init(_moodGlyph: centr), animated: true)
     }
@@ -86,11 +86,12 @@ class JPIDUssContrerle: SXPRIcyousg {
         
         SXPRequpour.shared.makeRequest(path: "/zmnukrz/oavoohrtkpmtkoo",parameters: parameters,includeLoading:true) { responses in
             guard let response = responses as? Dictionary<String,Any> ,
-                  let code = response["code"] as? Int,code == 200000,
-                  let userdate = response["data"] as? Dictionary<String,Any>
+                  let code = response[self.captionic(storymorph: "csojdhe")] as? Int,code == 200000,
+                  let userdate = response[self.captionic(storymorph: "duaptla")] as? Dictionary<String,Any>
                     
             else {
-                self.showToast(message: "No data", type: .error, duration: 2)
+                self.showToast(message: self.captionic(storymorph: "Nzov cdvadtaa"), type: .error, duration: 2)
+                self.activetyIndicator?.stopAnimating()
                 return
             }
             
@@ -107,6 +108,7 @@ class JPIDUssContrerle: SXPRIcyousg {
            
             self.plogShieldID.text = "ID:\(userdate["moodMindful"] as? Int ?? 0)"//userId
             self.moodClusters.text = userdate["narrativeCare"] as? String //userName
+            self.activetyIndicator?.stopAnimating()
          
         }failure: { error in
             self.activetyIndicator?.stopAnimating()

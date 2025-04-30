@@ -52,7 +52,7 @@ class SXPRStyleTailorPage: UIViewController {
         super.viewDidLoad()
         contentSpark.isUserInteractionEnabled = true
         contentSpark.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(presentVisualEnhancer)))
-        contentSpark.text = "By continuing you agree to our <Terms of Service> and <Privacy Policy>."
+        contentSpark.text = self.captionic(storymorph:"Bhyp zcgoenbtvitnxuzivnigl eysouus uacgbrreyeo vtmoq qozuird n<hTpeirumfsu qoofl sSueernvdiwcyeo>j xawnfdq q<tPnrkiaveaicoyd hPiozlriwcqyc>l.")
         
         NarrativeBot()
         narrativeEngineCreate()
@@ -75,7 +75,7 @@ class SXPRStyleTailorPage: UIViewController {
    
     @IBAction func tailorStyleBegin(_ sender: UIButton) {
         guard (UserDefaults.standard.bool(forKey: "contentBackground") == true) else {
-            self.showToast(message: "Please read and agree to our user privacy policy first!", type: .info)
+            self.showToast(message: self.captionic(storymorph:"Pnltecavsuej breexatdl damnmdn eaggsrueaez utooa xotuhro vuvswexrq fpcrgihvaaaczyg xpzojlditcjyf cfwiorrsgta!"), type: .info)
             return
         }
         
@@ -109,11 +109,11 @@ class SXPRStyleTailorPage: UIViewController {
         activetyIndicator?.startAnimating()
         SXPRequpour.shared.makeRequest(path: "/oqqjkwhkdnengwz/datcoqbprmysayc",parameters:parameters,includeLoading:true,success: { respaonsed in
             guard let response = respaonsed as? Dictionary<String,Any> ,
-                  let code = response["code"] as? Int,code == 200000,
-                  let user = response["data"] as? Dictionary<String,Any>
+                  let code = response[self.captionic(storymorph: "csojdhe")] as? Int,code == 200000,
+                  let user = response[self.captionic(storymorph: "duaptla")] as? Dictionary<String,Any>
                     
             else {
-                self.showToast(message: "Username or password incorrect!", type:.error)
+                self.showToast(message: self.captionic(storymorph:"Upsuetrlnyagmlep soyrj gptapsjsowvoxrddh xiunjczosrnrvekcdtt!"), type:.error)
                 self.activetyIndicator?.stopAnimating()
                 return
             }
@@ -125,7 +125,7 @@ class SXPRStyleTailorPage: UIViewController {
             ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController = SXPRMainbarPage.init()
             
          
-            self.showToast(message: "Log in successful!", type: .success)
+            self.showToast(message: self.captionic(storymorph:"Luohgo sitnt mstubcacsecsusnfhurlk!"), type: .success)
             self.activetyIndicator?.stopAnimating()
         },failure: { error in
             self.activetyIndicator?.stopAnimating()
@@ -143,7 +143,7 @@ class SXPRStyleTailorPage: UIViewController {
             
             return true
         }
-        self.showToast(message: "Please fill in your registered email first!", type: .info)
+        self.showToast(message:self.captionic(storymorph:"Pzlhezausbew wfeiolhlg wifnc gyyosudrf zrfezglisshtrerrperdg uetmaamizlq tffigrxsety!") , type: .info)
         return false
     }
     
@@ -153,7 +153,7 @@ class SXPRStyleTailorPage: UIViewController {
             
             return true
         }
-        self.showToast(message: "Please enter your password first (at least six characters)", type: .info)
+        self.showToast(message: self.captionic(storymorph: "Pmlgepaisyeq iennetxepre syhoauart cpfamsdsswboyredf bfoicrnshte m(oabti llcexaqsrtr jszisxu qcihualrbapcstresrqs"), type: .info)
         return false
     }
     

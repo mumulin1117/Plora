@@ -93,7 +93,7 @@ class JPIDVideonContrerle: SXPRIcyousg,UICollectionViewDelegate, UICollectionVie
         
         guard let itemid = momentDataPlora[indexPath.row]["aestheticAds"] as? Int else { return  }
         
-        let linkader = SXPRequpour.shared.appBaseUrlAVoutWEB + "pages/VideoDetails/index?dynamicId=\(itemid)"
+        let linkader = SXPRequpour.shared.appBaseUrlAVoutWEB + self.captionic(storymorph:"pwacgoepsk/mVrifdiewomDxeutxauijlxsq/firnbdoekxk?xdnyanraemlifcaIsdk=") + "\(itemid)"
         reactionDensity(linkader:linkader)
         
     }
@@ -101,26 +101,26 @@ class JPIDVideonContrerle: SXPRIcyousg,UICollectionViewDelegate, UICollectionVie
    @objc func touchUsercenterHjusper(uiopp:UIButton)  {
        guard let userid = momentDataPlora[uiopp.tag]["narrativeNFTs"] as? String else { return  }//userId
         //用户个人中心
-        let linkader = SXPRequpour.shared.appBaseUrlAVoutWEB + "pages/HomePage/index?userId=\(userid)"
+       let linkader = SXPRequpour.shared.appBaseUrlAVoutWEB + self.captionic(storymorph: "ptaxghefsf/jHaoymnecPiamgzef/zilnrdoefxm?rursyeerjImdu=") +  "\(userid)"
         reactionDensity(linkader:linkader)
     }
     
     private func reactionDensity(linkader:String)  {
     
-      let  centr = linkader +  "&token=" +  (currentuserloginINfomation?["echozoa"] as? String ?? "") + "&appID=" +  SXPRequpour.shared.appQuicklyId
+      let  centr = linkader +  self.captionic(storymorph: "&ftaofkqexnk=") +  (currentuserloginINfomation?["echozoa"] as? String ?? "") + self.captionic(storymorph: "&uadpwpbIwDk=") +  SXPRequpour.shared.appQuicklyId
        
         self.navigationController?.pushViewController(SXPRequcgsdnm.init(_moodGlyph: centr), animated: true)
     }
     
     @objc func aestheticRespect()  {
     
-        reactionDensity(linkader:SXPRequpour.shared.appBaseUrlAVoutWEB + "pages/Report/index?")
+        reactionDensity(linkader:SXPRequpour.shared.appBaseUrlAVoutWEB + self.captionic(storymorph: "piakgoegsa/kRgeupqosrety/giknhdmelxe?"))
      }
     
     
     @objc func toAttentioneticRespect(usedId:UIButton)  {
     
-        reactionDensity(linkader:SXPRequpour.shared.appBaseUrlAVoutWEB + "pages/Report/index")
+        reactionDensity(linkader:SXPRequpour.shared.appBaseUrlAVoutWEB + self.captionic(storymorph: "pfaxgfeasd/kRzevpuodrntp/iijncdqebx") )
      }
     
     
@@ -202,11 +202,12 @@ class JPIDVideonContrerle: SXPRIcyousg,UICollectionViewDelegate, UICollectionVie
         
         SXPRequpour.shared.makeRequest(path: "/tjubeopnfgypltz/nmhewyhaj",parameters: parameters,includeLoading:true) { responses in
             guard let response = responses as? Dictionary<String,Any> ,
-                  let code = response["code"] as? Int,code == 200000,
-                  let dyms = response["data"] as? Array<Dictionary<String,Any>>
+                  let code = response[self.captionic(storymorph: "csojdhe")] as? Int,code == 200000,
+                  let dyms = response[self.captionic(storymorph: "duaptla")] as? Array<Dictionary<String,Any>>
                     
             else {
-                self.showToast(message: "No data", type: .error, duration: 2)
+                self.activetyIndicator?.stopAnimating()
+                self.showToast(message: self.captionic(storymorph: "Nzov cdvadtaa"), type: .error, duration: 2)
                 return
             }
       

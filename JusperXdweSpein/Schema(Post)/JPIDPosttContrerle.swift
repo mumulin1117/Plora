@@ -17,18 +17,18 @@ class JPIDPosttContrerle: SXPRIcyousg {
         }
         
         if sender.tag == 3 {
-            let linkader = SXPRequpour.shared.appBaseUrlAVoutWEB + "pages/postVideos/index?"
+            let linkader = SXPRequpour.shared.appBaseUrlAVoutWEB + self.captionic(storymorph: "pnaggdessk/tpsonsdtmVyiudsejozsw/qibnbdveuxg?")
             reactionDensity(linkader:linkader)
         }
         if sender.tag == 4 {
-            let linkader = SXPRequpour.shared.appBaseUrlAVoutWEB + "pages/issue/index?"
+            let linkader = SXPRequpour.shared.appBaseUrlAVoutWEB + self.captionic(storymorph: "pkaqgfense/siqssstuwef/lidnjdheexs?")
             reactionDensity(linkader:linkader)
         }
         
     }
     private func reactionDensity(linkader:String)  {
-    
-      let  centr = linkader +  "&token=" +  (currentuserloginINfomation?["echozoa"] as? String ?? "") + "&appID=" +  SXPRequpour.shared.appQuicklyId
+        
+      let  centr = linkader +  self.captionic(storymorph: "&ftaofkqexnk=") +  (currentuserloginINfomation?["echozoa"] as? String ?? "") + self.captionic(storymorph: "&uadpwpbIwDk=") +  SXPRequpour.shared.appQuicklyId
        
         self.navigationController?.pushViewController(SXPRequcgsdnm.init(_moodGlyph: centr), animated: true)
     }

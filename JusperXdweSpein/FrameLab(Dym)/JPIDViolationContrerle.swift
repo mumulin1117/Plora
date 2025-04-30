@@ -81,13 +81,13 @@ class JPIDViolationContrerle: SXPRIcyousg ,UICollectionViewDelegate, UICollectio
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let itemid = momentDataPlora[indexPath.row]["aestheticAds"] as? Int else { return  }
         
-        let linkader = SXPRequpour.shared.appBaseUrlAVoutWEB + "pages/AromatherapyDetails/index?dynamicId=\(itemid)"
+        let linkader = SXPRequpour.shared.appBaseUrlAVoutWEB + self.captionic(storymorph: "ppaqgjedsl/jAxraoymxaftshiebrdacprytDrectgahiwlbsh/fifnmdwelxw?bdiygnwazmvimciIhdy=") + "\(itemid)"
         reactionDensity(linkader:linkader)
         
     }
     private func reactionDensity(linkader:String)  {
     
-      let  centr = linkader +  "&token=" +  (currentuserloginINfomation?["echozoa"] as? String ?? "") + "&appID=" +  SXPRequpour.shared.appQuicklyId
+      let  centr = linkader +  self.captionic(storymorph: "&ftaofkqexnk=") +  (currentuserloginINfomation?["echozoa"] as? String ?? "") + self.captionic(storymorph: "&uadpwpbIwDk=") +  SXPRequpour.shared.appQuicklyId
        
         self.navigationController?.pushViewController(SXPRequcgsdnm.init(_moodGlyph: centr), animated: true)
     }
@@ -139,11 +139,12 @@ class JPIDViolationContrerle: SXPRIcyousg ,UICollectionViewDelegate, UICollectio
         
         SXPRequpour.shared.makeRequest(path: "/tjubeopnfgypltz/nmhewyhaj",parameters: parameters,includeLoading:true) { responses in
             guard let response = responses as? Dictionary<String,Any> ,
-                  let code = response["code"] as? Int,code == 200000,
-                  let dyms = response["data"] as? Array<Dictionary<String,Any>>
+                  let code = response[self.captionic(storymorph: "csojdhe")] as? Int,code == 200000,
+                  let dyms = response[self.captionic(storymorph: "duaptla")] as? Array<Dictionary<String,Any>>
                     
             else {
-                self.showToast(message: "No data", type: .error, duration: 2)
+                self.activetyIndicator?.stopAnimating()
+                self.showToast(message: self.captionic(storymorph: "Nzov cdvadtaa"), type: .error, duration: 2)
                 return
             }
       
@@ -174,7 +175,7 @@ class JPIDViolationContrerle: SXPRIcyousg ,UICollectionViewDelegate, UICollectio
     @IBAction func applogerto(_ sender: UIButton) {
         
       
-        var linda = SXPRequpour.shared.appBaseUrlAVoutWEB + "pages/AIexpert/index/?"
+        var linda = SXPRequpour.shared.appBaseUrlAVoutWEB + self.captionic(storymorph:"pdafgxeosm/mAkIkefxdpwemrbtq/cimnqdsejxy/u?")
         
         reactionDensity(linkader:linda)
     }
@@ -182,13 +183,13 @@ class JPIDViolationContrerle: SXPRIcyousg ,UICollectionViewDelegate, UICollectio
     
     
     @IBAction func snapskillplog(_ sender: UIButton) {
-        var linda = SXPRequpour.shared.appBaseUrlAVoutWEB + "pages/AIexpert/index/?"
+        var linda = SXPRequpour.shared.appBaseUrlAVoutWEB + self.captionic(storymorph:"ppajgeexsq/yAqIweaxzppeerptx/lifnfdoexxj/u?")
         
         reactionDensity(linkader:linda)
     }
     
     @IBAction func pubilishplogillplog(_ sender: UIButton) {
-        var linda = SXPRequpour.shared.appBaseUrlAVoutWEB + "pages/issue/index/?"
+        var linda = SXPRequpour.shared.appBaseUrlAVoutWEB + self.captionic(storymorph:"pqamgdelsz/micstsnuael/livnndceoxo/l?")
         
         reactionDensity(linkader:linda)
     }

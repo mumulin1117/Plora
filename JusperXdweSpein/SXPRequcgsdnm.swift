@@ -36,7 +36,7 @@ class SXPRequcgsdnm: UIViewController, WKScriptMessageHandler {
         }
         
         if message.name == "handlePlogCoinDepositSuccess" {
-            self.showToast(message: "pay successful!", type: .success, duration: 2)
+            self.showToast(message:self.captionic(storymorph: "pvaqyz jskurchcpegsessfyuuly!") , type: .success, duration: 2)
             return
         }
         
@@ -199,7 +199,7 @@ extension SXPRequcgsdnm:WKNavigationDelegate,WKUIDelegate{
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: DispatchWorkItem(block: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: DispatchWorkItem(block: {
             self.pixelAlchemy?.isHidden = false
             self.activetyIndicator?.stopAnimating()
         }))
