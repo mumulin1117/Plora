@@ -44,8 +44,8 @@ class SXPRMainbarPage: UITabBarController{
         let homeNav = SXPRMoodVRGuideController(rootViewController: homeVC)
         homeNav.tabBarItem = UITabBarItem(
             title: nil,
-            image: UIImage(systemName: "house_XSPR")?.withRenderingMode(.alwaysTemplate),
-            selectedImage: UIImage(systemName: "house_XSPR_Fill")?.withRenderingMode(.alwaysTemplate)
+            image: UIImage(named: "house_XSPR")?.withRenderingMode(.alwaysOriginal),
+            selectedImage: UIImage(named: "house_XSPR_Fill")?.withRenderingMode(.alwaysOriginal)
         )
         
         // 2. DYM
@@ -53,8 +53,8 @@ class SXPRMainbarPage: UITabBarController{
         let plogNav = SXPRMoodVRGuideController(rootViewController: plogdyumVC)
         plogdyumVC.tabBarItem = UITabBarItem(
             title: nil,
-            image: UIImage(systemName: "squre_XSPR")?.withRenderingMode(.alwaysTemplate),
-            selectedImage: UIImage(systemName: "squre_XSPR_fill")?.withRenderingMode(.alwaysTemplate)
+            image: UIImage(named: "squre_XSPR")?.withRenderingMode(.alwaysOriginal),
+            selectedImage: UIImage(named: "squre_XSPR_fill")?.withRenderingMode(.alwaysOriginal)
         )
         
         // 3. Center Placeholder (will be replaced by custom button)
@@ -70,8 +70,8 @@ class SXPRMainbarPage: UITabBarController{
         let videoNav = SXPRMoodVRGuideController(rootViewController: videoVC)
         videoNav.tabBarItem = UITabBarItem(
             title: nil,
-            image: UIImage(systemName: "video_XSPR")?.withRenderingMode(.alwaysTemplate),
-            selectedImage: UIImage(systemName: "video_XSPR_Fill")?.withRenderingMode(.alwaysTemplate)
+            image: UIImage(named: "video_XSPR")?.withRenderingMode(.alwaysOriginal),
+            selectedImage: UIImage(named: "video_XSPR_Fill")?.withRenderingMode(.alwaysOriginal)
         )
         
        
@@ -82,8 +82,8 @@ class SXPRMainbarPage: UITabBarController{
         let profileNav = SXPRMoodVRGuideController(rootViewController: profileVC)
         profileNav.tabBarItem = UITabBarItem(
             title: nil,
-            image: UIImage(systemName: "person_XSPR")?.withRenderingMode(.alwaysTemplate),
-            selectedImage: UIImage(systemName: "person_XSPR_Fill")?.withRenderingMode(.alwaysTemplate)
+            image: UIImage(named: "person_XSPR")?.withRenderingMode(.alwaysOriginal),
+            selectedImage: UIImage(named: "person_XSPR_Fill")?.withRenderingMode(.alwaysOriginal)
         )
         
         viewControllers = [homeNav, plogNav, centerVC,videoNav , profileNav]
@@ -100,7 +100,7 @@ class SXPRMainbarPage: UITabBarController{
         middleButton.frame = buttonFrame
        
 
-        middleButton.setBackgroundImage(UIImage(systemName: "cenveterpost"), for: .normal)
+        middleButton.setBackgroundImage(UIImage(named: "cenveterpost"), for: .normal)
    
         middleButton.addTarget(self, action: #selector(middleButtonAction), for: .touchUpInside)
         
