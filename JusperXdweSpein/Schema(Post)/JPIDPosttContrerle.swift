@@ -6,7 +6,11 @@
 //
 
 import UIKit
-
+enum PloraLayoutTemplate: String, CaseIterable {
+    case grid = "GridLayout"
+    case carousel = "CarouselLayout"
+    case timeline = "TimelineLayout"
+}
 class JPIDPosttContrerle: SXPRIcyousg {
 
 

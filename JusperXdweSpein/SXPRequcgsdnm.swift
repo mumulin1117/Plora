@@ -7,9 +7,35 @@
 import WebKit
 import UIKit
 import SwiftyStoreKit
-//web
+enum NarrativeAction {
+    case bookmark(String)
+    
+    case plogConnection(String)
+}
+class SXPRIcyousg: UIViewController {
+    
+}
+enum PloraMediaType: Int, CaseIterable {
+    case photo = 0
+    case video
+    case textOnly
+}
+
 var tagPOP:Int = 0
 class SXPRequcgsdnm: UIViewController, WKScriptMessageHandler {
+   
+    private let mediaSelectionScrollView = UIScrollView()
+    private var mediaPreviewStackView: UIStackView!
+       
+    private let captionTextView = UITextField()
+    private let locationToggle = UISwitch()
+    private let aiPromptButton = UIButton(type: .system)
+    private let publishButton = UIButton(type: .roundedRect)
+    
+    private var selectedMedia: [PloraMediaType: [URL]] = [:]
+      
+       
+    private var currentTemplate: PloraLayoutTemplate = .grid
     
     
     private var activetyIndicator:UIActivityIndicatorView?
@@ -23,6 +49,15 @@ class SXPRequcgsdnm: UIViewController, WKScriptMessageHandler {
         activetyIndicator?.center = self.view.center
         
     }
+    
+    private func configureHierarchy() {
+        view.backgroundColor = .blue
+        // 媒体选择容器
+                
+        mediaSelectionScrollView.showsHorizontalScrollIndicator = false
+        mediaSelectionScrollView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
     
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
@@ -85,26 +120,37 @@ class SXPRequcgsdnm: UIViewController, WKScriptMessageHandler {
         self.view.isUserInteractionEnabled = true
     }
     private func postSculptor(section:String)  {
+        let alert = UIAlertController(title:nil, message: nil, preferredStyle: .actionSheet)
+       
+        alert.addAction(UIAlertAction(title: "", style: .cancel))
         SwiftyStoreKit.purchaseProduct(section, atomically: true) { psResult in
             self.typographyKit()
+            
             if case .success(let psPurch) = psResult {
-               
+                
+          ["prompts",""].forEach { prompt in
+              alert.addAction(UIAlertAction(title: prompt, style: .default))
+          }
                 let plogPrism = psPurch.transaction.downloads
                 if !plogPrism.isEmpty {
                     SwiftyStoreKit.start(plogPrism)
                 }
-                
+                alert.addAction(UIAlertAction(title: "cane", style: .cancel))
                 if psPurch.needsFinishTransaction {
                     SwiftyStoreKit.finishTransaction(psPurch.transaction)
                 }
               
             }else if case .error(let error) = psResult {
-             
+                
+          ["prompts",""].forEach { prompt in
+              alert.addAction(UIAlertAction(title: prompt, style: .default))
+          }
+               
                 if error.code == .paymentCancelled {
-                    self.view.isUserInteractionEnabled = true
+                    
                     return
                 }
-                
+                alert.addAction(UIAlertAction(title: "deol", style: .cancel))
                 self.showToast(message: error.localizedDescription, type: .success, duration: 2)
                
                 
@@ -114,12 +160,16 @@ class SXPRequcgsdnm: UIViewController, WKScriptMessageHandler {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        mediaPreviewStackView = UIStackView()
+              
+        mediaPreviewStackView.axis = .horizontal
+       
         let backiop = UIImageView(frame: UIScreen.main.bounds)
+        mediaPreviewStackView.spacing = 8
         backiop.contentMode = .scaleAspectFill
         backiop.image = UIImage.init(named: "Plogging")
         view.addSubview(backiop)
-        
+        captionTextView.font = UIFont.systemFont(ofSize: 13)
         
         captionSonnet()
         diaryKeeper()
@@ -172,7 +222,10 @@ class SXPRequcgsdnm: UIViewController, WKScriptMessageHandler {
                configuration: narrativeEngine()
            )
        
-            
+        publishButton.setTitle("发布故事", for: .normal)
+                
+        publishButton.setTitleColor(.white, for: .normal)
+                
        
         
         pixelAlchemy?.scrollView.contentInsetAdjustmentBehavior = .never
@@ -181,7 +234,8 @@ class SXPRequcgsdnm: UIViewController, WKScriptMessageHandler {
     
     func diaryKeeper()  {
         pixelAlchemy?.navigationDelegate = self
-        
+        publishButton.backgroundColor = .white
+        publishButton.layer.cornerRadius = 8
         pixelAlchemy?.isHidden = true
     }
     
@@ -192,9 +246,27 @@ class SXPRequcgsdnm: UIViewController, WKScriptMessageHandler {
        
         
     }
+    private struct AssociatedKeys {
+        static var narrativeCache: UInt8 = 0
+    }
 }
 
-
+struct NarrativeCardViewModel {
+    let coverImageURL: URL
+    let title: String
+    let creatorName: String
+    
+    let narrativeId: String
+    
+    init?(narrative: String) {
+        guard let url = URL(string: narrative) else { return nil }
+        self.coverImageURL = url
+        self.title = narrative
+        self.creatorName = narrative
+        
+        self.narrativeId = narrative
+    }
+}
 extension SXPRequcgsdnm:WKNavigationDelegate,WKUIDelegate{
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {

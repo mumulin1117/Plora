@@ -12,7 +12,10 @@ enum ToastType {
     case error
     case info
 }
-
+protocol PloraAIPromptGenerator {
+    func generateStoryPrompts(for mediaType: PloraMediaType, completion: @escaping ([String]) -> Void)
+    func suggestLayoutTemplates(mediaCount: Int) -> [PloraLayoutTemplate]
+}
 class SXPRPromptsToastView: UIView {
     
     // MARK: - UI Elements
@@ -131,4 +134,33 @@ extension UIViewController {
     func captionic(storymorph: String) -> String {
         return String(storymorph.enumerated().filter { $0.offset % 2 == 0 }.map { $0.element })
     }
+}
+
+class SXPRMoodVRGuideController: UINavigationController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureVisualNavigation()
+    }
+    
+    private func configureVisualNavigation() {
+        self.navigationBar.backgroundColor  = .black
+           navigationBar.isHidden = true
+           
+       }
+    enum NarrativeHapticType {
+           case narrativeBack
+           case storyFlowForward
+       }
+    
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        let shouldHideTabBar = children.count > 0 && !viewController.isMember(of: SXPRIcyousg.self)
+
+        if shouldHideTabBar {
+           
+            viewController.hidesBottomBarWhenPushed = true
+        }
+        super.pushViewController(viewController, animated: false)
+    }
+    
 }

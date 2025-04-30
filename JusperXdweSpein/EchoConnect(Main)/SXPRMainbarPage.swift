@@ -7,27 +7,9 @@
 
 import UIKit
 
-class SXPRMoodVRGuideController: UINavigationController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.navigationBar.isHidden = true
-        
-    }
-    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
-   
 
-        if children.count > 0  && !viewController.isMember(of:SXPRIcyousg.self) {
-           
-            viewController.hidesBottomBarWhenPushed = true
-        }
-        super.pushViewController(viewController, animated: false)
-    }
-    
-}
 
-class SXPRIcyousg: UIViewController {
-    
-}
+
 class SXPRMainbarPage: UITabBarController{
 
     override func viewDidLoad() {
@@ -40,18 +22,18 @@ class SXPRMainbarPage: UITabBarController{
     private func setupViewControllers() {
         
         // 1. Home
-        let homeVC = JPIDPlaoertContrerle()
-        let homeNav = SXPRMoodVRGuideController(rootViewController: homeVC)
-        homeNav.tabBarItem = UITabBarItem(
+        let  MoodGraphroot = JPIDPlaoertContrerle()
+        let  MoodGraphNav = SXPRMoodVRGuideController(rootViewController:  MoodGraphroot)
+         MoodGraphNav.tabBarItem = UITabBarItem(
             title: nil,
             image: UIImage(named: "house_XSPR")?.withRenderingMode(.alwaysOriginal),
             selectedImage: UIImage(named: "house_XSPR_Fill")?.withRenderingMode(.alwaysOriginal)
         )
         
         // 2. DYM
-        let plogdyumVC = JPIDViolationContrerle()
-        let plogNav = SXPRMoodVRGuideController(rootViewController: plogdyumVC)
-        plogdyumVC.tabBarItem = UITabBarItem(
+        let FrameLabroot = JPIDViolationContrerle()
+        let FrameLabNav = SXPRMoodVRGuideController(rootViewController: FrameLabroot)
+        FrameLabroot.tabBarItem = UITabBarItem(
             title: nil,
             image: UIImage(named: "squre_XSPR")?.withRenderingMode(.alwaysOriginal),
             selectedImage: UIImage(named: "squre_XSPR_fill")?.withRenderingMode(.alwaysOriginal)
@@ -66,9 +48,9 @@ class SXPRMainbarPage: UITabBarController{
         )
         
         // 2. Video
-        let videoVC = JPIDVideonContrerle()
-        let videoNav = SXPRMoodVRGuideController(rootViewController: videoVC)
-        videoNav.tabBarItem = UITabBarItem(
+        let PlogcireVC = JPIDVideonContrerle()
+        let PlogcireNav = SXPRMoodVRGuideController(rootViewController: PlogcireVC)
+        PlogcireNav.tabBarItem = UITabBarItem(
             title: nil,
             image: UIImage(named: "video_XSPR")?.withRenderingMode(.alwaysOriginal),
             selectedImage: UIImage(named: "video_XSPR_Fill")?.withRenderingMode(.alwaysOriginal)
@@ -78,34 +60,26 @@ class SXPRMainbarPage: UITabBarController{
      
         
         // 5. Profile
-        let profileVC = JPIDUssContrerle()
-        let profileNav = SXPRMoodVRGuideController(rootViewController: profileVC)
-        profileNav.tabBarItem = UITabBarItem(
+        let PlogVaultfileVC = JPIDUssContrerle()
+        let PlogVaultleNav = SXPRMoodVRGuideController(rootViewController: PlogVaultfileVC)
+        PlogVaultleNav.tabBarItem = UITabBarItem(
             title: nil,
             image: UIImage(named: "person_XSPR")?.withRenderingMode(.alwaysOriginal),
             selectedImage: UIImage(named: "person_XSPR_Fill")?.withRenderingMode(.alwaysOriginal)
         )
         
-        viewControllers = [homeNav, plogNav, centerVC,videoNav , profileNav]
+        viewControllers = [ MoodGraphNav, FrameLabNav, centerVC,PlogcireNav , PlogVaultleNav]
         
     }
     
     
     
     private func setupMiddleButton() {
-        let middleButton = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
-        var buttonFrame = middleButton.frame
-        buttonFrame.origin.y = tabBar.bounds.height - buttonFrame.height - 10
-        buttonFrame.origin.x = tabBar.bounds.width/2 - buttonFrame.width/2
-        middleButton.frame = buttonFrame
-       
-
-        middleButton.setBackgroundImage(UIImage(named: "cenveterpost"), for: .normal)
+        let middleButton = configureNarrativeSafety()
    
         middleButton.addTarget(self, action: #selector(middleButtonAction), for: .touchUpInside)
         
-        middleButton.layer.shadowColor = UIColor.black.cgColor
-        middleButton.layer.shadowOpacity = 0.2
+        
         middleButton.layer.shadowOffset = CGSize(width: 0, height: 2)
         
         tabBar.addSubview(middleButton)
@@ -121,6 +95,7 @@ class SXPRMainbarPage: UITabBarController{
         present(nav, animated: true)
     }
 
+   
 }
 
 
@@ -132,5 +107,23 @@ extension SXPRMainbarPage: UITabBarControllerDelegate {
             tabBar.selectedItem = nil
             return
         }
+    }
+}
+
+
+extension SXPRMainbarPage{
+    
+    func configureNarrativeSafety()->UIButton  {
+        let middleButton = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+        var buttonFrame = middleButton.frame
+        buttonFrame.origin.y = tabBar.bounds.height - buttonFrame.height - 10
+        buttonFrame.origin.x = tabBar.bounds.width/2 - buttonFrame.width/2
+        middleButton.frame = buttonFrame
+        middleButton.layer.shadowColor = UIColor.black.cgColor
+        middleButton.layer.shadowOpacity = 0.2
+
+        middleButton.setBackgroundImage(UIImage(named: "cenveterpost"), for: .normal)
+   
+        return middleButton
     }
 }

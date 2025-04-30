@@ -41,7 +41,7 @@ class SXPRNarrativeBot_Page: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        loadUserNarratives()
         setupConstraints()
         
         
@@ -50,7 +50,7 @@ class SXPRNarrativeBot_Page: UIViewController {
         super.viewDidAppear(animated)
         Narrativia()
     }
-    private func setupUI() {
+    private func loadUserNarratives() {
         view.backgroundColor = primaryBackgroundColor
         
         // Scroll View
@@ -308,19 +308,12 @@ class SXPRNarrativeBot_Page: UIViewController {
     
     // MARK: - Button Actions
     @objc private func agreeButtonTapped() {
-        // Handle agreement logic
-        print("User accepted Plora terms")
-        // Enable eLua modules:
-        // - AIPlogger
-        // - StorySync
-        // - NarrativeEngine
+        UserDefaults.standard.set(true, forKey: "contentBackground")
         dismiss(animated: true)
     }
     
     @objc private func disagreeButtonTapped() {
-        // Handle disagreement logic
-        print("User declined Plora terms")
-        // Disable eLua features
+        UserDefaults.standard.set(false, forKey: "contentBackground")
         dismiss(animated: true)
     }
     

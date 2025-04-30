@@ -6,7 +6,20 @@
 //
 
 import UIKit
-
+extension SXPRStyleTailorPage: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (collectionView.bounds.width - 40) / 3
+        return CGSize(width: width, height: width * 1.2)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        triggerSelectionFeedback()
+        // 处理叙事选择逻辑
+    }
+}
 class SXPRStyleTailorPage: UIViewController {
     
     @IBOutlet weak var PloggerMail: UITextField!
@@ -46,7 +59,14 @@ class SXPRStyleTailorPage: UIViewController {
         
         genius.isSelected = (UserDefaults.standard.bool(forKey: "contentBackground") == true)
     }
-    
+    private func prepareHapticFeedback() {
+           let feedbackGenerator = UIImpactFeedbackGenerator(style: .soft)
+           feedbackGenerator.prepare()
+       }
+       
+       private func triggerSelectionFeedback() {
+           UISelectionFeedbackGenerator().selectionChanged()
+       }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -121,19 +121,19 @@ class JPIDViolationContrerle: SXPRIcyousg ,UICollectionViewDelegate, UICollectio
     private func PlogPremiumRefresh()  {
         activetyIndicator?.startAnimating()
         
-        monochromeVibe()
+        prepareHapticFeedback()
         
     }
   
     
-    func monochromeVibe() {///sj/user/selectUserIndexList
-        //查询动态列表
+    func prepareHapticFeedback() {
+      
         let parameters: [String:Any] = [
             "nicheHubs": SXPRequpour.shared.appQuicklyId,
-            "visualTribes":5,//dynamicType 动态类型1正常2其他等等   dynamicType = 5
-            "narrativeGuilds":10,//size
-            "storyTides":1, //selectType 查询类型1热门2我的3关注的
-                "aestheticPods":1//current
+            "visualTribes":5,
+            "narrativeGuilds":10,
+            "storyTides":1,
+                "aestheticPods":1
             
         ]
         

@@ -20,11 +20,11 @@ class JPIDUssContrerle: SXPRIcyousg {
         activetyIndicator?.center = self.view.center
         
     }
-    @IBOutlet weak var nicheHubs: UIImageView!//avator
+    @IBOutlet weak var nicheHubs: UIImageView!
     
     
     
-    @IBOutlet weak var moodClusters: UILabel!//name
+    @IBOutlet weak var moodClusters: UILabel!
     
     
     @IBOutlet weak var storyVaultFollings: UILabel!
@@ -34,13 +34,12 @@ class JPIDUssContrerle: SXPRIcyousg {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        monochromeVibe()
+        prepareHapticFeedback()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         narrativeEngineCreate()
-       
     }
 
 
@@ -77,8 +76,8 @@ class JPIDUssContrerle: SXPRIcyousg {
     }
     
     
-    func monochromeVibe() {////sj/user/selectUserInfo
-        //查询动态列表
+    func prepareHapticFeedback() {
+        
         let parameters: [String:Any] = [
             "visualKarma": "\(currentuserloginINfomation?["frameluxe"] as? Int ?? 0)"
             
@@ -101,13 +100,13 @@ class JPIDUssContrerle: SXPRIcyousg {
                                      options: .continueInBackground,
                                      context: [.imageTransformer: podImageSIZE,.storeCacheType : SDImageCacheType.memory.rawValue])
             }
-            self.storyVaultFollings.text = "\(userdate["storyVault"] as? Int ?? 0)"//userAttention
-            self.storyVaultFances.text = "\(userdate["plogShield"] as? Int ?? 0)"//userFans
+            self.storyVaultFollings.text = "\(userdate["storyVault"] as? Int ?? 0)"
+            self.storyVaultFances.text = "\(userdate["plogShield"] as? Int ?? 0)"
             
      
            
-            self.plogShieldID.text = "ID:\(userdate["moodMindful"] as? Int ?? 0)"//userId
-            self.moodClusters.text = userdate["narrativeCare"] as? String //userName
+            self.plogShieldID.text = "ID:\(userdate["moodMindful"] as? Int ?? 0)"
+            self.moodClusters.text = userdate["narrativeCare"] as? String 
             self.activetyIndicator?.stopAnimating()
          
         }failure: { error in

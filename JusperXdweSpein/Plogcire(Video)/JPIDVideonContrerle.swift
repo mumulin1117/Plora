@@ -70,20 +70,7 @@ class JPIDVideonContrerle: SXPRIcyousg,UICollectionViewDelegate, UICollectionVie
         plora.moodClusters.text = (momentDataPlora[indexPath.row]["plogSponsors"]) as? String//userName
         plora.moonheartCount.text = "\(momentDataPlora[indexPath.row]["moodMarket"] as? Int ?? 0)" //moodMarket:praiseNum
         
-        plora.moonCommentCount.text = "\(momentDataPlora[indexPath.row]["plogPremium"] as? Int ?? 0)"  //plogPremium:commentNum
-        
-        //
-        //moodMarket:praiseNum
-        // captionNLP:dynamicClassify
-        // creatorCoins:dynamicTitle
-        //visualCDN:dynamicImgList
-        //narrativeNFTs:userId
-        //frameRewards:userImgUrl
-      
-        //plogAPI:attentionFlag
-        //tagGraph:videoImgUrl
-        //aestheticAds: dynamicId
-        //visualGrants: dynamicContent
+        plora.moonCommentCount.text = "\(momentDataPlora[indexPath.row]["plogPremium"] as? Int ?? 0)"
         return plora
         
     }
@@ -100,7 +87,7 @@ class JPIDVideonContrerle: SXPRIcyousg,UICollectionViewDelegate, UICollectionVie
 
    @objc func touchUsercenterHjusper(uiopp:UIButton)  {
        guard let userid = momentDataPlora[uiopp.tag]["narrativeNFTs"] as? String else { return  }//userId
-        //用户个人中心
+   
        let linkader = SXPRequpour.shared.appBaseUrlAVoutWEB + self.captionic(storymorph: "ptaxghefsf/jHaoymnecPiamgzef/zilnrdoefxm?rursyeerjImdu=") +  "\(userid)"
         reactionDensity(linkader:linkader)
     }
@@ -171,7 +158,7 @@ class JPIDVideonContrerle: SXPRIcyousg,UICollectionViewDelegate, UICollectionVie
     private func PlogPremiumRefresh()  {
         activetyIndicator?.startAnimating()
         
-        monochromeVibe()
+        prepareHapticFeedback()
         
     }
     
@@ -189,14 +176,14 @@ class JPIDVideonContrerle: SXPRIcyousg,UICollectionViewDelegate, UICollectionVie
     
     private var selectType:Int = 1
     
-    func monochromeVibe() {///sj/user/selectUserIndexList
-        //查询动态列表
+    func prepareHapticFeedback() {
+        
         let parameters: [String:Any] = [
             "nicheHubs": SXPRequpour.shared.appQuicklyId,
-            "visualTribes":1,//dynamicType 动态类型1正常2其他等等
-            "narrativeGuilds":10,//size
-            "storyTides":selectType, //selectType 查询类型1热门2我的3关注的
-                "aestheticPods":1//current
+            "visualTribes":1,
+            "narrativeGuilds":10,
+            "storyTides":selectType,
+                "aestheticPods":1
             
         ]
         
@@ -214,7 +201,7 @@ class JPIDVideonContrerle: SXPRIcyousg,UICollectionViewDelegate, UICollectionVie
             
             self.momentDataPlora = dyms.filter({ dic in
            
-                return (dic["tagGraph"] as? String)  != nil //videoImgUrl
+                return (dic["tagGraph"] as? String)  != nil
                
             })
             

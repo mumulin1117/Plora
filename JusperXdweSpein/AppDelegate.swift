@@ -19,8 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = SXPRPlogifyController.init()
+        configureNarrativeSafety()
         CaptionCrafting()
         window?.makeKeyAndVisible()
         return true
@@ -44,7 +43,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
     }
-    
+    private func configureNarrativeSafety() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = SXPRPlogifyController.init()
+       
+    }
     
     func moodBoardPost(AIPlogger:Purchase)  {
         let downloads = AIPlogger.transaction.downloads
@@ -53,4 +56,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 }
+fileprivate struct AssociatedKeys {
+    static var backgroundTaskId = "backgroundTaskIdentifier"
+}
+extension AppDelegate {
+    
+    private func handleStoryFlowLink(_ context: DeepLinkContext) {
+        guard let storyId = context.parameters["storyId"] else { return }
+       
+    }
+    
+    private func handlePlogCreationLink(_ context: DeepLinkContext) {
+        
+    }
+}
 
+struct DeepLinkContext {
+    var parameters:Dictionary<String,Any>
+    
+}

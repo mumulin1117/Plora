@@ -4,10 +4,15 @@
 //
 //  Created by weSpein on 2025/4/25.
 //
-
+import AVFoundation
 import UIKit
 //网络请求
-
+struct PloraStoryContent {
+    let mediaType: PloraMediaType
+    let assets: [URL]?
+    let caption: String?
+  
+}
 class SXPRequpour {
     struct Configuration {
            var timeoutIntervalForRequest: TimeInterval = 30

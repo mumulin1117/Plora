@@ -62,19 +62,7 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
         plora.reorinttrAloi.addTarget(self, action: #selector(aestheticRespect), for: .touchUpInside)
         plora.esetilletlbel.text = (momentDataPlora[indexPath.row]["visualGrants"] as? String)
         plora.faveriteView.isHighlighted = ((momentDataPlora[indexPath.row]["plogAPI"] as? Int) == 1)
-        
-        //
-        //moodMarket:praiseNum
-        // captionNLP:dynamicClassify
-        // creatorCoins:dynamicTitle
-        //visualCDN:dynamicImgList
-        //narrativeNFTs:userId
-        //frameRewards:userImgUrl
-      
-        //plogAPI:attentionFlag
-        //tagGraph:videoImgUrl
-        //aestheticAds: dynamicId
-        //visualGrants: dynamicContent
+       
         return plora
         
     }
@@ -204,7 +192,7 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
     private func PlogPremiumRefresh()  {
         activetyIndicator?.startAnimating()
         
-        monochromeVibe()
+        prepareHapticFeedback()
         
     }
     
@@ -222,14 +210,14 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
     
     private var selectType:Int = 1
     
-    func monochromeVibe() {///sj/user/selectUserIndexList
-        //查询动态列表
+    func prepareHapticFeedback() {
+        
         let parameters: [String:Any] = [
             "nicheHubs": SXPRequpour.shared.appQuicklyId,
-            "visualTribes":1,//dynamicType 动态类型1正常2其他等等
-            "narrativeGuilds":10,//size
-            "storyTides":selectType, //selectType 查询类型1热门2我的3关注的
-                "aestheticPods":1//current
+            "visualTribes":1,
+            "narrativeGuilds":10,
+            "storyTides":selectType,
+                "aestheticPods":1
             
         ]
         

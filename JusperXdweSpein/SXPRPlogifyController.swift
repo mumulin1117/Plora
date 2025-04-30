@@ -12,17 +12,10 @@ import IQKeyboardManager
 var currentuserloginINfomation:Dictionary<String,Any>?{
     
     get{
-        if let indof = UserDefaults.standard.object(forKey: "plogtopia") as? [String:Any] {
-            return indof
-        }
-        return nil
+       
+        return UserDefaults.standard.object(forKey: "plogtopia") as? [String:Any]
     }set{
-        if let nilthing = newValue {
-            
-            UserDefaults.standard.set(nilthing, forKey: "plogtopia")
-        }else{
-            UserDefaults.standard.set(nil, forKey: "plogtopia")
-        }
+        UserDefaults.standard.set(newValue, forKey: "plogtopia")
         
     }
     
