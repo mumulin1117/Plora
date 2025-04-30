@@ -2,18 +2,13 @@
 //  SXPRequpour.swift
 //  JusperXdweSpein
 //
-//  Created by mumu on 2025/4/25.
+//  Created by weSpein on 2025/4/25.
 //
 
 import UIKit
 //网络请求
-class SXPRequpour: NSObject {
 
-}
-
-
-
-class DBNSeddingTrkop {
+class SXPRequpour {
     struct Configuration {
            var timeoutIntervalForRequest: TimeInterval = 30
            var timeoutIntervalForResource: TimeInterval = 60
@@ -38,7 +33,7 @@ class DBNSeddingTrkop {
         }
     
     
-    static let shared = DBNSeddingTrkop()
+    static let shared = SXPRequpour()
     private let session: URLSession
     private let decoder = JSONDecoder()
     
@@ -88,7 +83,7 @@ class DBNSeddingTrkop {
        
         if includeLoading {
             finalHeaders["key"] = appQuicklyId
-            finalHeaders["token"] = loguserMofdal?.echozoa ?? ""
+            finalHeaders["token"] = currentuserloginINfomation?["echozoa"] as? String 
         }
         
         for (key, value) in finalHeaders {

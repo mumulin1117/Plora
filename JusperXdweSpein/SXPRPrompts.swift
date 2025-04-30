@@ -2,76 +2,10 @@
 //  SXPRPrompts.swift
 //  JusperXdweSpein
 //
-//  Created by mumu on 2025/4/27.
+//  Created by weSpein on 2025/4/27.
 //
 
 import UIKit
-
-class SXPRPrompts: NSObject {
-
-}
-class DBHUs_er {
-    
-    //登陆user
-    var pixelism:String?//"userName"
-    var frameluxe:String?//"userId"
-    var echoverse:String?//"userImgUrl"
-    var echozoa:String?//"token"
-//    //用户列表
-//    var brickAssembly:String?//userId
-//    var creativeCollaboration:String?//userImgUrl
-//    var modularDesign:String?//userName
-    //用户详细情况
-//    var skillBadges:String?//"userName"
-//    var achievementSystem:String?//"userId"
-//    var leaderboardRanking:String?//"userImgUrl"
-//    
-//    var subscriptionModel:String?//"userFans"
-//    var virtualCurrency:String?//"userFriends"
-//    var lootBoxMechanics:String?//"lootBoxMechanics"
-//    
-//    
-    
-
-    init(dic:Dictionary<String,Any>?,isfromLocal:Bool = false) {
-        self.echozoa = dic?["echozoa"] as? String
-        if isfromLocal {
-            self.frameluxe =  dic?["frameluxe"] as? String
-        }else{
-            self.frameluxe =  "\(dic?["frameluxe"] as? Int ?? 0)"
-        }
-        self.echoverse = dic?["echoverse"]  as? String
-        
-        self.pixelism = dic?["pixelism"] as? String
-        
-        ///
-//        self.brickAssembly = "\(dic?["brickAssembly"] as? Int ?? 0)"
-//        self.creativeCollaboration = dic?["creativeCollaboration"]  as? String
-//        self.modularDesign = dic?["modularDesign"] as? String
-//        
-        //
-        
-//        self.achievementSystem = "\(dic?["achievementSystem"] as? Int ?? 0)"
-//        self.skillBadges = dic?["skillBadges"]  as? String
-//        self.leaderboardRanking = dic?["leaderboardRanking"] as? String
-//        self.subscriptionModel = "\(dic?["subscriptionModel"] as? Int ?? 0)"
-//        self.virtualCurrency = "\(dic?["virtualCurrency"] as? Int ?? 0)"
-//        self.lootBoxMechanics = "\(dic?["lootBoxMechanics"] as? Int ?? 0)"
-//       
-//        
-       
-    }
-    
-    func modoalTRansforDic() -> Dictionary<String,String> {
-        var dic = Dictionary<String,String>()
-        dic["echozoa"] = self.echozoa
-        dic["echoverse"] = self.echoverse
-        dic["frameluxe"] = self.frameluxe
-        dic["pixelism"] = self.pixelism
-        return dic
-    }
-}
-
 
 enum ToastType {
     case success
@@ -79,7 +13,7 @@ enum ToastType {
     case info
 }
 
-class ToastView: UIView {
+class SXPRPromptsToastView: UIView {
     
     // MARK: - UI Elements
     private let iconLabel: UILabel = {
@@ -190,7 +124,7 @@ class ToastView: UIView {
 // MARK: - Convenience Extension
 extension UIViewController {
     func showToast(message: String, type: ToastType, duration: TimeInterval = 2.0) {
-        let toast = ToastView(message: message, type: type)
+        let toast = SXPRPromptsToastView(message: message, type: type)
         toast.show(in: view, duration: duration)
     }
 }

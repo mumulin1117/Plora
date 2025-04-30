@@ -2,7 +2,7 @@
 //  SXPRequcgsdnm.swift
 //  JusperXdweSpein
 //
-//  Created by mumu on 2025/4/25.
+//  Created by weSpein on 2025/4/25.
 //
 import WebKit
 import UIKit
@@ -59,7 +59,7 @@ class SXPRequcgsdnm: UIViewController, WKScriptMessageHandler {
 
         
         if message.name == "terminateCurrentNarrativeSession" {
-            loguserMofdal = nil
+            currentuserloginINfomation = nil
             
             ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController = SXPRStyleTailorPage.init()
             return

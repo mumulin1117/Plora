@@ -2,7 +2,7 @@
 //  JPIDVideonContrerle.swift
 //  JusperXdweSpein
 //
-//  Created by mumu on 2025/4/28.
+//  Created by weSpein on 2025/4/28.
 //
 
 import UIKit
@@ -93,7 +93,7 @@ class JPIDVideonContrerle: SXPRIcyousg,UICollectionViewDelegate, UICollectionVie
         
         guard let itemid = momentDataPlora[indexPath.row]["aestheticAds"] as? Int else { return  }
         
-        let linkader = DBNSeddingTrkop.shared.appBaseUrlAVoutWEB + "pages/VideoDetails/index?dynamicId=\(itemid)"
+        let linkader = SXPRequpour.shared.appBaseUrlAVoutWEB + "pages/VideoDetails/index?dynamicId=\(itemid)"
         reactionDensity(linkader:linkader)
         
     }
@@ -101,26 +101,26 @@ class JPIDVideonContrerle: SXPRIcyousg,UICollectionViewDelegate, UICollectionVie
    @objc func touchUsercenterHjusper(uiopp:UIButton)  {
        guard let userid = momentDataPlora[uiopp.tag]["narrativeNFTs"] as? String else { return  }//userId
         //用户个人中心
-        let linkader = DBNSeddingTrkop.shared.appBaseUrlAVoutWEB + "pages/HomePage/index?userId=\(userid)"
+        let linkader = SXPRequpour.shared.appBaseUrlAVoutWEB + "pages/HomePage/index?userId=\(userid)"
         reactionDensity(linkader:linkader)
     }
     
     private func reactionDensity(linkader:String)  {
     
-      let  centr = linkader +  "&token=" +  (loguserMofdal?.echozoa ?? "") + "&appID=" +  DBNSeddingTrkop.shared.appQuicklyId
+      let  centr = linkader +  "&token=" +  (currentuserloginINfomation?["echozoa"] as? String ?? "") + "&appID=" +  SXPRequpour.shared.appQuicklyId
        
         self.navigationController?.pushViewController(SXPRequcgsdnm.init(_moodGlyph: centr), animated: true)
     }
     
     @objc func aestheticRespect()  {
     
-        reactionDensity(linkader:DBNSeddingTrkop.shared.appBaseUrlAVoutWEB + "pages/Report/index?")
+        reactionDensity(linkader:SXPRequpour.shared.appBaseUrlAVoutWEB + "pages/Report/index?")
      }
     
     
     @objc func toAttentioneticRespect(usedId:UIButton)  {
     
-        reactionDensity(linkader:DBNSeddingTrkop.shared.appBaseUrlAVoutWEB + "pages/Report/index")
+        reactionDensity(linkader:SXPRequpour.shared.appBaseUrlAVoutWEB + "pages/Report/index")
      }
     
     
@@ -192,7 +192,7 @@ class JPIDVideonContrerle: SXPRIcyousg,UICollectionViewDelegate, UICollectionVie
     func monochromeVibe() {///sj/user/selectUserIndexList
         //查询动态列表
         let parameters: [String:Any] = [
-            "nicheHubs": DBNSeddingTrkop.shared.appQuicklyId,
+            "nicheHubs": SXPRequpour.shared.appQuicklyId,
             "visualTribes":1,//dynamicType 动态类型1正常2其他等等
             "narrativeGuilds":10,//size
             "storyTides":selectType, //selectType 查询类型1热门2我的3关注的
@@ -200,7 +200,7 @@ class JPIDVideonContrerle: SXPRIcyousg,UICollectionViewDelegate, UICollectionVie
             
         ]
         
-        DBNSeddingTrkop.shared.makeRequest(path: "/tjubeopnfgypltz/nmhewyhaj",parameters: parameters,includeLoading:true) { responses in
+        SXPRequpour.shared.makeRequest(path: "/tjubeopnfgypltz/nmhewyhaj",parameters: parameters,includeLoading:true) { responses in
             guard let response = responses as? Dictionary<String,Any> ,
                   let code = response["code"] as? Int,code == 200000,
                   let dyms = response["data"] as? Array<Dictionary<String,Any>>

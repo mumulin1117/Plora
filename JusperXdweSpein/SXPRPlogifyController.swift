@@ -2,24 +2,24 @@
 //  SXPRPlogifyController.swift
 //  JusperXdweSpein
 //
-//  Created by mumu on 2025/4/27.
+//  Created by weSpein on 2025/4/27.
 //
 
 import UIKit
 //Launch
 import IQKeyboardManager
 
-var loguserMofdal:DBHUs_er?{
+var currentuserloginINfomation:Dictionary<String,Any>?{
     
     get{
-        if let usedloging = UserDefaults.standard.object(forKey: "loginUserDBN") as? [String:String] {
-            return DBHUs_er.init(dic: usedloging,isfromLocal: true)
+        if let indof = UserDefaults.standard.object(forKey: "loginUserDBN") as? [String:Any] {
+            return indof
         }
         return nil
     }set{
-        if let newvakf = newValue {
+        if let nilthing = newValue {
             
-            UserDefaults.standard.set(newvakf.modoalTRansforDic(), forKey: "loginUserDBN")
+            UserDefaults.standard.set(nilthing, forKey: "loginUserDBN")
         }else{
             UserDefaults.standard.set(nil, forKey: "loginUserDBN")
         }
@@ -61,7 +61,7 @@ class SXPRPlogifyController: UIViewController {
         
         let window = ((UIApplication.shared.delegate) as? AppDelegate)?.window
         
-        if loguserMofdal != nil {
+        if currentuserloginINfomation != nil {
             window?.rootViewController = SXPRMainbarPage.init()
         }else{
            

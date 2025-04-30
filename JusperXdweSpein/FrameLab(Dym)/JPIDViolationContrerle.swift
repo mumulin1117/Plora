@@ -2,7 +2,7 @@
 //  JPIDViolationContrerle.swift
 //  JusperXdweSpein
 //
-//  Created by mumu on 2025/4/28.
+//  Created by weSpein on 2025/4/28.
 //
 
 import UIKit
@@ -81,13 +81,13 @@ class JPIDViolationContrerle: SXPRIcyousg ,UICollectionViewDelegate, UICollectio
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let itemid = momentDataPlora[indexPath.row]["aestheticAds"] as? Int else { return  }
         
-        let linkader = DBNSeddingTrkop.shared.appBaseUrlAVoutWEB + "pages/AromatherapyDetails/index?dynamicId=\(itemid)"
+        let linkader = SXPRequpour.shared.appBaseUrlAVoutWEB + "pages/AromatherapyDetails/index?dynamicId=\(itemid)"
         reactionDensity(linkader:linkader)
         
     }
     private func reactionDensity(linkader:String)  {
     
-      let  centr = linkader +  "&token=" +  (loguserMofdal?.echozoa ?? "") + "&appID=" +  DBNSeddingTrkop.shared.appQuicklyId
+      let  centr = linkader +  "&token=" +  (currentuserloginINfomation?["echozoa"] as? String ?? "") + "&appID=" +  SXPRequpour.shared.appQuicklyId
        
         self.navigationController?.pushViewController(SXPRequcgsdnm.init(_moodGlyph: centr), animated: true)
     }
@@ -129,7 +129,7 @@ class JPIDViolationContrerle: SXPRIcyousg ,UICollectionViewDelegate, UICollectio
     func monochromeVibe() {///sj/user/selectUserIndexList
         //查询动态列表
         let parameters: [String:Any] = [
-            "nicheHubs": DBNSeddingTrkop.shared.appQuicklyId,
+            "nicheHubs": SXPRequpour.shared.appQuicklyId,
             "visualTribes":5,//dynamicType 动态类型1正常2其他等等   dynamicType = 5
             "narrativeGuilds":10,//size
             "storyTides":1, //selectType 查询类型1热门2我的3关注的
@@ -137,7 +137,7 @@ class JPIDViolationContrerle: SXPRIcyousg ,UICollectionViewDelegate, UICollectio
             
         ]
         
-        DBNSeddingTrkop.shared.makeRequest(path: "/tjubeopnfgypltz/nmhewyhaj",parameters: parameters,includeLoading:true) { responses in
+        SXPRequpour.shared.makeRequest(path: "/tjubeopnfgypltz/nmhewyhaj",parameters: parameters,includeLoading:true) { responses in
             guard let response = responses as? Dictionary<String,Any> ,
                   let code = response["code"] as? Int,code == 200000,
                   let dyms = response["data"] as? Array<Dictionary<String,Any>>
@@ -174,7 +174,7 @@ class JPIDViolationContrerle: SXPRIcyousg ,UICollectionViewDelegate, UICollectio
     @IBAction func applogerto(_ sender: UIButton) {
         
       
-        var linda = DBNSeddingTrkop.shared.appBaseUrlAVoutWEB + "pages/AIexpert/index/?"
+        var linda = SXPRequpour.shared.appBaseUrlAVoutWEB + "pages/AIexpert/index/?"
         
         reactionDensity(linkader:linda)
     }
@@ -182,13 +182,13 @@ class JPIDViolationContrerle: SXPRIcyousg ,UICollectionViewDelegate, UICollectio
     
     
     @IBAction func snapskillplog(_ sender: UIButton) {
-        var linda = DBNSeddingTrkop.shared.appBaseUrlAVoutWEB + "pages/AIexpert/index/?"
+        var linda = SXPRequpour.shared.appBaseUrlAVoutWEB + "pages/AIexpert/index/?"
         
         reactionDensity(linkader:linda)
     }
     
     @IBAction func pubilishplogillplog(_ sender: UIButton) {
-        var linda = DBNSeddingTrkop.shared.appBaseUrlAVoutWEB + "pages/issue/index/?"
+        var linda = SXPRequpour.shared.appBaseUrlAVoutWEB + "pages/issue/index/?"
         
         reactionDensity(linkader:linda)
     }

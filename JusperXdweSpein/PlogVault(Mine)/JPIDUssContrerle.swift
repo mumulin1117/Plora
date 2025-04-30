@@ -2,7 +2,7 @@
 //  JPIDUssContrerle.swift
 //  JusperXdweSpein
 //
-//  Created by mumu on 2025/4/28.
+//  Created by weSpein on 2025/4/28.
 //
 
 import UIKit
@@ -49,7 +49,7 @@ class JPIDUssContrerle: SXPRIcyousg {
         
         let sbuo = sender.tag
         
-        var sel = DBNSeddingTrkop.shared.appBaseUrlAVoutWEB
+        var sel = SXPRequpour.shared.appBaseUrlAVoutWEB
         
         switch sbuo {
         case 23:
@@ -71,7 +71,7 @@ class JPIDUssContrerle: SXPRIcyousg {
     
     private func reactionDensity(linkader:String)  {
     
-      let  centr = linkader +  "&token=" +  (loguserMofdal?.echozoa ?? "") + "&appID=" +  DBNSeddingTrkop.shared.appQuicklyId
+      let  centr = linkader +  "&token=" +  (currentuserloginINfomation?["echozoa"] as? String ?? "") + "&appID=" +  SXPRequpour.shared.appQuicklyId
        
         self.navigationController?.pushViewController(SXPRequcgsdnm.init(_moodGlyph: centr), animated: true)
     }
@@ -80,11 +80,11 @@ class JPIDUssContrerle: SXPRIcyousg {
     func monochromeVibe() {////sj/user/selectUserInfo
         //查询动态列表
         let parameters: [String:Any] = [
-            "visualKarma": loguserMofdal?.frameluxe ?? ""
+            "visualKarma": "\(currentuserloginINfomation?["frameluxe"] as? Int ?? 0)"
             
         ]
         
-        DBNSeddingTrkop.shared.makeRequest(path: "/zmnukrz/oavoohrtkpmtkoo",parameters: parameters,includeLoading:true) { responses in
+        SXPRequpour.shared.makeRequest(path: "/zmnukrz/oavoohrtkpmtkoo",parameters: parameters,includeLoading:true) { responses in
             guard let response = responses as? Dictionary<String,Any> ,
                   let code = response["code"] as? Int,code == 200000,
                   let userdate = response["data"] as? Dictionary<String,Any>

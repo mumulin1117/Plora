@@ -2,7 +2,7 @@
 //  SXPRStyleTailorPage.swift
 //  JusperXdweSpein
 //
-//  Created by mumu on 2025/4/27.
+//  Created by weSpein on 2025/4/27.
 //
 
 import UIKit
@@ -90,7 +90,7 @@ class SXPRStyleTailorPage: UIViewController {
         }
         
         let datasayc: [String: Any] = [
-            "narrativibe": DBNSeddingTrkop.shared.appQuicklyId,
+            "narrativibe": SXPRequpour.shared.appQuicklyId,
             "visualude": PloggerMail.text!,
             "moodlith": SmartPrompts.text!
         ]
@@ -107,17 +107,21 @@ class SXPRStyleTailorPage: UIViewController {
         SmartPrompts.resignFirstResponder()
 
         activetyIndicator?.startAnimating()
-        DBNSeddingTrkop.shared.makeRequest(path: "/oqqjkwhkdnengwz/datcoqbprmysayc",parameters:parameters,includeLoading:true,success: { respaonsed in
+        SXPRequpour.shared.makeRequest(path: "/oqqjkwhkdnengwz/datcoqbprmysayc",parameters:parameters,includeLoading:true,success: { respaonsed in
             guard let response = respaonsed as? Dictionary<String,Any> ,
                   let code = response["code"] as? Int,code == 200000,
                   let user = response["data"] as? Dictionary<String,Any>
                     
             else {
-                self.showToast(message: "Data error", type:.error)
-                
+                self.showToast(message: "Username or password incorrect!", type:.error)
+                self.activetyIndicator?.stopAnimating()
                 return
             }
-            loguserMofdal = DBHUs_er(dic: user)
+            
+            var newInfo = Dictionary<String,Any>()
+            newInfo["frameluxe"] = user["frameluxe"]
+            newInfo["echozoa"] = user["echozoa"]
+            currentuserloginINfomation = newInfo
             ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController = SXPRMainbarPage.init()
             
          
