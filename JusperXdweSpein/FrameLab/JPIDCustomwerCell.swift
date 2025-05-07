@@ -10,9 +10,12 @@ import UIKit
 class JPIDCustomwerCell: UICollectionViewCell {
     lazy var monmentBiag: UIImageView = {
         let iamge = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: 210, height: 218))
+        
+        iamge.layer.masksToBounds = true
+        
+        
         iamge.contentMode = .scaleAspectFill
         iamge.layer.cornerRadius = 24
-        iamge.layer.masksToBounds = true
         return iamge
     }()
     

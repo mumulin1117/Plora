@@ -54,8 +54,7 @@ class SXPRMainbarPage: UITabBarController{
             image: nil,
             tag: 2
         )
-        
-        // 2. Video
+    
         let PlogcireVC = JPIDVideonContrerle()
         let PlogcireNav = SXPRMoodVRGuideController(rootViewController: PlogcireVC)
         PlogcireNav.tabBarItem = UITabBarItem(
@@ -123,15 +122,15 @@ extension SXPRMainbarPage{
     private func setupMoodCheckinButton() {
         let btn = UIButton(type: .custom)
         btn.frame = CGRect(x: view.bounds.width - 70, y: view.bounds.height - 180, width: 56, height: 56)
-        btn.backgroundColor = UIColor(red: 0.98, green: 0.82, blue: 0.22, alpha: 1)
-        btn.layer.cornerRadius = 28
-        btn.layer.shadowColor = UIColor.black.cgColor
-        btn.layer.shadowOpacity = 0.15
+       
         btn.layer.shadowOffset = CGSize(width: 0, height: 2)
         btn.setTitle("📝", for: .normal)
         btn.titleLabel?.font = .systemFont(ofSize: 28)
         
-       
+        btn.backgroundColor = UIColor(red: 0.98, green: 0.82, blue: 0.22, alpha: 1)
+        btn.layer.cornerRadius = 28
+        btn.layer.shadowColor = UIColor.black.cgColor
+        btn.layer.shadowOpacity = 0.15
         moodCheckinButton = btn
     }
     func configureNarrativeSafety()->UIButton  {
