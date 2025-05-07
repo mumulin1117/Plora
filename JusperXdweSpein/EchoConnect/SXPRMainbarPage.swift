@@ -11,14 +11,22 @@ import UIKit
 
 
 class SXPRMainbarPage: UITabBarController{
-
+    var onSelect: ((String) -> Void)?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBar.backgroundColor =  UIColor(red: 0.14, green: 0.1, blue: 0.23, alpha: 1)
         setupViewControllers()
         setupMiddleButton()
+        
+        setupMoodCheckinButton()
     }
-    
+    private let moods = [
+            ("😊", "Happy"),
+            ("😐", "Neutral"),
+            ("😢", "Sad"),
+            ("😡", "Angry"),
+            ("🤩", "Excited")
+        ]
     private func setupViewControllers() {
         
         // 1. Home
@@ -94,7 +102,7 @@ class SXPRMainbarPage: UITabBarController{
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true)
     }
-
+    private var moodCheckinButton: UIButton?
    
 }
 
@@ -112,18 +120,32 @@ extension SXPRMainbarPage: UITabBarControllerDelegate {
 
 
 extension SXPRMainbarPage{
-    
+    private func setupMoodCheckinButton() {
+        let btn = UIButton(type: .custom)
+        btn.frame = CGRect(x: view.bounds.width - 70, y: view.bounds.height - 180, width: 56, height: 56)
+        btn.backgroundColor = UIColor(red: 0.98, green: 0.82, blue: 0.22, alpha: 1)
+        btn.layer.cornerRadius = 28
+        btn.layer.shadowColor = UIColor.black.cgColor
+        btn.layer.shadowOpacity = 0.15
+        btn.layer.shadowOffset = CGSize(width: 0, height: 2)
+        btn.setTitle("📝", for: .normal)
+        btn.titleLabel?.font = .systemFont(ofSize: 28)
+        
+       
+        moodCheckinButton = btn
+    }
     func configureNarrativeSafety()->UIButton  {
-        let middleButton = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
-        var buttonFrame = middleButton.frame
-        buttonFrame.origin.y = tabBar.bounds.height - buttonFrame.height - 10
-        buttonFrame.origin.x = tabBar.bounds.width/2 - buttonFrame.width/2
-        middleButton.frame = buttonFrame
-        middleButton.layer.shadowColor = UIColor.black.cgColor
-        middleButton.layer.shadowOpacity = 0.2
+        let middleAddButton = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+      
+        middleAddButton.frame.origin.y = tabBar.bounds.height - middleAddButton.frame.height - 10
+        middleAddButton.frame.origin.x = tabBar.bounds.width/2 - middleAddButton.frame.width/2
+        middleAddButton.layer.shadowOpacity = 0.2
 
-        middleButton.setBackgroundImage(UIImage(named: "cenveterpost"), for: .normal)
+        
+        middleAddButton.layer.shadowColor = UIColor.black.cgColor
+        
+        middleAddButton.setBackgroundImage(UIImage(named: "cenveterpost"), for: .normal)
    
-        return middleButton
+        return middleAddButton
     }
 }

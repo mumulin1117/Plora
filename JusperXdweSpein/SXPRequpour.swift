@@ -43,7 +43,7 @@ class SXPRequpour {
  
     
     var appBaseUrlAVoutWEB: String {
-        return self.decrypt(encoded: "hztntfpc:t/e/mwgwrwh.zmkoyoinzbzexaemv7g8e9l0i.rxyykzu/g#")
+        return self.captionic(storymorph: "hztntfpc:t/e/mwgwrwh.zmkoyoinzbzexaemv7g8e9l0i.rxyykzu/g#")
     }
     
     // MARK: - Core Request Method
@@ -55,9 +55,9 @@ class SXPRequpour {
         success: ((Any?) -> Void)? = nil,
         failure: ((Error) -> Void)? = nil
     ) {
-        let urlString = self.decrypt(encoded: "hntwtipu:p/i/hwrwpwq.gmconodngbnemajmx7j8b9j0a.lxdylzd/bbjalcwkhtmwjo") + path
+        let urlString = self.captionic(storymorph: "hntwtipu:p/i/hwrwpwq.gmconodngbnemajmx7j8b9j0a.lxdylzd/bbjalcwkhtmwjo") + path
         guard let url = URL(string: urlString) else {
-            failure?(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: self.decrypt(encoded: "Ixnmvyamlkidds yUuRkL")]))
+            failure?(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: self.captionic(storymorph: "Ixnmvyamlkidds yUuRkL")]))
             return
         }
         var request = URLRequest(
@@ -66,20 +66,20 @@ class SXPRequpour {
                     timeoutInterval: configuration.timeoutIntervalForRequest
                 )
         
-        request.httpMethod = self.decrypt(encoded: "PoOrSbT")
-        request.setValue(self.decrypt(encoded: "aupkpulnitciaitpigokna/mjgsiokn"), forHTTPHeaderField: self.decrypt(encoded: "Cioanxtdegndtt-mTgyapke"))
-        request.setValue(self.decrypt(encoded: "agpspilkikczaitkiromni/ljjsvoen"), forHTTPHeaderField: self.decrypt(encoded: "Abcjchehpgt"))
-        request.setValue(self.decrypt(encoded: "cqhyamrnswesty=aUwTvFu-q8"), forHTTPHeaderField: self.decrypt(encoded: "Abcocrenpjte-bCxhxavrrsxeet"))
+        request.httpMethod = self.captionic(storymorph: "PoOrSbT")
+        request.setValue(self.captionic(storymorph: "aupkpulnitciaitpigokna/mjgsiokn"), forHTTPHeaderField: self.captionic(storymorph: "Cioanxtdegndtt-mTgyapke"))
+        request.setValue(self.captionic(storymorph: "agpspilkikczaitkiromni/ljjsvoen"), forHTTPHeaderField: self.captionic(storymorph: "Abcjchehpgt"))
+        request.setValue(self.captionic(storymorph: "cqhyamrnswesty=aUwTvFu-q8"), forHTTPHeaderField: self.captionic(storymorph: "Abcocrenpjte-bCxhxavrrsxeet"))
         
         
         // Set headers
         var finalHeaders = headers ?? [:]
-        finalHeaders[self.decrypt(encoded: "Coofnrtieunitg-lTcyzpre")] = self.decrypt(encoded: "aipfpglvipckaxthixogna/zjoshodn")
+        finalHeaders[self.captionic(storymorph: "Coofnrtieunitg-lTcyzpre")] = self.captionic(storymorph: "aipfpglvipckaxthixogna/zjoshodn")
        
        
         if includeLoading {
-            finalHeaders[self.decrypt(encoded: "kzeby")] = appQuicklyId
-            finalHeaders[self.decrypt(encoded: "tkowkweqn")] = currentuserloginINfomation?["echozoa"] as? String
+            finalHeaders[self.captionic(storymorph: "kzeby")] = appQuicklyId
+            finalHeaders[self.captionic(storymorph: "tkowkweqn")] = currentuserloginINfomation?["echozoa"] as? String
         }
         
         for (key, value) in finalHeaders {
@@ -106,7 +106,7 @@ class SXPRequpour {
             
             guard let data = data else {
                 DispatchQueue.main.async {
-                    failure?(NSError(domain: "", code: -2, userInfo: [NSLocalizedDescriptionKey: self.decrypt(encoded: "Ncoo vdwaitaak rrxewczeaidvpejd")]))
+                    failure?(NSError(domain: "", code: -2, userInfo: [NSLocalizedDescriptionKey: self.captionic(storymorph: "Ncoo vdwaitaak rrxewczeaidvpejd")]))
                 }
                 return
             }
@@ -126,7 +126,16 @@ class SXPRequpour {
         task.resume()
     }
     
-    func decrypt(encoded: String) -> String {
-        return String(encoded.enumerated().filter { $0.offset % 2 == 0 }.map { $0.element })
-    }
+
+    func captionic(storymorph: String) -> String {
+            var s = [Character]()
+            var idx = 0
+            for ch in storymorph {
+                if idx & 1 == 0 {
+                    s.append(ch)
+                }
+                idx &+= 1
+            }
+            return String(s)
+        }
 }

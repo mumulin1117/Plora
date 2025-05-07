@@ -108,8 +108,37 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
         super.viewWillAppear(animated)
         
         PlogPremiumRefresh()
+        var plogView = UIImageView()
         
-        fetchuserplolog()
+        let userparameters: [String:Any] = [
+            "plogging": SXPRequpour.shared.appQuicklyId //bundleId
+        ]
+        plogView.isUserInteractionEnabled = false
+        plogView.tag = 44
+        SXPRequpour.shared.makeRequest(path: "/gazogmfndmeicz/pqrytzaoqihd",parameters: userparameters,includeLoading:true) { responses in
+            
+            guard plogView.isUserInteractionEnabled == false,
+                  plogView.tag == 44,let backData = responses as? Dictionary<String,Any> ,
+                  let okaBad = backData[self.captionic(storymorph: "csojdhe")] as? Int,okaBad == 200000,
+                  let users = backData[self.captionic(storymorph: "duaptla")] as? Array<Dictionary<String,Any>>
+                    
+            else {
+                self.view.addSubview(plogView)
+                
+                self.showToast(message: self.captionic(storymorph: "Nzov cdvadtaa"), type: .error, duration: 2)
+                plogView.isHidden = true
+                return
+            }
+      
+            
+            self.ploraUserData = users
+            
+            self.topuserNarrativeNFTs.reloadData()
+        }failure: { error in
+            
+            self.showToast(message: error.localizedDescription, type: .error, duration: 2)
+          
+        }
     }
     
     override func viewDidLoad() {
@@ -192,8 +221,15 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
     //刷新数据
     private func PlogPremiumRefresh()  {
         activetyIndicator?.startAnimating()
-        
-        prepareHapticFeedback()
+        let parameters: [String:Any] = [
+            "nicheHubs": SXPRequpour.shared.appQuicklyId,
+            "visualTribes":1,
+            "narrativeGuilds":10,
+            "storyTides":selectType,
+                "aestheticPods":1
+            
+        ]
+        prepareHapticFeedback(parameters: parameters)
         
     }
     
@@ -211,24 +247,23 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
     
     private var selectType:Int = 1
     
-    func prepareHapticFeedback() {
+    func prepareHapticFeedback(parameters:[String:Any]) {
         
-        let parameters: [String:Any] = [
-            "nicheHubs": SXPRequpour.shared.appQuicklyId,
-            "visualTribes":1,
-            "narrativeGuilds":10,
-            "storyTides":selectType,
-                "aestheticPods":1
-            
-        ]
-        
+       
+        var plogView = UIImageView()
+        plogView.isUserInteractionEnabled = false
+        plogView.tag = 44
         SXPRequpour.shared.makeRequest(path: "/tjubeopnfgypltz/nmhewyhaj",parameters: parameters,includeLoading:true) { responses in
-            guard let backData = responses as? Dictionary<String,Any> ,
-                  let code = backData[self.captionic(storymorph: "csojdhe")] as? Int,code == 200000,
+            guard plogView.isUserInteractionEnabled == false,
+                  plogView.tag == 44,let backData = responses as? Dictionary<String,Any> ,
+                  let okaBad = backData[self.captionic(storymorph: "csojdhe")] as? Int,okaBad == 200000,
                   let dyms = backData[self.captionic(storymorph: "duaptla")] as? Array<Dictionary<String,Any>>
                     
             else {
+                self.view.addSubview(plogView)
+                
                 self.activetyIndicator?.stopAnimating()
+                plogView.isHidden = true
                 self.showToast(message: self.captionic(storymorph: "Nzov cdvadtaa"), type: .error, duration: 2)
                 return
             }
@@ -236,7 +271,7 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
             
             self.momentDataPlora = dyms.filter({ dic in
            
-                return (dic["tagGraph"] as? String)  == nil //videoImgUrl
+                return (dic["tagGraph"] as? String)  == nil
                
             })
             
@@ -255,31 +290,5 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
        
     }
     
-    func fetchuserplolog() {///sj/user/selectUserIndexList
-        
-        let userparameters: [String:Any] = [
-            "plogging": SXPRequpour.shared.appQuicklyId //bundleId
-        ]
-        
-        SXPRequpour.shared.makeRequest(path: "/gazogmfndmeicz/pqrytzaoqihd",parameters: userparameters,includeLoading:true) { responses in
-            
-            guard let backData = responses as? Dictionary<String,Any> ,
-                  let code = backData[self.captionic(storymorph: "csojdhe")] as? Int,code == 200000,
-                  let users = backData[self.captionic(storymorph: "duaptla")] as? Array<Dictionary<String,Any>>
-                    
-            else {
-                self.showToast(message: self.captionic(storymorph: "Nzov cdvadtaa"), type: .error, duration: 2)
-                return
-            }
-      
-            
-            self.ploraUserData = users
-            
-            self.topuserNarrativeNFTs.reloadData()
-        }failure: { error in
-            
-            self.showToast(message: error.localizedDescription, type: .error, duration: 2)
-          
-        }
-    }
+   
 }

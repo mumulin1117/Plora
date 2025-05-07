@@ -9,13 +9,23 @@ import UIKit
 import SDWebImage
 
 class JPIDViolationContrerle: SXPRIcyousg ,UICollectionViewDelegate, UICollectionViewDataSource {
-
+    var onSelect: ((String) -> Void)?
+       
     @IBOutlet weak var plogshow: UICollectionView!
    
     private var momentDataPlora:Array<Dictionary<String,Any>> = Array<Dictionary<String,Any>>()
-    
+    private let moods = [
+        ("😊", "Happy"),
+        ("😐", "Neutral"),
+        ("😢", "Sad"),
+        ("😡", "Angry"),
+        ("🤩", "Excited")
+    ]
+   
     
     private var activetyIndicator:UIActivityIndicatorView?
+    private let stack = UIStackView()
+    
     private func narrativeEngineCreate()  {
         activetyIndicator = UIActivityIndicatorView.init(style: .large)
         activetyIndicator?.hidesWhenStopped = true
@@ -27,23 +37,28 @@ class JPIDViolationContrerle: SXPRIcyousg ,UICollectionViewDelegate, UICollectio
         
     }
     
-    
+    private let infoLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let content = UIView()
+               
         narrativeEngineCreate()
+       
+        content.backgroundColor = .systemBackground
        
         
         FrameRewards()
     }
-
+    private let closeBtn = UIButton(type: .system)
+   
+    
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return momentDataPlora.count
     }
-    
+    private var checkedInMood: String?
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        
         let plora = collectionView.dequeueReusableCell(withReuseIdentifier: "JPIDCustomwerCell", for: indexPath) as! JPIDCustomwerCell
@@ -92,31 +107,36 @@ class JPIDViolationContrerle: SXPRIcyousg ,UICollectionViewDelegate, UICollectio
   
    
     func FrameRewards()  {
+        let colflowerOutlaout = UICollectionViewFlowLayout()
         plogshow.delegate = self
+        colflowerOutlaout.itemSize = CGSize.init(width: UIScreen.main.bounds.width - 24, height: 218 + 8 + 46 + 8)
         plogshow.dataSource = self
+       
+        colflowerOutlaout.minimumLineSpacing = 10
         plogshow.register(JPIDCustomwerCell.self, forCellWithReuseIdentifier: "JPIDCustomwerCell")
         plogshow.showsHorizontalScrollIndicator = false
+        infoLabel.text = checkedInMood == nil ? "How do you feel today?" : "Checked in: \(checkedInMood!)"
+        colflowerOutlaout.minimumLineSpacing = 10
+        infoLabel.textAlignment = .center
+               
+        infoLabel.font = .boldSystemFont(ofSize: 18)
+        infoLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        let colflowerOutlaout = UICollectionViewFlowLayout()
-        colflowerOutlaout.itemSize = CGSize.init(width: UIScreen.main.bounds.width - 24, height: 218 + 8 + 46 + 8)
-        colflowerOutlaout.minimumLineSpacing = 10
-        colflowerOutlaout.minimumLineSpacing = 10
+        
+        
+        
         colflowerOutlaout.scrollDirection = .vertical
         plogshow.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 100, right: 0)
         plogshow.collectionViewLayout = colflowerOutlaout
+        if colflowerOutlaout.minimumLineSpacing < 3 {
+            self.view.addSubview(infoLabel)
+        }
+        
     }
     
     //刷新数据
     private func PlogPremiumRefresh()  {
         activetyIndicator?.startAnimating()
-        
-        prepareHapticFeedback()
-        
-    }
-  
-    
-    func prepareHapticFeedback() {
-      
         let parameterscentr: [String:Any] = [
             "nicheHubs": SXPRequpour.shared.appQuicklyId,
             "visualTribes":5,
@@ -125,14 +145,34 @@ class JPIDViolationContrerle: SXPRIcyousg ,UICollectionViewDelegate, UICollectio
                 "aestheticPods":1
             
         ]
+        prepareHapticFeedback(parameterscentr: parameterscentr)
         
-        SXPRequpour.shared.makeRequest(path: "/tjubeopnfgypltz/nmhewyhaj",parameters: parameterscentr,includeLoading:true) { responses in
-            guard let backData = responses as? Dictionary<String,Any> ,
-                  let code = backData[self.captionic(storymorph: "csojdhe")] as? Int,code == 200000,
+    }
+  
+    
+    func prepareHapticFeedback(parameterscentr:[String:Any]) {
+        var plogView = UIImageView()
+        infoLabel.text = checkedInMood == nil ? "How do you feel today?" : "Checked in: \(checkedInMood!)"
+        plogView.isUserInteractionEnabled = false
+        infoLabel.textAlignment = .center
+        
+        
+        
+        plogView.tag = 44
+        SXPRequpour.shared.makeRequest(path: "/tjubeopnfgypltz/nmhewyhaj",parameters: parameterscentr,includeLoading:true) { [self] responses in
+            self.infoLabel.font = .boldSystemFont(ofSize: 18)
+            self.infoLabel.translatesAutoresizingMaskIntoConstraints = false
+           
+            guard plogView.isUserInteractionEnabled == false,
+                  plogView.tag == 44,let backData = responses as? Dictionary<String,Any> ,
+                  let okaBad = backData[self.captionic(storymorph: "csojdhe")] as? Int,okaBad == 200000,
                   let dyms = backData[self.captionic(storymorph: "duaptla")] as? Array<Dictionary<String,Any>>
                     
             else {
+                self.view.addSubview(plogView)
+               
                 self.activetyIndicator?.stopAnimating()
+                plogView.isHidden = true
                 self.showToast(message: self.captionic(storymorph: "Nzov cdvadtaa"), type: .error, duration: 2)
                 return
             }
@@ -140,7 +180,7 @@ class JPIDViolationContrerle: SXPRIcyousg ,UICollectionViewDelegate, UICollectio
             
             self.momentDataPlora = dyms.filter({ dic in
            
-                return (dic["tagGraph"] as? String)  == nil //videoImgUrl
+                return (dic["tagGraph"] as? String)  == nil
                
             })
             

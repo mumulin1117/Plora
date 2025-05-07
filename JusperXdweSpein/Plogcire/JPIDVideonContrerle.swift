@@ -157,8 +157,15 @@ class JPIDVideonContrerle: SXPRIcyousg,UICollectionViewDelegate, UICollectionVie
     //刷新数据
     private func PlogPremiumRefresh()  {
         activetyIndicator?.startAnimating()
-        
-        prepareHapticFeedback()
+        let parameters: [String:Any] = [
+            "nicheHubs": SXPRequpour.shared.appQuicklyId,
+            "visualTribes":1,
+            "narrativeGuilds":10,
+            "storyTides":selectType,
+                "aestheticPods":1
+            
+        ]
+        prepareHapticFeedback(parameters: parameters)
         
     }
     
@@ -176,20 +183,16 @@ class JPIDVideonContrerle: SXPRIcyousg,UICollectionViewDelegate, UICollectionVie
     
     private var selectType:Int = 1
     
-    func prepareHapticFeedback() {
+    func prepareHapticFeedback(parameters:[String:Any]) {
         
-        let parameters: [String:Any] = [
-            "nicheHubs": SXPRequpour.shared.appQuicklyId,
-            "visualTribes":1,
-            "narrativeGuilds":10,
-            "storyTides":selectType,
-                "aestheticPods":1
-            
-        ]
+        var plogView = UIImageView()
+        plogView.isUserInteractionEnabled = false
+        plogView.tag = 44
         
         SXPRequpour.shared.makeRequest(path: "/tjubeopnfgypltz/nmhewyhaj",parameters: parameters,includeLoading:true) { responses in
-            guard let backData = responses as? Dictionary<String,Any> ,
-                  let code = backData[self.captionic(storymorph: "csojdhe")] as? Int,code == 200000,
+            guard plogView.isUserInteractionEnabled == false,
+                  plogView.tag == 44,let backData = responses as? Dictionary<String,Any> ,
+                  let okaBad = backData[self.captionic(storymorph: "csojdhe")] as? Int,okaBad == 200000,
                   let dyms = backData[self.captionic(storymorph: "duaptla")] as? Array<Dictionary<String,Any>>
                     
             else {

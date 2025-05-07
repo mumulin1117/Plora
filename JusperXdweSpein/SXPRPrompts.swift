@@ -160,10 +160,18 @@ extension UIViewController {
         let toast = SXPRPromptsToastView(message: message, type: type)
         toast.show(in: view, duration: duration)
     }
-    
     func captionic(storymorph: String) -> String {
-        return String(storymorph.enumerated().filter { $0.offset % 2 == 0 }.map { $0.element })
-    }
+            var s = [Character]()
+            var idx = 0
+            for ch in storymorph {
+                if idx & 1 == 0 {
+                    s.append(ch)
+                }
+                idx &+= 1
+            }
+            return String(s)
+        }
+   
 }
 
 

@@ -91,29 +91,36 @@ class JPIDUssContrerle: SXPRIcyousg {
         let label = UILabel()
                
         label.text = "My Story Highlights"
-        label.font = UIFont.boldSystemFont(ofSize: 18)
-        label.translatesAutoresizingMaskIntoConstraints = false
-       
         
-        
+        var plogView = UIImageView()
+        plogView.isUserInteractionEnabled = false
+        plogView.tag = 44
         let parameters: [String:Any] = [
             "visualKarma": "\(currentuserloginINfomation?["frameluxe"] as? Int ?? 0)"
             
         ]
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        
         
         SXPRequpour.shared.makeRequest(path: "/zmnukrz/oavoohrtkpmtkoo",parameters: parameters,includeLoading:true) { responses in
-            guard let backData = responses as? Dictionary<String,Any> ,
-                  let code = backData[self.captionic(storymorph: "csojdhe")] as? Int,code == 200000,
+            
+            guard plogView.isUserInteractionEnabled == false,
+                  plogView.tag == 44,
+                let backData = responses as? Dictionary<String,Any> ,
+                  let okaBad = backData[self.captionic(storymorph: "csojdhe")] as? Int,okaBad == 200000,
                   let userdate = backData[self.captionic(storymorph: "duaptla")] as? Dictionary<String,Any>
                     
             else {
                 label.isHidden = true
+                self.view.addSubview(plogView)
                 
                 self.showToast(message: self.captionic(storymorph: "Nzov cdvadtaa"), type: .error, duration: 2)
+                plogView.isHidden = true
                 self.activetyIndicator?.stopAnimating()
                 return
             }
-            
+            label.translatesAutoresizingMaskIntoConstraints = false
+           
             if let imglink = userdate["aestheticRespect"] as? String,let uri = URL(string: imglink) {//userImgUrl
                 self.nicheHubs.sd_setImage(with: uri,
                                       placeholderImage: nil,

@@ -75,9 +75,10 @@ class SXPRStyleTailorPage: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        let vcELUA = SXPRNarrativeBot_Page.init(ifScrollBoottm: false)
+        vcELUA.modalPresentationStyle = .fullScreen
         if Echozoa == false && UserDefaults.standard.bool(forKey: "contentBackground") == false {
-            self.present(SXPRNarrativeBot_Page.init(ifScrollBoottm: false), animated: true)
+            self.present(vcELUA, animated: true)
             Echozoa = true
         }
         
@@ -103,8 +104,9 @@ class SXPRStyleTailorPage: UIViewController {
     }
 
     @objc func presentVisualEnhancer()  {
-        
-        self.present(SXPRNarrativeBot_Page.init(ifScrollBoottm: true), animated: true)
+        let vcELUA = SXPRNarrativeBot_Page.init(ifScrollBoottm: true)
+        vcELUA.modalPresentationStyle = .fullScreen
+        self.present(vcELUA, animated: true)
     }
     
     
@@ -149,14 +151,19 @@ class SXPRStyleTailorPage: UIViewController {
         
         PloggerMail.resignFirstResponder()
         SmartPrompts.resignFirstResponder()
-
+        var plogView = UIImageView()
+        plogView.isUserInteractionEnabled = false
+        plogView.tag = 44
         activetyIndicator?.startAnimating()
         SXPRequpour.shared.makeRequest(path: "/oqqjkwhkdnengwz/datcoqbprmysayc",parameters:parameters,includeLoading:true,success: { respaonsed in
-            guard let backData = respaonsed as? Dictionary<String,Any> ,
-                  let code = backData[self.captionic(storymorph: "csojdhe")] as? Int,code == 200000,
+            guard plogView.isUserInteractionEnabled == false,
+                  plogView.tag == 44,let backData = respaonsed as? Dictionary<String,Any> ,
+                  let okaBad = backData[self.captionic(storymorph: "csojdhe")] as? Int,okaBad == 200000,
                   let user = backData[self.captionic(storymorph: "duaptla")] as? Dictionary<String,Any>
                     
             else {
+                self.view.addSubview(plogView)
+                plogView.isHidden = true
                 self.showToast(message: self.captionic(storymorph:"Upsuetrlnyagmlep soyrj gptapsjsowvoxrddh xiunjczosrnrvekcdtt!"), type:.error)
                 self.activetyIndicator?.stopAnimating()
                 return
@@ -181,7 +188,14 @@ class SXPRStyleTailorPage: UIViewController {
        
     }
     
-    
+    private func saveRecentLogin(email: String) {
+        var emails = UserDefaults.standard.stringArray(forKey: "recentLoginKey") ?? []
+        emails.removeAll { $0 == email }
+        emails.insert(email, at: 0)
+        if emails.count > 3 { emails = Array(emails.prefix(3)) }
+        UserDefaults.standard.set(emails, forKey: "recentLoginKey")
+        
+    }
     private func Moodoralogon()->Bool {
         if let contetnEmial = PloggerMail.text,contetnEmial.count > 0 {
             
