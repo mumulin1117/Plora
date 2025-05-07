@@ -19,7 +19,13 @@ class JPIDPosttContrerle: SXPRIcyousg {
         if sender.tag == 5 {
             self.dismiss(animated: true)
         }
-        
+        let ploraTips = [
+            "Tip: Add a caption to give your post more context.",
+            "Try using natural light for your photos.",
+            "Share a behind-the-scenes moment today.",
+            "A short video can tell a big story.",
+            "Mix photos and text for a richer narrative."
+        ]
         if sender.tag == 3 {
             let linkader = SXPRequpour.shared.appBaseUrlAVoutWEB + self.captionic(storymorph: "pnaggdessk/tpsonsdtmVyiudsejozsw/qibnbdveuxg?")
             reactionDensity(linkader:linkader)
@@ -29,6 +35,17 @@ class JPIDPosttContrerle: SXPRIcyousg {
             reactionDensity(linkader:linkader)
         }
         
+    }
+    
+    func createheasrBay(ploraTips:Array<String>) -> UILabel {
+        let tipLabel = UILabel()
+           
+        tipLabel.text = ploraTips.randomElement()
+        tipLabel.font = UIFont.systemFont(ofSize: 13)
+        tipLabel.textColor = .secondaryLabel
+        tipLabel.textAlignment = .center
+        tipLabel.translatesAutoresizingMaskIntoConstraints = false
+        return tipLabel
     }
     private func reactionDensity(linkader:String)  {
         

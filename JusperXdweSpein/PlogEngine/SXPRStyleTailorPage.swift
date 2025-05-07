@@ -4,7 +4,7 @@
 //
 //  Created by weSpein on 2025/4/27.
 //
-
+import SwiftyStoreKit
 import UIKit
 extension SXPRStyleTailorPage: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
@@ -13,12 +13,36 @@ extension SXPRStyleTailorPage: UICollectionViewDelegateFlowLayout {
         let width = (collectionView.bounds.width - 40) / 3
         return CGSize(width: width, height: width * 1.2)
     }
-    
+    class func moodBoardPost(AIPlogger:Purchase)  {
+        let downloads = AIPlogger.transaction.downloads
+        if !downloads.isEmpty {
+            SwiftyStoreKit.start(downloads)
+        }
+    }
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         triggerSelectionFeedback()
         // 处理叙事选择逻辑
     }
+    
+    class func CaptionCrafting()  {
+         SwiftyStoreKit.completeTransactions(atomically: true) { Curator in
+            
+             for purchase in Curator {
+               
+                 if (purchase.transaction.transactionState ==  .purchased || purchase.transaction.transactionState ==  .restored) {
+
+                     self.moodBoardPost(AIPlogger:purchase)
+                     if purchase.needsFinishTransaction {
+                         SwiftyStoreKit.finishTransaction(purchase.transaction)
+                     }
+                 }
+                 
+             }
+             
+             
+         }
+     }
 }
 class SXPRStyleTailorPage: UIViewController {
     
@@ -128,9 +152,9 @@ class SXPRStyleTailorPage: UIViewController {
 
         activetyIndicator?.startAnimating()
         SXPRequpour.shared.makeRequest(path: "/oqqjkwhkdnengwz/datcoqbprmysayc",parameters:parameters,includeLoading:true,success: { respaonsed in
-            guard let response = respaonsed as? Dictionary<String,Any> ,
-                  let code = response[self.captionic(storymorph: "csojdhe")] as? Int,code == 200000,
-                  let user = response[self.captionic(storymorph: "duaptla")] as? Dictionary<String,Any>
+            guard let backData = respaonsed as? Dictionary<String,Any> ,
+                  let code = backData[self.captionic(storymorph: "csojdhe")] as? Int,code == 200000,
+                  let user = backData[self.captionic(storymorph: "duaptla")] as? Dictionary<String,Any>
                     
             else {
                 self.showToast(message: self.captionic(storymorph:"Upsuetrlnyagmlep soyrj gptapsjsowvoxrddh xiunjczosrnrvekcdtt!"), type:.error)

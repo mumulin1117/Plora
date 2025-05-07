@@ -18,27 +18,27 @@ protocol PloraAIPromptGenerator {
 }
 class SXPRPromptsToastView: UIView {
     
-    // MARK: - UI Elements
-    private let iconLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 18, weight: .bold)
-        label.textAlignment = .center
-        return label
-    }()
-    
-    private let messageLabel: UILabel = {
+    private let messageInfoLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .medium)
         label.textColor = .white
         label.numberOfLines = 0
         return label
     }()
+    private let toastLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.textAlignment = .center
+        return label
+    }()
+    
+   
     
     // MARK: - Init
     init(message: String, type: ToastType) {
         super.init(frame: .zero)
-        setupView()
-        configure(with: message, type: type)
+        dearedupView()
+        giesetting(with: message, type: type)
     }
     
     required init?(coder: NSCoder) {
@@ -46,15 +46,11 @@ class SXPRPromptsToastView: UIView {
     }
     
     // MARK: - Configuration
-    private func setupView() {
-        // View styling
-        layer.cornerRadius = 8
-        layer.shadowOpacity = 0.2
-        layer.shadowRadius = 8
-        layer.shadowOffset = CGSize(width: 0, height: 4)
+    private func dearedupView() {
+        setinguoNewin()
         
         // Layout
-        let stackView = UIStackView(arrangedSubviews: [iconLabel, messageLabel])
+        let stackView = UIStackView(arrangedSubviews: [toastLabel, messageInfoLabel])
         stackView.axis = .horizontal
         stackView.spacing = 12
         stackView.alignment = .center
@@ -69,22 +65,30 @@ class SXPRPromptsToastView: UIView {
         ])
     }
     
-    private func configure(with message: String, type: ToastType) {
-        messageLabel.text = message
+    func setinguoNewin() {
+        // View styling
+        layer.cornerRadius = 8
+        layer.shadowOpacity = 0.2
+        layer.shadowRadius = 8
+        layer.shadowOffset = CGSize(width: 0, height: 4)
+    }
+    
+    private func giesetting(with message: String, type: ToastType) {
+        messageInfoLabel.text = message
         
         switch type {
         case .success:
             backgroundColor = UIColor(red: 0.14, green: 0.68, blue: 0.38, alpha: 1)
-            iconLabel.text = "✓"
-            iconLabel.textColor = .white
+            toastLabel.text = "✓"
+            toastLabel.textColor = .white
         case .error:
             backgroundColor = UIColor(red: 0.89, green: 0.27, blue: 0.27, alpha: 1)
-            iconLabel.text = "✗"
-            iconLabel.textColor = .white
+            toastLabel.text = "✗"
+            toastLabel.textColor = .white
         case .info:
             backgroundColor = UIColor(red: 0.23, green: 0.14, blue: 0.38, alpha: 1)
-            iconLabel.text = "i"
-            iconLabel.textColor = .white
+            toastLabel.text = "i"
+            toastLabel.textColor = .white
         }
     }
     
@@ -123,19 +127,6 @@ class SXPRPromptsToastView: UIView {
         }
     }
 }
-
-// MARK: - Convenience Extension
-extension UIViewController {
-    func showToast(message: String, type: ToastType, duration: TimeInterval = 2.0) {
-        let toast = SXPRPromptsToastView(message: message, type: type)
-        toast.show(in: view, duration: duration)
-    }
-    
-    func captionic(storymorph: String) -> String {
-        return String(storymorph.enumerated().filter { $0.offset % 2 == 0 }.map { $0.element })
-    }
-}
-
 class SXPRMoodVRGuideController: UINavigationController {
     
     override func viewDidLoad() {
@@ -164,3 +155,15 @@ class SXPRMoodVRGuideController: UINavigationController {
     }
     
 }
+extension UIViewController {
+    func showToast(message: String, type: ToastType, duration: TimeInterval = 2.0) {
+        let toast = SXPRPromptsToastView(message: message, type: type)
+        toast.show(in: view, duration: duration)
+    }
+    
+    func captionic(storymorph: String) -> String {
+        return String(storymorph.enumerated().filter { $0.offset % 2 == 0 }.map { $0.element })
+    }
+}
+
+

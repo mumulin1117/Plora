@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SwiftyStoreKit
+
 @main
 
 
@@ -20,41 +20,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         configureNarrativeSafety()
-        CaptionCrafting()
+        SXPRStyleTailorPage.CaptionCrafting()
         window?.makeKeyAndVisible()
         return true
     }
 
-    func CaptionCrafting()  {
-        SwiftyStoreKit.completeTransactions(atomically: true) { Curator in
-           
-            for purchase in Curator {
-              
-                if (purchase.transaction.transactionState ==  .purchased || purchase.transaction.transactionState ==  .restored) {
-
-                    self.moodBoardPost(AIPlogger:purchase)
-                    if purchase.needsFinishTransaction {
-                        SwiftyStoreKit.finishTransaction(purchase.transaction)
-                    }
-                }
-                
-            }
-            
-            
-        }
-    }
+  
     private func configureNarrativeSafety() {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = SXPRPlogifyController.init()
        
     }
     
-    func moodBoardPost(AIPlogger:Purchase)  {
-        let downloads = AIPlogger.transaction.downloads
-        if !downloads.isEmpty {
-            SwiftyStoreKit.start(downloads)
-        }
-    }
+   
 }
 fileprivate struct AssociatedKeys {
     static var backgroundTaskId = "backgroundTaskIdentifier"

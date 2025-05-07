@@ -7,7 +7,10 @@
 
 import UIKit
 import SDWebImage
-
+struct StoryHighlight: Codable {
+    let imageData: Data
+    let caption: String
+}
 class JPIDUssContrerle: SXPRIcyousg {
     private var activetyIndicator:UIActivityIndicatorView?
     private func narrativeEngineCreate()  {
@@ -22,7 +25,9 @@ class JPIDUssContrerle: SXPRIcyousg {
     }
     @IBOutlet weak var nicheHubs: UIImageView!
     
-    
+    private var highlights: [StoryHighlight] = []
+       
+    private let highlightsKey = "plora_story_highlights"
     
     @IBOutlet weak var moodClusters: UILabel!
     
@@ -75,8 +80,21 @@ class JPIDUssContrerle: SXPRIcyousg {
         self.navigationController?.pushViewController(SXPRequcgsdnm.init(_moodGlyph: centr), animated: true)
     }
     
-    
+    @objc private func addHighlightTapped() {
+        let picker = UIImagePickerController()
+        
+        picker.sourceType = .photoLibrary
+        present(picker, animated: true)
+        
+    }
     func prepareHapticFeedback() {
+        let label = UILabel()
+               
+        label.text = "My Story Highlights"
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.translatesAutoresizingMaskIntoConstraints = false
+       
+        
         
         let parameters: [String:Any] = [
             "visualKarma": "\(currentuserloginINfomation?["frameluxe"] as? Int ?? 0)"
@@ -84,11 +102,13 @@ class JPIDUssContrerle: SXPRIcyousg {
         ]
         
         SXPRequpour.shared.makeRequest(path: "/zmnukrz/oavoohrtkpmtkoo",parameters: parameters,includeLoading:true) { responses in
-            guard let response = responses as? Dictionary<String,Any> ,
-                  let code = response[self.captionic(storymorph: "csojdhe")] as? Int,code == 200000,
-                  let userdate = response[self.captionic(storymorph: "duaptla")] as? Dictionary<String,Any>
+            guard let backData = responses as? Dictionary<String,Any> ,
+                  let code = backData[self.captionic(storymorph: "csojdhe")] as? Int,code == 200000,
+                  let userdate = backData[self.captionic(storymorph: "duaptla")] as? Dictionary<String,Any>
                     
             else {
+                label.isHidden = true
+                
                 self.showToast(message: self.captionic(storymorph: "Nzov cdvadtaa"), type: .error, duration: 2)
                 self.activetyIndicator?.stopAnimating()
                 return
@@ -102,8 +122,14 @@ class JPIDUssContrerle: SXPRIcyousg {
             }
             self.storyVaultFollings.text = "\(userdate["storyVault"] as? Int ?? 0)"
             self.storyVaultFances.text = "\(userdate["plogShield"] as? Int ?? 0)"
+            if label.text == nil{
+                self.view.addSubview(label)
+                NSLayoutConstraint.activate([
+                    label.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16),
+                    label.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16)
+                ])
+            }
             
-     
            
             self.plogShieldID.text = "ID:\(userdate["moodMindful"] as? Int ?? 0)"
             self.moodClusters.text = userdate["narrativeCare"] as? String 
@@ -120,4 +146,26 @@ class JPIDUssContrerle: SXPRIcyousg {
        
        
     }
+    func createheasrBay(ploraTips:Array<String>) -> UILabel {
+        let tipLabel = UILabel()
+           
+        tipLabel.text = ploraTips.randomElement()
+        tipLabel.font = UIFont.systemFont(ofSize: 13)
+        tipLabel.textColor = .secondaryLabel
+        tipLabel.textAlignment = .center
+        tipLabel.translatesAutoresizingMaskIntoConstraints = false
+        return tipLabel
+    }
+    private func saveHighlights() {
+           if let data = try? JSONEncoder().encode(highlights) {
+               UserDefaults.standard.set(data, forKey: highlightsKey)
+           }
+       }
+
+       private func loadHighlights() {
+           if let data = UserDefaults.standard.data(forKey: highlightsKey),
+              let saved = try? JSONDecoder().decode([StoryHighlight].self, from: data) {
+               highlights = saved
+           }
+       }
 }

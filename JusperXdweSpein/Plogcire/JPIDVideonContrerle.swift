@@ -188,9 +188,9 @@ class JPIDVideonContrerle: SXPRIcyousg,UICollectionViewDelegate, UICollectionVie
         ]
         
         SXPRequpour.shared.makeRequest(path: "/tjubeopnfgypltz/nmhewyhaj",parameters: parameters,includeLoading:true) { responses in
-            guard let response = responses as? Dictionary<String,Any> ,
-                  let code = response[self.captionic(storymorph: "csojdhe")] as? Int,code == 200000,
-                  let dyms = response[self.captionic(storymorph: "duaptla")] as? Array<Dictionary<String,Any>>
+            guard let backData = responses as? Dictionary<String,Any> ,
+                  let code = backData[self.captionic(storymorph: "csojdhe")] as? Int,code == 200000,
+                  let dyms = backData[self.captionic(storymorph: "duaptla")] as? Array<Dictionary<String,Any>>
                     
             else {
                 self.activetyIndicator?.stopAnimating()

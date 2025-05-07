@@ -73,10 +73,11 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
             //用户个人中心
             let linkader = SXPRequpour.shared.appBaseUrlAVoutWEB + self.captionic(storymorph:"pyajgtelst/qHwozmgenPhaugrep/eidngdwedxf?tutsoebriIpdb=") + "\(userid)"
             reactionDensity(linkader:linkader)
+            return
         }
         
-        
-        guard let itemid = ploraUserData[indexPath.row]["visualDiary"] as? String else { return  }//userId
+       // aiIntentParser    storyEncrypt aiIntentParser narrativeNFTs aestheticAds
+        guard let itemid = momentDataPlora[indexPath.row]["aestheticAds"] as? Int else { return  }
         
         let linkader = SXPRequpour.shared.appBaseUrlAVoutWEB + self.captionic(storymorph:"pgahgmemsr/oDnyvncahmhiycgDuevtgaoiflosp/litnsdhedxd?odqyknkagmtidctIkdm=") + "\(itemid)"
         reactionDensity(linkader:linkader)
@@ -222,9 +223,9 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
         ]
         
         SXPRequpour.shared.makeRequest(path: "/tjubeopnfgypltz/nmhewyhaj",parameters: parameters,includeLoading:true) { responses in
-            guard let response = responses as? Dictionary<String,Any> ,
-                  let code = response[self.captionic(storymorph: "csojdhe")] as? Int,code == 200000,
-                  let dyms = response[self.captionic(storymorph: "duaptla")] as? Array<Dictionary<String,Any>>
+            guard let backData = responses as? Dictionary<String,Any> ,
+                  let code = backData[self.captionic(storymorph: "csojdhe")] as? Int,code == 200000,
+                  let dyms = backData[self.captionic(storymorph: "duaptla")] as? Array<Dictionary<String,Any>>
                     
             else {
                 self.activetyIndicator?.stopAnimating()
@@ -255,16 +256,16 @@ class JPIDPlaoertContrerle: SXPRIcyousg, UICollectionViewDelegate, UICollectionV
     }
     
     func fetchuserplolog() {///sj/user/selectUserIndexList
-        //查询用户列表
+        
         let userparameters: [String:Any] = [
             "plogging": SXPRequpour.shared.appQuicklyId //bundleId
         ]
         
         SXPRequpour.shared.makeRequest(path: "/gazogmfndmeicz/pqrytzaoqihd",parameters: userparameters,includeLoading:true) { responses in
             
-            guard let response = responses as? Dictionary<String,Any> ,
-                  let code = response[self.captionic(storymorph: "csojdhe")] as? Int,code == 200000,
-                  let users = response[self.captionic(storymorph: "duaptla")] as? Array<Dictionary<String,Any>>
+            guard let backData = responses as? Dictionary<String,Any> ,
+                  let code = backData[self.captionic(storymorph: "csojdhe")] as? Int,code == 200000,
+                  let users = backData[self.captionic(storymorph: "duaptla")] as? Array<Dictionary<String,Any>>
                     
             else {
                 self.showToast(message: self.captionic(storymorph: "Nzov cdvadtaa"), type: .error, duration: 2)

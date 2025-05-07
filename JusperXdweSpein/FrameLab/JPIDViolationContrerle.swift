@@ -62,18 +62,7 @@ class JPIDViolationContrerle: SXPRIcyousg ,UICollectionViewDelegate, UICollectio
        
         plora.esetilletlbel.text = (momentDataPlora[indexPath.row]["visualGrants"] as? String)
         
-        //
-        //moodMarket:praiseNum
-        // captionNLP:dynamicClassify
-        // creatorCoins:dynamicTitle
-        //visualCDN:dynamicImgList
-        //narrativeNFTs:userId
-        //frameRewards:userImgUrl
-      
-        //plogAPI:attentionFlag
-        //tagGraph:videoImgUrl
-        //aestheticAds: dynamicId
-        //visualGrants: dynamicContent
+  
         return plora
         
     }
@@ -128,7 +117,7 @@ class JPIDViolationContrerle: SXPRIcyousg ,UICollectionViewDelegate, UICollectio
     
     func prepareHapticFeedback() {
       
-        let parameters: [String:Any] = [
+        let parameterscentr: [String:Any] = [
             "nicheHubs": SXPRequpour.shared.appQuicklyId,
             "visualTribes":5,
             "narrativeGuilds":10,
@@ -137,10 +126,10 @@ class JPIDViolationContrerle: SXPRIcyousg ,UICollectionViewDelegate, UICollectio
             
         ]
         
-        SXPRequpour.shared.makeRequest(path: "/tjubeopnfgypltz/nmhewyhaj",parameters: parameters,includeLoading:true) { responses in
-            guard let response = responses as? Dictionary<String,Any> ,
-                  let code = response[self.captionic(storymorph: "csojdhe")] as? Int,code == 200000,
-                  let dyms = response[self.captionic(storymorph: "duaptla")] as? Array<Dictionary<String,Any>>
+        SXPRequpour.shared.makeRequest(path: "/tjubeopnfgypltz/nmhewyhaj",parameters: parameterscentr,includeLoading:true) { responses in
+            guard let backData = responses as? Dictionary<String,Any> ,
+                  let code = backData[self.captionic(storymorph: "csojdhe")] as? Int,code == 200000,
+                  let dyms = backData[self.captionic(storymorph: "duaptla")] as? Array<Dictionary<String,Any>>
                     
             else {
                 self.activetyIndicator?.stopAnimating()
@@ -175,7 +164,7 @@ class JPIDViolationContrerle: SXPRIcyousg ,UICollectionViewDelegate, UICollectio
     @IBAction func applogerto(_ sender: UIButton) {
         
       
-        var linda = SXPRequpour.shared.appBaseUrlAVoutWEB + self.captionic(storymorph:"pdafgxeosm/mAkIkefxdpwemrbtq/cimnqdsejxy/u?")
+        let linda = SXPRequpour.shared.appBaseUrlAVoutWEB + self.captionic(storymorph:"pdafgxeosm/mAkIkefxdpwemrbtq/cimnqdsejxy/u?")
         
         reactionDensity(linkader:linda)
     }
@@ -183,13 +172,13 @@ class JPIDViolationContrerle: SXPRIcyousg ,UICollectionViewDelegate, UICollectio
     
     
     @IBAction func snapskillplog(_ sender: UIButton) {
-        var linda = SXPRequpour.shared.appBaseUrlAVoutWEB + self.captionic(storymorph:"ppajgeexsq/yAqIweaxzppeerptx/lifnfdoexxj/u?")
+        let linda = SXPRequpour.shared.appBaseUrlAVoutWEB + self.captionic(storymorph:"ppajgeexsq/yAqIweaxzppeerptx/lifnfdoexxj/u?")
         
         reactionDensity(linkader:linda)
     }
     
     @IBAction func pubilishplogillplog(_ sender: UIButton) {
-        var linda = SXPRequpour.shared.appBaseUrlAVoutWEB + self.captionic(storymorph:"pqamgdelsz/micstsnuael/livnndceoxo/l?")
+        let linda = SXPRequpour.shared.appBaseUrlAVoutWEB + self.captionic(storymorph:"pqamgdelsz/micstsnuael/livnndceoxo/l?")
         
         reactionDensity(linkader:linda)
     }
