@@ -45,6 +45,9 @@ class JPIDUssContrerle: SXPRIcyousg {
     override func viewDidLoad() {
         super.viewDidLoad()
         narrativeEngineCreate()
+        nicheHubs.layer.cornerRadius = 40
+        nicheHubs.layer.masksToBounds = true
+        
     }
 
 
@@ -65,6 +68,8 @@ class JPIDUssContrerle: SXPRIcyousg {
             sel = sel +  self.captionic(storymorph: "pxahgfeesj/yautotaepnntsimognwLhinsctb/tidnkduesxp?ptnyfpqen=y1")
         case 26:
             sel = sel +  self.captionic(storymorph: "pgahgkensw/bartatheunytfiroxnwLqigsite/bivnzdpeuxx?ltuyiphez=v2")
+        case 54:
+            sel = sel +  self.captionic(storymorph: "psaygzeosl/pEedjiittDtaitjaf/qibnidweixo?")
         default:
             break
         }

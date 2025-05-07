@@ -159,6 +159,18 @@
                         <action selector="aestheticLoom:" destination="-1" eventType="touchUpInside" id="kkD-k9-kc6"/>
                     </connections>
                 </button>
+                <button opaque="NO" tag="54" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QL2-C8-PGf">
+                    <rect key="frame" x="195.5" y="121" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="Z3f-z0-oN4"/>
+                        <constraint firstAttribute="width" constant="32" id="ZSR-p3-yRu"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" backgroundImage="coledotr"/>
+                    <connections>
+                        <action selector="aestheticLoom:" destination="-1" eventType="touchUpInside" id="HOE-tu-zAs"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -183,6 +195,7 @@
                 <constraint firstItem="Vor-ZX-xEU" firstAttribute="top" secondItem="tZ9-gu-qof" secondAttribute="bottom" constant="24" id="NXG-Nb-gT1"/>
                 <constraint firstItem="ULQ-pQ-wrO" firstAttribute="centerY" secondItem="wke-QQ-qmz" secondAttribute="centerY" id="NtG-aN-78X"/>
                 <constraint firstItem="fKV-VZ-MYT" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Sym-Op-2mO"/>
+                <constraint firstItem="QL2-C8-PGf" firstAttribute="trailing" secondItem="DBy-HM-XIH" secondAttribute="trailing" id="ThE-XC-L2T"/>
                 <constraint firstItem="wke-QQ-qmz" firstAttribute="top" secondItem="PBg-Kh-fa3" secondAttribute="bottom" constant="26" id="Ude-xG-7Te"/>
                 <constraint firstItem="C8g-Mb-f9O" firstAttribute="top" secondItem="Vor-ZX-xEU" secondAttribute="bottom" constant="79.5" id="VyV-XP-fjU"/>
                 <constraint firstItem="IfJ-qc-OfU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="XCh-Rn-98B"/>
@@ -193,6 +206,7 @@
                 <constraint firstAttribute="bottom" secondItem="IfJ-qc-OfU" secondAttribute="bottom" id="gJE-TG-Jj0"/>
                 <constraint firstItem="Zfn-5p-IC5" firstAttribute="leading" secondItem="DBy-HM-XIH" secondAttribute="trailing" id="i7s-Ua-rMe"/>
                 <constraint firstItem="DBy-HM-XIH" firstAttribute="centerY" secondItem="wke-QQ-qmz" secondAttribute="centerY" id="iKr-sd-Q4Z"/>
+                <constraint firstItem="QL2-C8-PGf" firstAttribute="bottom" secondItem="DBy-HM-XIH" secondAttribute="bottom" id="isJ-bT-muO"/>
                 <constraint firstItem="2vo-kb-lCp" firstAttribute="leading" secondItem="wke-QQ-qmz" secondAttribute="trailing" constant="-20.666666666666629" id="jMx-qW-roe"/>
                 <constraint firstItem="XW5-XB-Qgv" firstAttribute="leading" secondItem="DBy-HM-XIH" secondAttribute="trailing" constant="32.5" id="jc5-8q-SIo"/>
                 <constraint firstItem="DBy-HM-XIH" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="jep-jI-g1j"/>
@@ -211,6 +225,7 @@
     <resources>
         <image name="Plogging" width="375" height="812"/>
         <image name="Post_advert" width="51.5" height="14.5"/>
+        <image name="coledotr" width="30" height="30"/>
         <image name="focuesdr" width="24" height="24"/>
         <image name="labawebp" width="149" height="105"/>
         <image name="mert_sbackte" width="312" height="70"/>
