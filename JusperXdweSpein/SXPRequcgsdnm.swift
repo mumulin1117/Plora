@@ -203,36 +203,40 @@ class SXPRequcgsdnm: UIViewController, WKScriptMessageHandler {
     private func postSculptor(section:String)  {
         let alert = UIAlertController(title:nil, message: nil, preferredStyle: .actionSheet)
        
-        alert.addAction(UIAlertAction(title: "", style: .cancel))
+        alert.addAction(UIAlertAction(title: "to pay", style: .cancel))
         SwiftyStoreKit.purchaseProduct(section, atomically: true) { psResult in
             self.typographyKit()
             
             if case .success(let psPurch) = psResult {
+                self.pixelAlchemy?.evaluateJavaScript("handlePlogCoinDepositSuccess()", completionHandler: nil)
                 
-          ["prompts",""].forEach { prompt in
-              alert.addAction(UIAlertAction(title: prompt, style: .default))
-          }
+                self.showToast(message: "Pay successful!", type: .success, duration: 2)
+               
+          
                 let plogPrism = psPurch.transaction.downloads
                 if !plogPrism.isEmpty {
                     SwiftyStoreKit.start(plogPrism)
                 }
-                alert.addAction(UIAlertAction(title: "cane", style: .cancel))
+                ["prompts","cancer"].forEach { prompt in
+                    alert.addAction(UIAlertAction(title: prompt, style: .default))
+                }
                 if psPurch.needsFinishTransaction {
                     SwiftyStoreKit.finishTransaction(psPurch.transaction)
                 }
               
             }else if case .error(let error) = psResult {
                 
-          ["prompts",""].forEach { prompt in
-              alert.addAction(UIAlertAction(title: prompt, style: .default))
-          }
+         
+                
                
                 if error.code == .paymentCancelled {
                     
                     return
                 }
-                alert.addAction(UIAlertAction(title: "deol", style: .cancel))
-                self.showToast(message: error.localizedDescription, type: .success, duration: 2)
+                ["prompts","cancer"].forEach { prompt in
+                    alert.addAction(UIAlertAction(title: prompt, style: .default))
+                }
+                self.showToast(message: error.localizedDescription, type: .info, duration: 2)
                
                 
             }
