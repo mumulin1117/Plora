@@ -2,7 +2,7 @@
 //  VisualEnhancertroler.swift
 //  JusperXdweSpein
 //
-//  Created by mumu on 2025/6/27.
+//  Created by JusperXdweSpein on 2025/6/27.
 //
 
 import UIKit
@@ -56,28 +56,25 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
        
     }
  
-    
-  
+   
+    private func LifeSnippets()  {
+        let MicroNarrative = UIImage(named: "MomentCapture")
+        
+        let StoryWeaving = UIImageView(image:MicroNarrative )
+        StoryWeaving.center = CGPoint(x: self.view.center.x, y: self.view.center.y - 50)
+        view.addSubview(StoryWeaving)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        LifeSnippets()
         
-        let comedyNeuralNet = UIImageView.init(frame:UIScreen.main.bounds)
-        comedyNeuralNet.contentMode = .scaleAspectFill
-        comedyNeuralNet.image = UIImage(named: "joasoledy")
        
-       
-        view.addSubview(comedyNeuralNet)
         
        
         
         if jesterJournalist == true {
             let  punProcessor = UIButton.init()
-            punProcessor.setBackgroundImage(UIImage.init(named: "hipopLaobg"), for: .normal)
-           
-            punProcessor.setTitle("Quick Log", for: .normal)
-            punProcessor.setTitleColor(UIColor.white, for: .normal)
-            punProcessor.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .black)
+            punProcessor.setBackgroundImage(UIImage.init(named: "sionauwer"), for: .normal)
            
             punProcessor.isUserInteractionEnabled = false
             view.addSubview(punProcessor)
@@ -126,8 +123,7 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
         }
         self.view.addSubview(snickerSculptor!)
         narrativeEngineCreate()
-        
-        self.showingAlertingForSuccessfull(alsemessage: jesterJournalist == true ? "log in....." : "")
+        self.activetyIndicator?.startAnimating()
        
     }
     
@@ -169,9 +165,10 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
         snickerSculptor?.isHidden = false
         
         
-        SwiftMessages.hide(animated: true)
+        self.activetyIndicator?.stopAnimating()
         if jesterJournalist == true {
-            self.showingAlertingForSuccessfull(alsemessage: "Login successful")
+            
+            self.showToast(message: "Login successful", type: .success, duration: 2)
            
             jesterJournalist = false
             
@@ -197,11 +194,10 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
          
 
             view.isUserInteractionEnabled = false
-            self.laodingFlay(loadingText: "Paying...")
-
+            self.activetyIndicator?.startAnimating()
             
             SwiftyStoreKit.purchaseProduct(whimsyWatchmaker, atomically: true) { psResult in
-                SwiftMessages.hide(animated: true)
+                self.activetyIndicator?.stopAnimating()
                 self.view.isUserInteractionEnabled = true
                 if case .success(let psPurch) = psResult {
                     let psdownloads = psPurch.transaction.downloads
@@ -220,8 +216,8 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
                           let gettransID = psPurch.transaction.transactionIdentifier,
                           gettransID.count > 5
                     else {
+                        self.showToast(message: "No have receipt or ID is error", type: .info, duration: 2)
                         
-                        self.showingAlertingFor_Alert(alsemessage: "No have receipt or ID is error")
                         return
                       }
                     
@@ -237,11 +233,13 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
                         
                         switch result{
                         case .success(_):
-                            self.showingAlertingForSuccessfull(alsemessage: "The purchase was successful!")
+                          
+                            self.showToast(message: "The purchase was successful!", type: .success, duration: 2)
                             
                         case .failure(let error):
-                        
-                            self.showingAlertingFor_Alert(alsemessage: error.localizedDescription)
+                            self.showToast(message: error.localizedDescription, type: .error, duration: 2)
+                           
+                            
                         }
                     }
                     
@@ -259,7 +257,8 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
                     if error.code != .paymentCancelled {
                         
                        
-                        self.showingAlertingFor_Alert(alsemessage: error.localizedDescription)
+                        self.showToast(message: error.localizedDescription, type: .error, duration: 2)
+                       
                         return
                     }
                     
@@ -288,9 +287,9 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
         
         if message.name == "pageLoaded" {
             snickerSculptor?.isHidden = false
+            self.activetyIndicator?.stopAnimating()
             
             
-            SwiftMessages.hide(animated: true)
         }
     }
     

@@ -224,7 +224,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Plora;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Plora requires access to your camera for uploading dynamic images and avatars";
 				INFOPLIST_KEY_NSLocationUsageDescription = "When taking and uploading geographical location images, Plora requires your geographical location permission,";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Plora requests access to your location to geotag your visual narratives, showcase location-based stories, and discover nearby creative inspiration. Your location data will only be used for content tagging and personalized recommendations.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Plora is sending voice messages to friends and requires access to your microphone";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Upload album images as user avatars, Plora needs access to your album permissions";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -267,7 +267,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Plora;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Plora requires access to your camera for uploading dynamic images and avatars";
 				INFOPLIST_KEY_NSLocationUsageDescription = "When taking and uploading geographical location images, Plora requires your geographical location permission,";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Plora requests access to your location to geotag your visual narratives, showcase location-based stories, and discover nearby creative inspiration. Your location data will only be used for content tagging and personalized recommendations.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Plora is sending voice messages to friends and requires access to your microphone";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Upload album images as user avatars, Plora needs access to your album permissions";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

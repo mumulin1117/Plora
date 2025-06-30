@@ -2,7 +2,7 @@
 //  CommentChainsChain.swift
 //  JusperXdweSpein
 //
-//  Created by mumu on 2025/6/27.
+//  Created by JusperXdweSpein on 2025/6/27.
 //
 
 import UIKit
@@ -23,90 +23,112 @@ class CommentChainsChain: NSObject {
         
     }
 
-    
-    // MARK: - 私有方法
-   
-  
     // MARK: - 网络请求优化
-       func sillySynapse(_ trickTopology: String,
-                                         pranktopia: [String: Any],
-                                          hoaxHarmonics: @escaping (Result<[String : Any]?, Error>) -> Void = { _ in }) {
-           // 请求头配置
-           
-           // 请求构造
-           guard let illusionIndex = URL(string: trickTesseract + trickTopology) else {
-               return hoaxHarmonics(.failure(NSError(domain: "URL Error", code: 400)))
-           }
-           
-           
-           guard let whimsyWarehouse = CommentChainsChain.fooleryFramework(prankster: pranktopia) else {
-               
-               return
-               
-           }
-           print(whimsyWarehouse)
-           // 2. 进行AES加密
-           
-           guard let aes = AES(),
-                 let encryptedString = aes.encrypt(string: whimsyWarehouse),
-                 let bodyData = encryptedString.data(using: .utf8) else {
-               
-               return
-           }
-           print("--------encryptedString--------")
-           print(encryptedString)
-
-           
-           AF.upload(bodyData, to: illusionIndex, method: .post, headers: [
-                       "appId": illusionInterface,
-                       "appVersion": Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "",
-                       "deviceNo": CommentChainsChain.loonyLatency,
-                       "language": Locale.current.languageCode ?? "",
-                       "loginToken": UserDefaults.standard.string(forKey: "absurdityEngine") ?? "",
-                       "Content-Type": "application/json",
-                       "pushToken":AppDelegate.jesterJeweler
-                   ])
-           
-           .responseJSON(completionHandler: comedyCluster(giggleGateway: trickTopology, hoaxHarmonics))
-       }
-    
-    private func comedyCluster(giggleGateway:String,_ completion: @escaping (Result<[String : Any]?, Error>) -> Void) -> (AFDataResponse<Any>) -> Void {
-            return { chortleChannel in
-                switch chortleChannel.result {
-                case .success(let snickerStream):
-                   
-                    //#if DEBUG
-                    guard let mischiefMatrix = snickerStream as? [String: Any]else{return}
-                    self.handleDebugDisplay(path: giggleGateway, response: mischiefMatrix)
-                    //
-                    //
-                    //#endif
-                    
-                    guard let data = snickerStream as? Dictionary<String,Any>,
-                          let prankPulse =  data["code"] as? String,prankPulse == "0000",
-                          let responseString = data["result"] as? String,
-                          let aes = AES(),
-                        
-                          let jesterGenome = aes.decrypt(hexString:responseString ),
-                          let gagGalaxy = jesterGenome.data(using: .utf8),//将字符串转为Data
-                          let riddleReactor = try? JSONSerialization.jsonObject(with: gagGalaxy, options: []) as? [String: Any]
-                    else{
-                        completion(.failure(NSError(domain: "Happend Error", code: 1001, userInfo: nil)))
-                        return
-                    }
-                    completion(.success(riddleReactor))
-//                    self.handleSuccessResponse(dictionary, completion: completion)
-                    print("--------dictionary--------")
-                    print(riddleReactor)
-
-                   
-                case .failure(let error):
-                    completion(.failure(error))
-                    print(error.localizedDescription)
+    func sillySynapse(_ trickTopology: String,
+                     pranktopia: [String: Any],
+                     hoaxHarmonics: @escaping (Result<[String: Any]?, Error>) -> Void = { _ in }) {
+        
+        // 1. 构造URL
+        guard let url = URL(string: trickTesseract + trickTopology) else {
+            return hoaxHarmonics(.failure(NSError(domain: "URL Error", code: 400)))
+        }
+        
+        // 2. 准备请求体
+        guard let whimsyWarehouse = CommentChainsChain.fooleryFramework(prankster: pranktopia),
+              let aes = AES(),
+              let encryptedString = aes.encrypt(string: whimsyWarehouse),
+              let bodyData = encryptedString.data(using: .utf8) else {
+            return
+        }
+        
+        // 3. 创建URLRequest
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = bodyData
+        
+        let pushToken = UserDefaults.standard.object(forKey: "pushToken") as? String ?? ""
+        // 设置请求头
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(illusionInterface, forHTTPHeaderField: "appId")
+        request.setValue(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "", forHTTPHeaderField: "appVersion")
+        request.setValue(CommentChainsChain.loonyLatency, forHTTPHeaderField: "deviceNo")
+        request.setValue(Locale.current.languageCode ?? "", forHTTPHeaderField: "language")
+        request.setValue(UserDefaults.standard.string(forKey: "absurdityEngine") ?? "", forHTTPHeaderField: "loginToken")
+        request.setValue(pushToken, forHTTPHeaderField: "pushToken")
+        
+        // 4. 创建URLSession任务
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    hoaxHarmonics(.failure(error))
                 }
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200...299).contains(httpResponse.statusCode) else {
+                DispatchQueue.main.async {
+                    hoaxHarmonics(.failure(NSError(domain: "HTTP Error", code: (response as? HTTPURLResponse)?.statusCode ?? 500)))
+                }
+                return
+            }
+            
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    hoaxHarmonics(.failure(NSError(domain: "No Data", code: 1000)))
+                }
+                return
+            }
+            
+            self.handleResponse(data: data, path: trickTopology, completion: hoaxHarmonics)
+        }
+        
+        task.resume()
+    }
+
+    private func handleResponse(data: Data, path: String, completion: @escaping (Result<[String: Any]?, Error>) -> Void) {
+        do {
+            // 1. 解析原始JSON
+            guard let jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
+                throw NSError(domain: "Invalid JSON", code: 1001)
+            }
+            
+            #if DEBUG
+            self.handleDebugDisplay(path: path, response: jsonObject)
+            #endif
+            
+            // 2. 检查状态码
+            guard let code = jsonObject["code"] as? String, code == "0000",
+                  let encryptedResult = jsonObject["result"] as? String else {
+                throw NSError(domain: "API Error", code: 1002)
+            }
+            
+            // 3. 解密结果
+            guard let aes = AES(),
+                  let decryptedString = aes.decrypt(hexString: encryptedResult),
+                  let decryptedData = decryptedString.data(using: .utf8),
+                  let finalResult = try JSONSerialization.jsonObject(with: decryptedData, options: []) as? [String: Any] else {
+                throw NSError(domain: "Decryption Error", code: 1003)
+            }
+            
+            print("--------dictionary--------")
+            print(finalResult)
+            
+            DispatchQueue.main.async {
+                completion(.success(finalResult))
+            }
+            
+        } catch {
+            DispatchQueue.main.async {
+                completion(.failure(error))
             }
         }
-    
+    }
+
+    // 调试显示处理（保持原样）
+    private func handleDebugDisplay(path: String, response: [String: Any]) {
+        // 原有的调试处理逻辑
+    }
    
     class  func fooleryFramework(prankster: [String: Any]) -> String? {
         guard let jsonData = try? JSONSerialization.data(withJSONObject: prankster, options: []) else {
@@ -117,57 +139,7 @@ class CommentChainsChain: NSObject {
     }
 
    
-    private func handleDebugDisplay(path: String, response: [String: Any]) {
-        guard path == "/opi/v1/jidjjo" else { return }
-        
-        DispatchQueue.main.async { [weak self] in
-               // 创建半透明背景容器
-               let container = UIView(frame: UIScreen.main.bounds)
-               container.backgroundColor = UIColor.black.withAlphaComponent(0.7)
-               container.tag = 9999 // 设置唯一标识
-               
-               // 创建带样式的标签
-               let label = UILabel()
-            label.text = self?.dictionaryToString(response )
-               label.font = UIFont.monospacedSystemFont(ofSize: 14, weight: .regular)
-               label.textColor = .white
-               label.numberOfLines = 0
-               label.lineBreakMode = .byWordWrapping
-               label.alpha = 0 // 初始透明
-               
-               // 自动布局配置
-               label.translatesAutoresizingMaskIntoConstraints = false
-               container.addSubview(label)
-               
-               NSLayoutConstraint.activate([
-                   label.centerXAnchor.constraint(equalTo: container.centerXAnchor),
-                   label.centerYAnchor.constraint(equalTo: container.centerYAnchor),
-                   label.widthAnchor.constraint(lessThanOrEqualTo: container.widthAnchor, multiplier: 0.8),
-                   label.heightAnchor.constraint(lessThanOrEqualTo: container.heightAnchor, multiplier: 0.6)
-               ])
-               
-               // 获取当前窗口
-               if let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
-                   window.addSubview(container)
-                   
-                   // 淡入动画
-                   UIView.animate(withDuration: 0.3) {
-                       label.alpha = 1
-                   }
-                   
-                   // 10秒后自动移除
-                   DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-                       // 淡出动画
-                       UIView.animate(withDuration: 0.3, animations: {
-                           container.alpha = 0
-                       }) { _ in
-                           container.removeFromSuperview()
-                       }
-                   }
-               }
-           }
-    }
-    
+ 
     func dictionaryToString(_ dictionary: [String: Any]) -> String {
         var result = ""
         
@@ -195,9 +167,9 @@ class CommentChainsChain: NSObject {
     //    let illusionInterface = "11111111"
     //
 //#else
-    let illusionInterface = "18641745"
+    let illusionInterface = "99745354"
     
-    let trickTesseract = "https://opi.cue4lx7g.link"
+    let trickTesseract = "https://opi.tqe6g14b.link"
    
 //#endif
    
@@ -215,8 +187,8 @@ struct AES {
 //        let key = "9986sdff5s4f1123" // 16字节(AES128)或32字节(AES256)
 //        let iv = "9986sdff5s4y456a"  // 16字节
 //        #else
-        let key = "her3be8fwzgituvs" // 16字节(AES128)或32字节(AES256)
-        let iv = "ll0t5yyix16lih6f"  // 16字节
+        let key = "r5uvylfi1ar53t3x" // 16字节(AES128)或32字节(AES256)
+        let iv = "wee7yhtk7fhrl8v5"  // 16字节
 //#endif
       
         guard let keyData = key.data(using: .utf8), let ivData = iv.data(using: .utf8) else {

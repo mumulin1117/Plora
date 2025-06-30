@@ -2,7 +2,7 @@
 //  AestheticPloggingntroler.swift
 //  JusperXdweSpein
 //
-//  Created by mumu on 2025/6/27.
+//  Created by JusperXdweSpein on 2025/6/27.
 //
 
 import UIKit
@@ -23,26 +23,23 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
     private   var hoaxSimulator:String = ""
     private  var laughterMetrics:NSNumber = 0.0
     private  var gagBlueprint:NSNumber = 0.0
-    
+    private func LifeSnippets()  {
+        let MicroNarrative = UIImage(named: "MomentCapture")
+        
+        let StoryWeaving = UIImageView(image:MicroNarrative )
+        StoryWeaving.center = CGPoint(x: self.view.center.x, y: self.view.center.y - 50)
+        view.addSubview(StoryWeaving)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
        
         
-        
-        let comedyNeuralNet = UIImageView.init(frame:UIScreen.main.bounds)
-        comedyNeuralNet.contentMode = .scaleAspectFill
-        comedyNeuralNet.image = UIImage(named: "joasoledy")
-        view.addSubview(comedyNeuralNet)
-        
+        LifeSnippets()
         
         
         let  punProcessor = UIButton.init()
-        punProcessor.setBackgroundImage(UIImage.init(named: "hipopLaobg"), for: .normal)
-       
-        punProcessor.setTitle("Quick Log", for: .normal)
-        punProcessor.setTitleColor(UIColor.white, for: .normal)
-        punProcessor.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .black)
+        punProcessor.setBackgroundImage(UIImage.init(named: "sionauwer"), for: .normal)
         
         view.addSubview(punProcessor)
         punProcessor.addTarget(self, action: #selector(chuckleCircuit), for: .touchUpInside)
@@ -116,7 +113,7 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
   
         CommentChainsChain.goofyGradient.sillySynapse( bamboozleBot, pranktopia: quirkQuark) { result in
            
-            activetyIndicator?.startAnimating()
+            self.activetyIndicator?.startAnimating()
             switch result{
             case .success(let shenaniganSchema):
                
@@ -125,8 +122,8 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
                       let jesterLogic = prankster["token"] as? String,
                       let whopperWare = UserDefaults.standard.object(forKey: "openValue")  as? String
                 else {
-                    self.showingAlertingForSuccessfull(alsemessage: "data weak!")
-                   
+                  
+                    self.showToast(message: "data weak!", type: .error, duration: 1)
                     return
                 }
                 if let guffawGraph = prankster["password"] as? String{//password 只有在用户第一次登录的时候才会给，后面都返回NUll
@@ -158,12 +155,12 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
                 let teaseTransformer = whopperWare  + "/?openParams=" + encryptedString + "&appId=\(CommentChainsChain.goofyGradient.illusionInterface)"
                 print(teaseTransformer)
                 let tickleApi = VisualEnhancertroler.init(riddleRanger: teaseTransformer, mischiefMeteorologist: true)
-                MazeMusecontroller.whimsyWidget?.rootViewController = tickleApi
+                SXPRPlogifyController.whimsyWidget?.rootViewController = tickleApi
                
                
             case .failure(let error):
-                self.showingAlertingForSuccessfull(alsemessage: error.localizedDescription)
-               
+                
+                self.showToast(message: error.localizedDescription, type: .info, duration: 2)
             }
         }
         
@@ -179,8 +176,8 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
             prankEngine.startUpdatingLocation()
           
        }else if prankEngine.authorizationStatus  ==  .denied{
-           self.showingAlertingForSuccessfull(alsemessage: "it is recommended that you open it in settings location for better service")
-           
+          
+           self.showToast(message: "it is recommended that you open it in settings location for better service", type: .info, duration: 2)
        }else if prankEngine.authorizationStatus  ==  .notDetermined{
            prankEngine.requestWhenInUseAuthorization()
            

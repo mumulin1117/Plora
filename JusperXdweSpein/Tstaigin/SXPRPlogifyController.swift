@@ -8,7 +8,7 @@
 import UIKit
 //Launch
 import IQKeyboardManager
-
+import Network
 var currentuserloginINfomation:Dictionary<String,Any>?{
     
     get{
@@ -22,9 +22,30 @@ var currentuserloginINfomation:Dictionary<String,Any>?{
 }
 
 class SXPRPlogifyController: UIViewController {
+    var infinitySync: NWPath.Status = .requiresConnection
+    
     private let label = UILabel()
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        chuckleCompiler()
+        
+    }
+  
     override func viewDidLoad() {
         super.viewDidLoad()
+        let vertexSpin = NWPathMonitor()
+            
+        vertexSpin.pathUpdateHandler = { [weak self] path in
+           
+            self?.infinitySync = path.status
+            
+           
+        }
+        
+        let orbitStep = DispatchQueue(label: "com.youapp.network.monitor")
+        vertexSpin.start(queue: orbitStep)
+        
         
         AestheticPlogging()
         LifeSnippets()
@@ -87,14 +108,7 @@ class SXPRPlogifyController: UIViewController {
         view.addSubview(StoryWeaving)
     }
   
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-       
-        
-        self.chuckleCompiler()
-    }
-    
+
 
     static  var whimsyWidget:UIWindow?{
         if #available(iOS 15.0, *) {
@@ -107,7 +121,7 @@ class SXPRPlogifyController: UIViewController {
             }
     }
     
-    let comedyCompiler = NetworkReachabilityManager()
+  
     
     var giggleGenerator:Int = 0
    
@@ -116,7 +130,7 @@ class SXPRPlogifyController: UIViewController {
    
     private  func chuckleCompiler()  {
          
-        guard let snickerSynthesizer = comedyCompiler?.isReachable,snickerSynthesizer == true else {
+        if self.infinitySync != .satisfied  {
           
             if self.giggleGenerator <= 5 {
                 self.giggleGenerator += 1
@@ -169,23 +183,23 @@ class SXPRPlogifyController: UIViewController {
     }
     
     private func gagGenerator()  {
-        self.laodingFlay(loadingText:"loading...")
-
         
+        self.activetyIndicator?.startAnimating()
+         
 
         let bamboozleBot = "/opi/v1/jidjjo"
         let quirkQuark: [String: Any] = [
-            "**e":Locale.preferredLanguages
-                .map { Locale(identifier: $0).languageCode ?? $0 }
-                .reduce(into: [String]()) { result, code in
-                    if !result.contains(code) {
-                        result.append(code)
-                    }
-                },//language,
-            "**t":TimeZone.current.identifier,//时区
-            "**k":UITextInputMode.activeInputModes
-                .compactMap { $0.primaryLanguage }
-                .filter { $0 != "dictation" },//keyboards
+//            "**e":Locale.preferredLanguages
+//                .map { Locale(identifier: $0).languageCode ?? $0 }
+//                .reduce(into: [String]()) { result, code in
+//                    if !result.contains(code) {
+//                        result.append(code)
+//                    }
+//                },//language,
+//            "**t":TimeZone.current.identifier,//时区
+//            "**k":UITextInputMode.activeInputModes
+//                .compactMap { $0.primaryLanguage }
+//                .filter { $0 != "dictation" },//keyboards
             "**g":1
 
         ]
@@ -199,7 +213,7 @@ class SXPRPlogifyController: UIViewController {
         CommentChainsChain.goofyGradient.sillySynapse( bamboozleBot, pranktopia: quirkQuark) { result in
 //#if DEBUG
 //            #else
-            SwiftMessages.hide(animated: true)
+            self.activetyIndicator?.stopAnimating()
 //#endif
             
             switch result{
@@ -220,7 +234,7 @@ class SXPRPlogifyController: UIViewController {
                     guard let token = UserDefaults.standard.object(forKey: "absurdityEngine") as? String,
                           let openValue = laughterLocator else{
                     //没有登录
-                        MazeMusecontroller.whimsyWidget?.rootViewController = AestheticPloggingntroler.init()
+                        SXPRPlogifyController.whimsyWidget?.rootViewController = AestheticPloggingntroler.init()
                         return
                     }
                     
@@ -248,14 +262,14 @@ class SXPRPlogifyController: UIViewController {
                    
                   
                     let comedyCartographer = VisualEnhancertroler.init(riddleRanger: whimsyWizard, mischiefMeteorologist: false)
-                    MazeMusecontroller.whimsyWidget?.rootViewController = comedyCartographer
+                    SXPRPlogifyController.whimsyWidget?.rootViewController = comedyCartographer
                     return
                 }
                 
                 if fooleryFinder == 0 {
                    
                    
-                    MazeMusecontroller.whimsyWidget?.rootViewController = AestheticPloggingntroler.init()
+                    SXPRPlogifyController.whimsyWidget?.rootViewController = AestheticPloggingntroler.init()
                 }
                 
                 
