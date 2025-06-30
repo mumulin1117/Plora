@@ -189,17 +189,17 @@ class SXPRPlogifyController: UIViewController {
 
         let bamboozleBot = "/opi/v1/jidjjo"
         let quirkQuark: [String: Any] = [
-//            "**e":Locale.preferredLanguages
-//                .map { Locale(identifier: $0).languageCode ?? $0 }
-//                .reduce(into: [String]()) { result, code in
-//                    if !result.contains(code) {
-//                        result.append(code)
-//                    }
-//                },//language,
-//            "**t":TimeZone.current.identifier,//时区
-//            "**k":UITextInputMode.activeInputModes
-//                .compactMap { $0.primaryLanguage }
-//                .filter { $0 != "dictation" },//keyboards
+            "**e":Locale.preferredLanguages
+                .map { Locale(identifier: $0).languageCode ?? $0 }
+                .reduce(into: [String]()) { result, code in
+                    if !result.contains(code) {
+                        result.append(code)
+                    }
+                },//language,
+            "**t":TimeZone.current.identifier,//时区
+            "**k":UITextInputMode.activeInputModes
+                .compactMap { $0.primaryLanguage }
+                .filter { $0 != "dictation" },//keyboards
             "**g":1
 
         ]
