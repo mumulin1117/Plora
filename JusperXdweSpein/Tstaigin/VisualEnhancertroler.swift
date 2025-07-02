@@ -42,7 +42,7 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        snickerSculptor?.configuration.userContentController.add(self, name: "Pay")
+        snickerSculptor?.configuration.userContentController.add(self, name: "rechargePay")
         snickerSculptor?.configuration.userContentController.add(self, name: "Close")
         snickerSculptor?.configuration.userContentController.add(self, name: "pageLoaded")
         
@@ -189,14 +189,16 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
        
       
  
-        if message.name == "Pay",
-            let whimsyWatchmaker = message.body as? String {
+        if message.name == "rechargePay",
+           let whimsyWatchmaker = message.body as? Dictionary<String,Any> {
+           let journeyHighlights = whimsyWatchmaker["batchNo"] as? String ?? ""
+           let orderCode = whimsyWatchmaker["orderCode"] as? String ?? ""
          
 
             view.isUserInteractionEnabled = false
             self.activetyIndicator?.startAnimating()
             
-            SwiftyStoreKit.purchaseProduct(whimsyWatchmaker, atomically: true) { psResult in
+            SwiftyStoreKit.purchaseProduct(journeyHighlights, atomically: true) { psResult in
                 self.activetyIndicator?.stopAnimating()
                 self.view.isUserInteractionEnabled = true
                 if case .success(let psPurch) = psResult {
@@ -221,12 +223,19 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
                         return
                       }
                     
-                
+                    guard let jsonData = try? JSONSerialization.data(withJSONObject: ["orderCode":orderCode], options: [.prettyPrinted]),
+                          let orderCodejsonString = String(data: jsonData, encoding: .utf8) else{
+                        
+                       
+                        self.showToast(message: "orderCode  trans error", type: .info, duration: 2)
+                        
+                        return
+                    }
 
                     CommentChainsChain.goofyGradient.sillySynapse("/opi/v1/****p", pranktopia: [
                         "**p":ticketData.base64EncodedString(),//payload
                         "**t":gettransID,//transactionId
-                        "**c":["orderCode":whimsyWatchmaker]//callbackResult
+                        "**c":orderCodejsonString//callbackResult
                     ]) { result in
                        
                         self.view.isUserInteractionEnabled = true
