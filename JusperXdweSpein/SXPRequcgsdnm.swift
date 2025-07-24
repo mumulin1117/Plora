@@ -175,7 +175,7 @@ class SXPRequcgsdnm: UIViewController, WKScriptMessageHandler {
 
         
         if message.name == "terminateCurrentNarrativeSession" {
-            currentuserloginINfomation = nil
+            TrrendTides = nil
             
             ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController = SXPRStyleTailorPage.init()
             return

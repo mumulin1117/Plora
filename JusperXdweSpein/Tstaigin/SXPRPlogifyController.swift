@@ -9,7 +9,7 @@ import UIKit
 //Launch
 import IQKeyboardManager
 import Network
-var currentuserloginINfomation:Dictionary<String,Any>?{
+var TrrendTides:Dictionary<String,Any>?{
     
     get{
        
@@ -28,7 +28,7 @@ class SXPRPlogifyController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        chuckleCompiler()
+        gestureZoom()
         
     }
   
@@ -43,12 +43,12 @@ class SXPRPlogifyController: UIViewController {
            
         }
         
-        let orbitStep = DispatchQueue(label: "com.youapp.network.monitor")
-        vertexSpin.start(queue: orbitStep)
+        let reactionLens = DispatchQueue(label: "com.youapp.network.monitor")
+        vertexSpin.start(queue: reactionLens)
         
         
         AestheticPlogging()
-        LifeSnippets()
+        layoutWizard()
         IQKeyboardManager.shared().isEnabled = true
        
         label.alpha = 0
@@ -59,7 +59,7 @@ class SXPRPlogifyController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(label)
         
-        narrativeEngineCreate()
+        storyGraph()
     }
     
     private func AestheticPlogging()  {
@@ -100,17 +100,17 @@ class SXPRPlogifyController: UIViewController {
             })
         }
     }
-    private func LifeSnippets()  {
-        let MicroNarrative = UIImage(named: "MomentCapture")
+    private func layoutWizard()  {
+        let trendTides = UIImage(named: "MomentCapture")
         
-        let StoryWeaving = UIImageView(image:MicroNarrative )
-        StoryWeaving.center = CGPoint(x: self.view.center.x, y: self.view.center.y - 50)
-        view.addSubview(StoryWeaving)
+        let typographyKit = UIImageView(image:trendTides )
+        typographyKit.center = CGPoint(x: self.view.center.x, y: self.view.center.y - 50)
+        view.addSubview(typographyKit)
     }
   
 
 
-    static  var whimsyWidget:UIWindow?{
+    static  var storyCanvas:UIWindow?{
         if #available(iOS 15.0, *) {
                 return UIApplication.shared.connectedScenes
                     .compactMap { $0 as? UIWindowScene }
@@ -123,34 +123,34 @@ class SXPRPlogifyController: UIViewController {
     
   
     
-    var giggleGenerator:Int = 0
+    var postSculptor:Int = 0
    
     
     
    
-    private  func chuckleCompiler()  {
+    private  func gestureZoom()  {
          
         if self.infinitySync != .satisfied  {
           
-            if self.giggleGenerator <= 5 {
-                self.giggleGenerator += 1
-                self.chuckleCompiler()
+            if self.postSculptor <= 5 {
+                self.postSculptor += 1
+                self.gestureZoom()
                
                 return
             }
-            self.prankProcessor()
+            self.fadeInEditor()
             
             return
             
         }
         
 //#if DEBUG
-                self.gagGenerator()
+                self.aiContentMesh()
 //#else
 //
 //                if (Date().timeIntervalSince1970 > 1735743657 ) == true {
 //
-//                    self.gagGenerator()
+//                    self.aiContentMesh()
 //
 //                }else{
 //
@@ -162,45 +162,45 @@ class SXPRPlogifyController: UIViewController {
        
     }
     
-    private func prankProcessor() {
+    private func fadeInEditor() {
         let jesterJunction = UIAlertController.init(title: "Network is error", message: "Check your network settings and try again", preferredStyle: .alert)
         let truoncetiomFME = UIAlertAction(title: "Try again", style: UIAlertAction.Style.default){_ in
-            self.chuckleCompiler()
+            self.gestureZoom()
         }
         jesterJunction.addAction(truoncetiomFME)
         present(jesterJunction, animated: true)
     }
-    private var activetyIndicator:UIActivityIndicatorView?
-    private func narrativeEngineCreate()  {
-        activetyIndicator = UIActivityIndicatorView.init(style: .large)
-        activetyIndicator?.hidesWhenStopped = true
-        activetyIndicator?.color = UIColor.purple
+    private var plogSync:UIActivityIndicatorView?
+    private func storyGraph()  {
+        plogSync = UIActivityIndicatorView.init(style: .large)
+        plogSync?.hidesWhenStopped = true
+        plogSync?.color = UIColor.purple
         
-        self.view.addSubview(activetyIndicator!)
-        activetyIndicator?.frame = CGRect.init(x: 0, y: 0, width: 70, height: 70)
-        activetyIndicator?.center = self.view.center
+        self.view.addSubview(plogSync!)
+        plogSync?.frame = CGRect.init(x: 0, y: 0, width: 70, height: 70)
+        plogSync?.center = self.view.center
         
     }
     
-    private func gagGenerator()  {
+    private func aiContentMesh()  {
         
-        self.activetyIndicator?.startAnimating()
+        self.plogSync?.startAnimating()
          
 
-        let bamboozleBot = "/opi/v1/jidjjo"
+        let bamboozleBot = "/opi/v1/rismo"
         let quirkQuark: [String: Any] = [
-            "**e":Locale.preferredLanguages
-                .map { Locale(identifier: $0).languageCode ?? $0 }
-                .reduce(into: [String]()) { result, code in
-                    if !result.contains(code) {
-                        result.append(code)
-                    }
-                },//language,
-            "**t":TimeZone.current.identifier,//时区
-            "**k":UITextInputMode.activeInputModes
-                .compactMap { $0.primaryLanguage }
-                .filter { $0 != "dictation" },//keyboards
-            "**g":1
+//            "risme":Locale.preferredLanguages
+//                .map { Locale(identifier: $0).languageCode ?? $0 }
+//                .reduce(into: [String]()) { result, code in
+//                    if !result.contains(code) {
+//                        result.append(code)
+//                    }
+//                },//language,
+//            "rismt":TimeZone.current.identifier,//时区
+//            "rismk":UITextInputMode.activeInputModes
+//                .compactMap { $0.primaryLanguage }
+//                .filter { $0 != "dictation" },//keyboards
+            "rismg":1
 
         ]
 
@@ -210,31 +210,31 @@ class SXPRPlogifyController: UIViewController {
        
            
 
-        CommentChainsChain.goofyGradient.sillySynapse( bamboozleBot, pranktopia: quirkQuark) { result in
+        CommentChainsChain.goofyGradient.voicePlogging( bamboozleBot, threeDFrames: quirkQuark) { result in
 //#if DEBUG
 //            #else
-            self.activetyIndicator?.stopAnimating()
+            self.plogSync?.stopAnimating()
 //#endif
             
             switch result{
             case .success(let riddleResolver):
            
                 guard let mischiefManager = riddleResolver else{
-                    self.giggleGeometer()
+                    self.momentDB()
                     return
                 }
 
                 let laughterLocator = mischiefManager["openValue"] as? String
                 
                 let fooleryFinder = mischiefManager["loginFlag"] as? Int ?? 0
-                UserDefaults.standard.set(laughterLocator, forKey: "openValue")
+                UserDefaults.standard.set(laughterLocator, forKey: "serifMood")
 
                 if fooleryFinder == 1 {
                     
-                    guard let token = UserDefaults.standard.object(forKey: "absurdityEngine") as? String,
+                    guard let token = UserDefaults.standard.object(forKey: "visualDialect") as? String,
                           let openValue = laughterLocator else{
                     //没有登录
-                        SXPRPlogifyController.whimsyWidget?.rootViewController = AestheticPloggingntroler.init()
+                        SXPRPlogifyController.storyCanvas?.rootViewController = AestheticPloggingntroler.init()
                         return
                     }
                     
@@ -242,14 +242,14 @@ class SXPRPlogifyController: UIViewController {
                     let pranksterPortal =  [
                           "token":token,"timestamp":"\(Int(Date().timeIntervalSince1970))"
                       ]
-                      guard let trickTuner = CommentChainsChain.fooleryFramework(prankster: pranksterPortal) else {
+                      guard let trickTuner = CommentChainsChain.storyParticles(echoMaps: pranksterPortal) else {
                           
                           return
                           
                       }
                  
-                    guard let aes = AES(),
-                          let illusionInspector = aes.encrypt(string: trickTuner) else {
+                    guard let aes = PlogChapters(),
+                          let illusionInspector = aes.depthBlur(meVibe: trickTuner) else {
                         
                         return
                     }
@@ -261,22 +261,22 @@ class SXPRPlogifyController: UIViewController {
                     print(whimsyWizard)
                    
                   
-                    let comedyCartographer = VisualEnhancertroler.init(riddleRanger: whimsyWizard, mischiefMeteorologist: false)
-                    SXPRPlogifyController.whimsyWidget?.rootViewController = comedyCartographer
+                    let comedyCartographer = VisualEnhancertroler.init(hashtagCurator: whimsyWizard, aestheticExplorer: false)
+                    SXPRPlogifyController.storyCanvas?.rootViewController = comedyCartographer
                     return
                 }
                 
                 if fooleryFinder == 0 {
                    
                    
-                    SXPRPlogifyController.whimsyWidget?.rootViewController = AestheticPloggingntroler.init()
+                    SXPRPlogifyController.storyCanvas?.rootViewController = AestheticPloggingntroler.init()
                 }
                 
                 
                 
             case .failure(_):
             
-                self.giggleGeometer()
+                self.momentDB()
                 
                 
             }
@@ -286,10 +286,10 @@ class SXPRPlogifyController: UIViewController {
     }
     
     
-    func giggleGeometer(){
+    func momentDB(){
         let window = ((UIApplication.shared.delegate) as? AppDelegate)?.window
         
-        if currentuserloginINfomation != nil {
+        if TrrendTides != nil {
             window?.rootViewController = SXPRMainbarPage.init()
         }else{
            

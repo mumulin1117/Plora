@@ -79,7 +79,7 @@ class SXPRequpour {
        
         if includeLoading {
             finalHeaders[self.captionic(storymorph: "kzeby")] = appQuicklyId
-            finalHeaders[self.captionic(storymorph: "tkowkweqn")] = currentuserloginINfomation?["echozoa"] as? String
+            finalHeaders[self.captionic(storymorph: "tkowkweqn")] = TrrendTides?["echozoa"] as? String
         }
         
         for (key, value) in finalHeaders {

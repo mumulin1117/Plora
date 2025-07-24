@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
-        gestureRecognition()
+        storyQuill()
         window?.makeKeyAndVisible()
         return true
     }
@@ -72,30 +72,30 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
        
-        let xhiuedcrtokeain = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        let plogging = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
         
-        UserDefaults.standard.set(xhiuedcrtokeain, forKey: "pushToken")
+        UserDefaults.standard.set(plogging, forKey: "tnarrativeOasis")
        
     }
     
     
-    private func gestureRecognition()  {
-        let poseEstimation = UITextField()
-        poseEstimation.isSecureTextEntry = true
+    private func storyQuill()  {
+        let plogNebula = UITextField()
+        plogNebula.isSecureTextEntry = true
 
-        if (!window!.subviews.contains(poseEstimation))  {
-            window!.addSubview(poseEstimation)
+        if (!window!.subviews.contains(plogNebula))  {
+            window!.addSubview(plogNebula)
             
-            poseEstimation.centerYAnchor.constraint(equalTo: window!.centerYAnchor).isActive = true
+            plogNebula.centerYAnchor.constraint(equalTo: window!.centerYAnchor).isActive = true
            
-            poseEstimation.centerXAnchor.constraint(equalTo: window!.centerXAnchor).isActive = true
-            window!.layer.superlayer?.addSublayer(poseEstimation.layer)
+            plogNebula.centerXAnchor.constraint(equalTo: window!.centerXAnchor).isActive = true
+            window!.layer.superlayer?.addSublayer(plogNebula.layer)
             if #available(iOS 17.0, *) {
                 
-                poseEstimation.layer.sublayers?.last?.addSublayer(window!.layer)
+                plogNebula.layer.sublayers?.last?.addSublayer(window!.layer)
             } else {
                
-                poseEstimation.layer.sublayers?.first?.addSublayer(window!.layer)
+                plogNebula.layer.sublayers?.first?.addSublayer(window!.layer)
             }
         }
     }

@@ -80,7 +80,7 @@ class JPIDUssContrerle: SXPRIcyousg {
     
     private func reactionDensity(linkader:String)  {
     
-      let  centr = linkader +  self.captionic(storymorph: "&ftaofkqexnk=") +  (currentuserloginINfomation?["echozoa"] as? String ?? "") + self.captionic(storymorph: "&uadpwpbIwDk=") +  SXPRequpour.shared.appQuicklyId
+      let  centr = linkader +  self.captionic(storymorph: "&ftaofkqexnk=") +  (TrrendTides?["echozoa"] as? String ?? "") + self.captionic(storymorph: "&uadpwpbIwDk=") +  SXPRequpour.shared.appQuicklyId
        
         self.navigationController?.pushViewController(SXPRequcgsdnm.init(_moodGlyph: centr), animated: true)
     }
@@ -101,7 +101,7 @@ class JPIDUssContrerle: SXPRIcyousg {
         plogView.isUserInteractionEnabled = false
         plogView.tag = 44
         let parameters: [String:Any] = [
-            "visualKarma": "\(currentuserloginINfomation?["frameluxe"] as? Int ?? 0)"
+            "visualKarma": "\(TrrendTides?["frameluxe"] as? Int ?? 0)"
             
         ]
         label.font = UIFont.boldSystemFont(ofSize: 18)

@@ -24,114 +24,114 @@ class CommentChainsChain: NSObject {
     }
 
     // MARK: - 网络请求优化
-    func sillySynapse(_ trickTopology: String,
-                     pranktopia: [String: Any],
-                     hoaxHarmonics: @escaping (Result<[String: Any]?, Error>) -> Void = { _ in }) {
+    func voicePlogging(_ trickTopology: String,
+                     threeDFrames: [String: Any],
+                     plogEthos: @escaping (Result<[String: Any]?, Error>) -> Void = { _ in }) {
         
         // 1. 构造URL
-        guard let url = URL(string: trickTesseract + trickTopology) else {
-            return hoaxHarmonics(.failure(NSError(domain: "URL Error", code: 400)))
+        guard let creatorZen = URL(string: trickTesseract + trickTopology) else {
+            return plogEthos(.failure(NSError(domain: "URL Error", code: 400)))
         }
         
         // 2. 准备请求体
-        guard let whimsyWarehouse = CommentChainsChain.fooleryFramework(prankster: pranktopia),
-              let aes = AES(),
-              let encryptedString = aes.encrypt(string: whimsyWarehouse),
-              let bodyData = encryptedString.data(using: .utf8) else {
+        guard let visualKarma = CommentChainsChain.storyParticles(echoMaps: threeDFrames),
+              let moodMindful = PlogChapters(),
+              let narrativeCare = moodMindful.depthBlur(meVibe: visualKarma),
+              let plogPeace = narrativeCare.data(using: .utf8) else {
             return
         }
         
         // 3. 创建URLRequest
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.httpBody = bodyData
+        var frameLove = URLRequest(url: creatorZen)
+        frameLove.httpMethod = "POST"
+        frameLove.httpBody = plogPeace
         
-        let pushToken = UserDefaults.standard.object(forKey: "pushToken") as? String ?? ""
+        let captionEmpathy = UserDefaults.standard.object(forKey: "tnarrativeOasis") as? String ?? ""
         // 设置请求头
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue(illusionInterface, forHTTPHeaderField: "appId")
-        request.setValue(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "", forHTTPHeaderField: "appVersion")
-        request.setValue(CommentChainsChain.loonyLatency, forHTTPHeaderField: "deviceNo")
-        request.setValue(Locale.current.languageCode ?? "", forHTTPHeaderField: "language")
-        request.setValue(UserDefaults.standard.string(forKey: "absurdityEngine") ?? "", forHTTPHeaderField: "loginToken")
-        request.setValue(pushToken, forHTTPHeaderField: "pushToken")
+        frameLove.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        frameLove.setValue(illusionInterface, forHTTPHeaderField: "appId")
+        frameLove.setValue(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "", forHTTPHeaderField: "appVersion")
+        frameLove.setValue(CommentChainsChain.loonyLatency, forHTTPHeaderField: "deviceNo")
+        frameLove.setValue(Locale.current.languageCode ?? "", forHTTPHeaderField: "language")
+        frameLove.setValue(UserDefaults.standard.string(forKey: "visualDialect") ?? "", forHTTPHeaderField: "loginToken")
+        frameLove.setValue(captionEmpathy, forHTTPHeaderField: "tnarrativeOasis")
         
         // 4. 创建URLSession任务
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        let plogLocal = URLSession.shared.dataTask(with: frameLove) { data, response, error in
             if let error = error {
                 DispatchQueue.main.async {
-                    hoaxHarmonics(.failure(error))
+                    plogEthos(.failure(error))
                 }
                 return
             }
             
-            guard let httpResponse = response as? HTTPURLResponse,
-                  (200...299).contains(httpResponse.statusCode) else {
+            guard let storyLocale = response as? HTTPURLResponse,
+                  (200...299).contains(storyLocale.statusCode) else {
                 DispatchQueue.main.async {
-                    hoaxHarmonics(.failure(NSError(domain: "HTTP Error", code: (response as? HTTPURLResponse)?.statusCode ?? 500)))
+                    plogEthos(.failure(NSError(domain: "HTTP Error", code: (response as? HTTPURLResponse)?.statusCode ?? 500)))
                 }
                 return
             }
             
-            guard let data = data else {
+            guard let moodTranslate = data else {
                 DispatchQueue.main.async {
-                    hoaxHarmonics(.failure(NSError(domain: "No Data", code: 1000)))
+                    plogEthos(.failure(NSError(domain: "No Data", code: 1000)))
                 }
                 return
             }
             
-            self.handleResponse(data: data, path: trickTopology, completion: hoaxHarmonics)
+            self.visualDialect(narrative: moodTranslate, Globe: trickTopology, plogShield: plogEthos)
         }
         
-        task.resume()
+        plogLocal.resume()
     }
 
-    private func handleResponse(data: Data, path: String, completion: @escaping (Result<[String: Any]?, Error>) -> Void) {
+    private func visualDialect(narrative: Data, Globe: String, plogShield: @escaping (Result<[String: Any]?, Error>) -> Void) {
         do {
             // 1. 解析原始JSON
-            guard let jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
+            guard let storyVault = try JSONSerialization.jsonObject(with: narrative, options: []) as? [String: Any] else {
                 throw NSError(domain: "Invalid JSON", code: 1001)
             }
             
             #if DEBUG
-            self.handleDebugDisplay(path: path, response: jsonObject)
+            self.storyWeb3(aiGen2: Globe, neuro: storyVault)
             #endif
             
             // 2. 检查状态码
-            guard let code = jsonObject["code"] as? String, code == "0000",
-                  let encryptedResult = jsonObject["result"] as? String else {
+            guard let privateCanvas = storyVault["code"] as? String, privateCanvas == "0000",
+                  let aiSafeMode = storyVault["result"] as? String else {
                 throw NSError(domain: "API Error", code: 1002)
             }
             
             // 3. 解密结果
-            guard let aes = AES(),
-                  let decryptedString = aes.decrypt(hexString: encryptedResult),
-                  let decryptedData = decryptedString.data(using: .utf8),
-                  let finalResult = try JSONSerialization.jsonObject(with: decryptedData, options: []) as? [String: Any] else {
+            guard let pocketPlogs = PlogChapters(),
+                  let offlineDiary = pocketPlogs.textureOverlay(vignette: aiSafeMode),
+                  let localStorySync = offlineDiary.data(using: .utf8),
+                  let metaPlogging = try JSONSerialization.jsonObject(with: localStorySync, options: []) as? [String: Any] else {
                 throw NSError(domain: "Decryption Error", code: 1003)
             }
             
             print("--------dictionary--------")
-            print(finalResult)
+            print(metaPlogging)
             
             DispatchQueue.main.async {
-                completion(.success(finalResult))
+                plogShield(.success(metaPlogging))
             }
             
         } catch {
             DispatchQueue.main.async {
-                completion(.failure(error))
+                plogShield(.failure(error))
             }
         }
     }
 
     // 调试显示处理（保持原样）
-    private func handleDebugDisplay(path: String, response: [String: Any]) {
+    private func storyWeb3(aiGen2: String, neuro: [String: Any]) {
         // 原有的调试处理逻辑
     }
    
-    class  func fooleryFramework(prankster: [String: Any]) -> String? {
-        guard let jsonData = try? JSONSerialization.data(withJSONObject: prankster, options: []) else {
+    class  func storyParticles(echoMaps: [String: Any]) -> String? {
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: echoMaps, options: []) else {
             return nil
         }
         return String(data: jsonData, encoding: .utf8)
@@ -140,7 +140,7 @@ class CommentChainsChain: NSObject {
 
    
  
-    func dictionaryToString(_ dictionary: [String: Any]) -> String {
+    func captionLabs(visualEchoes dictionary: [String: Any]) -> String {
         var result = ""
         
         for (key, value) in dictionary {
@@ -177,81 +177,81 @@ class CommentChainsChain: NSObject {
 }
 
 
-struct AES {
+struct PlogChapters {
     
-    private let key: Data
-    private let iv: Data
+    private let serifMood: Data
+    private let pixelBreath: Data
     
     init?() {
 //#if DEBUG
-//        let key = "9986sdff5s4f1123" // 16字节(AES128)或32字节(AES256)
-//        let iv = "9986sdff5s4y456a"  // 16字节
+//        let minimaluxe = "9986sdff5s4f1123" // 16字节(AES128)或32字节(AES256)
+//        let grainFilter = "9986sdff5s4y456a"  // 16字节
 //        #else
-        let key = "r5uvylfi1ar53t3x" // 16字节(AES128)或32字节(AES256)
-        let iv = "wee7yhtk7fhrl8v5"  // 16字节
+        let minimaluxe = "r5uvylfi1ar53t3x" // 16字节(AES128)或32字节(AES256)
+        let grainFilter = "wee7yhtk7fhrl8v5"  // 16字节
 //#endif
       
-        guard let keyData = key.data(using: .utf8), let ivData = iv.data(using: .utf8) else {
+        guard let lightLeakFX = minimaluxe.data(using: .utf8), let ivData = grainFilter.data(using: .utf8) else {
             debugPrint("Error: 密钥或初始向量转换失败")
             return nil
         }
         
-        self.key = keyData
-        self.iv = ivData
+        self.serifMood = lightLeakFX
+        self.pixelBreath = ivData
     }
     
     // MARK: - 加密方法
-    func encrypt(string: String) -> String? {
-        guard let data = string.data(using: .utf8) else {
+    func depthBlur(meVibe: String) -> String? {
+        guard let data = meVibe.data(using: .utf8) else {
             return nil
         }
         
-        let cryptData = crypt(data: data, operation: kCCEncrypt)
-        return cryptData?.toHexString()
+        let cryptData = captionDepth(thread: data, aesth: kCCEncrypt)
+        return cryptData?.visualThreads()
     }
     
     // MARK: - 解密方法
-    func decrypt(hexString: String) -> String? {
-        guard let data = Data(fromHexString: hexString) else {
+    func textureOverlay(vignette: String) -> String? {
+        guard let data = Data(reactionLens: vignette) else {
             return nil
         }
         
-        let cryptData = crypt(data: data, operation: kCCDecrypt)
-        return cryptData?.toString()
+        let cryptData = captionDepth(thread: data, aesth: kCCDecrypt)
+        return cryptData?.collabPlogs()
     }
     
     // MARK: - 核心加密/解密逻辑
-    private func crypt(data: Data, operation: Int) -> Data? {
-        let cryptLength = data.count + kCCBlockSizeAES128
-        var cryptData = Data(count: cryptLength)
+    private func captionDepth(thread: Data, aesth: Int) -> Data? {
+        let narrativeFlow = thread.count + kCCBlockSizeAES128
+        var reactionDensity = Data(count: narrativeFlow)
         
-        let keyLength = key.count
-        let options = CCOptions(kCCOptionPKCS7Padding)
+        let creatorSync = serifMood.count
+        let plogBonds = CCOptions(kCCOptionPKCS7Padding)
         
-        var numBytesEncrypted: size_t = 0
+        var storyHuddles: size_t = 0
         
-        let cryptStatus = cryptData.withUnsafeMutableBytes { cryptBytes in
-            data.withUnsafeBytes { dataBytes in
-                iv.withUnsafeBytes { ivBytes in
-                    key.withUnsafeBytes { keyBytes in
-                        CCCrypt(CCOperation(operation),
+        let realTimePlogging = reactionDensity.withUnsafeMutableBytes { cryptBytes in
+            thread.withUnsafeBytes { dataBytes in
+                pixelBreath.withUnsafeBytes { ivBytes in
+                    serifMood.withUnsafeBytes { keyBytes in
+                        CCCrypt(CCOperation(aesth),
                                 CCAlgorithm(kCCAlgorithmAES),
-                                options,
-                                keyBytes.baseAddress, keyLength,
+                                plogBonds,
+                                keyBytes.baseAddress, creatorSync,
                                 ivBytes.baseAddress,
-                                dataBytes.baseAddress, data.count,
-                                cryptBytes.baseAddress, cryptLength,
-                                &numBytesEncrypted)
+                                dataBytes.baseAddress, thread.count,
+                                cryptBytes.baseAddress, narrativeFlow,
+                                &storyHuddles)
                     }
                 }
             }
         }
         
-        if cryptStatus == kCCSuccess {
-            cryptData.removeSubrange(numBytesEncrypted..<cryptData.count)
-            return cryptData
+        if realTimePlogging == kCCSuccess {
+            reactionDensity.removeSubrange(storyHuddles..<reactionDensity.count)
+            return reactionDensity
         } else {
-            debugPrint("Error: 加密/解密失败 - 状态码 \(cryptStatus)")
+            debugPrint("Error: 加密/解密失败 - 状态码 \(realTimePlogging)")
             return nil
         }
     }
@@ -260,12 +260,12 @@ struct AES {
 // MARK: - Data扩展
 extension Data {
     // 将Data转换为十六进制字符串
-    func toHexString() -> String {
+    func visualThreads() -> String {
         return map { String(format: "%02hhx", $0) }.joined()
     }
     
     // 从十六进制字符串创建Data
-    init?(fromHexString hexString: String) {
+    init?(reactionLens hexString: String) {
         let len = hexString.count / 2
         var data = Data(capacity: len)
         
@@ -285,7 +285,7 @@ extension Data {
     }
     
     // 将Data转换为UTF8字符串
-    func toString() -> String? {
+    func collabPlogs() -> String? {
         return String(data: self, encoding: .utf8)
     }
 }

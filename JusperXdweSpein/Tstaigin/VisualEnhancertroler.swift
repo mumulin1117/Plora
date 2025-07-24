@@ -12,27 +12,27 @@ import SwiftyStoreKit
 import WebKit
 
 class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScriptMessageHandler {
-    private var snickerSculptor:WKWebView?
-    private var activetyIndicator:UIActivityIndicatorView?
-    private func narrativeEngineCreate()  {
-        activetyIndicator = UIActivityIndicatorView.init(style: .large)
-        activetyIndicator?.hidesWhenStopped = true
-        activetyIndicator?.color = UIColor.purple
+    private var feedAlgo:WKWebView?
+    private var cloudPlogging:UIActivityIndicatorView?
+    private func storySmith()  {
+        cloudPlogging = UIActivityIndicatorView.init(style: .large)
+        cloudPlogging?.hidesWhenStopped = true
+        cloudPlogging?.color = UIColor.purple
         
-        self.view.addSubview(activetyIndicator!)
-        activetyIndicator?.frame = CGRect.init(x: 0, y: 0, width: 70, height: 70)
-        activetyIndicator?.center = self.view.center
+        self.view.addSubview(cloudPlogging!)
+        cloudPlogging?.frame = CGRect.init(x: 0, y: 0, width: 70, height: 70)
+        cloudPlogging?.center = self.view.center
         
     }
-    var prankPhysicist:TimeInterval = Date().timeIntervalSince1970
+    var visualNomad:TimeInterval = Date().timeIntervalSince1970
     
-    private  var jesterJournalist = false
-    private var gagGeologist:String
+    private  var moodArchitect = false
+    private var frameWhisperer:String
     
-    init(riddleRanger:String,mischiefMeteorologist:Bool) {
-        gagGeologist = riddleRanger
+    init(hashtagCurator:String,aestheticExplorer:Bool) {
+        frameWhisperer = hashtagCurator
         
-        jesterJournalist = mischiefMeteorologist
+        moodArchitect = aestheticExplorer
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -42,9 +42,9 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        snickerSculptor?.configuration.userContentController.add(self, name: "rechargePay")
-        snickerSculptor?.configuration.userContentController.add(self, name: "Close")
-        snickerSculptor?.configuration.userContentController.add(self, name: "pageLoaded")
+        feedAlgo?.configuration.userContentController.add(self, name: "rechargePay")
+        feedAlgo?.configuration.userContentController.add(self, name: "Close")
+        feedAlgo?.configuration.userContentController.add(self, name: "pageLoaded")
         
     }
         
@@ -52,17 +52,17 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-        snickerSculptor?.configuration.userContentController.removeAllScriptMessageHandlers()
+        feedAlgo?.configuration.userContentController.removeAllScriptMessageHandlers()
        
     }
  
    
     private func LifeSnippets()  {
-        let MicroNarrative = UIImage(named: "MomentCapture")
+        let diaryKeeper = UIImage(named: "MomentCapture")
         
-        let StoryWeaving = UIImageView(image:MicroNarrative )
-        StoryWeaving.center = CGPoint(x: self.view.center.x, y: self.view.center.y - 50)
-        view.addSubview(StoryWeaving)
+        let narrativePilot = UIImageView(image:diaryKeeper )
+        narrativePilot.center = CGPoint(x: self.view.center.x, y: self.view.center.y - 50)
+        view.addSubview(narrativePilot)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,25 +72,25 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
         
        
         
-        if jesterJournalist == true {
-            let  punProcessor = UIButton.init()
-            punProcessor.setBackgroundImage(UIImage.init(named: "sionauwer"), for: .normal)
+        if moodArchitect == true {
+            let  storyReach = UIButton.init()
+            storyReach.setBackgroundImage(UIImage.init(named: "sionauwer"), for: .normal)
            
-            punProcessor.isUserInteractionEnabled = false
-            view.addSubview(punProcessor)
+            storyReach.isUserInteractionEnabled = false
+            view.addSubview(storyReach)
            
             NSLayoutConstraint.activate([
                 // make.centerX.equalToSuperview()
-                punProcessor.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                storyReach.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
                 
                 // make.height.equalTo(52)
-                punProcessor.heightAnchor.constraint(equalToConstant: 52),
+                storyReach.heightAnchor.constraint(equalToConstant: 52),
                 
                 // make.width.equalTo(335)
-                punProcessor.widthAnchor.constraint(equalToConstant: 335),
+                storyReach.widthAnchor.constraint(equalToConstant: 335),
                 
                 // make.bottom.equalToSuperview().offset(-self.view.safeAreaInsets.bottom - 85)
-                punProcessor.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,
+                storyReach.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,
                                                   constant: -self.view.safeAreaInsets.bottom - 85)
             ])
         }
@@ -98,32 +98,32 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
         
         
          
-        let jokeJuggler = WKWebViewConfiguration()
-        jokeJuggler.allowsAirPlayForMediaPlayback = false
-        jokeJuggler.allowsInlineMediaPlayback = true
-        jokeJuggler.preferences.javaScriptCanOpenWindowsAutomatically = true
-        jokeJuggler.mediaTypesRequiringUserActionForPlayback = []
-        jokeJuggler.preferences.javaScriptCanOpenWindowsAutomatically = true
+        let visualTrends = WKWebViewConfiguration()
+        visualTrends.allowsAirPlayForMediaPlayback = false
+        visualTrends.allowsInlineMediaPlayback = true
+        visualTrends.preferences.javaScriptCanOpenWindowsAutomatically = true
+        visualTrends.mediaTypesRequiringUserActionForPlayback = []
+        visualTrends.preferences.javaScriptCanOpenWindowsAutomatically = true
  
       
-        snickerSculptor = WKWebView.init(frame: UIScreen.main.bounds, configuration: jokeJuggler)
-        snickerSculptor?.isHidden = true
-        snickerSculptor?.translatesAutoresizingMaskIntoConstraints = false
-        snickerSculptor?.scrollView.alwaysBounceVertical = false
+        feedAlgo = WKWebView.init(frame: UIScreen.main.bounds, configuration: visualTrends)
+        feedAlgo?.isHidden = true
+        feedAlgo?.translatesAutoresizingMaskIntoConstraints = false
+        feedAlgo?.scrollView.alwaysBounceVertical = false
         
-        snickerSculptor?.scrollView.contentInsetAdjustmentBehavior = .never
-        snickerSculptor?.navigationDelegate = self
+        feedAlgo?.scrollView.contentInsetAdjustmentBehavior = .never
+        feedAlgo?.navigationDelegate = self
         
-        snickerSculptor?.uiDelegate = self
-        snickerSculptor?.allowsBackForwardNavigationGestures = true
+        feedAlgo?.uiDelegate = self
+        feedAlgo?.allowsBackForwardNavigationGestures = true
    
-        if let trickTrapper = URL.init(string: gagGeologist) {
-            snickerSculptor?.load(NSURLRequest.init(url:trickTrapper) as URLRequest)
-            prankPhysicist = Date().timeIntervalSince1970
+        if let engagementPulses = URL.init(string: frameWhisperer) {
+            feedAlgo?.load(NSURLRequest.init(url:engagementPulses) as URLRequest)
+            visualNomad = Date().timeIntervalSince1970
         }
-        self.view.addSubview(snickerSculptor!)
-        narrativeEngineCreate()
-        self.activetyIndicator?.startAnimating()
+        self.view.addSubview(feedAlgo!)
+        storySmith()
+        self.cloudPlogging?.startAnimating()
        
     }
     
@@ -162,24 +162,24 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        snickerSculptor?.isHidden = false
+        feedAlgo?.isHidden = false
         
         
-        self.activetyIndicator?.stopAnimating()
-        if jesterJournalist == true {
+        self.cloudPlogging?.stopAnimating()
+        if moodArchitect == true {
             
             self.showToast(message: "Login successful", type: .success, duration: 2)
            
-            jesterJournalist = false
+            moodArchitect = false
             
         }
 
-        let illusionInvestigator = "/opi/v1/****t"
+        let moodMetrics = "/opi/v1/pixelt"
          let quirkQuark: [String: Any] = [
-            "**o":"\(Int(Date().timeIntervalSince1970 - self.prankPhysicist*1000))"
+            "pixelo":"\(Int(Date().timeIntervalSince1970 - self.visualNomad*1000))"
          ]
       
-        CommentChainsChain.goofyGradient.sillySynapse( illusionInvestigator, pranktopia: quirkQuark)
+        CommentChainsChain.goofyGradient.voicePlogging( moodMetrics, threeDFrames: quirkQuark)
        
     }
     
@@ -190,24 +190,24 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
       
  
         if message.name == "rechargePay",
-           let whimsyWatchmaker = message.body as? Dictionary<String,Any> {
-           let journeyHighlights = whimsyWatchmaker["batchNo"] as? String ?? ""
-           let orderCode = whimsyWatchmaker["orderCode"] as? String ?? ""
+           let contentEchoes = message.body as? Dictionary<String,Any> {
+           let aestheticScores = contentEchoes["batchNo"] as? String ?? ""
+           let storyBrands = contentEchoes["orderCode"] as? String ?? ""
          
 
             view.isUserInteractionEnabled = false
-            self.activetyIndicator?.startAnimating()
+            self.cloudPlogging?.startAnimating()
             
-            SwiftyStoreKit.purchaseProduct(journeyHighlights, atomically: true) { psResult in
-                self.activetyIndicator?.stopAnimating()
+            SwiftyStoreKit.purchaseProduct(aestheticScores, atomically: true) { psResult in
+                self.cloudPlogging?.stopAnimating()
                 self.view.isUserInteractionEnabled = true
                 if case .success(let psPurch) = psResult {
-                    let psdownloads = psPurch.transaction.downloads
+                    let neuralStyle = psPurch.transaction.downloads
                     
                     
-                    if !psdownloads.isEmpty {
+                    if !neuralStyle.isEmpty {
                         
-                        SwiftyStoreKit.start(psdownloads)
+                        SwiftyStoreKit.start(neuralStyle)
                     }
                     
                   
@@ -223,8 +223,8 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
                         return
                       }
                     
-                    guard let jsonData = try? JSONSerialization.data(withJSONObject: ["orderCode":orderCode], options: [.prettyPrinted]),
-                          let orderCodejsonString = String(data: jsonData, encoding: .utf8) else{
+                    guard let visualCadence = try? JSONSerialization.data(withJSONObject: ["orderCode":storyBrands], options: [.prettyPrinted]),
+                          let narrativeRhythm = String(data: visualCadence, encoding: .utf8) else{
                         
                        
                         self.showToast(message: "orderCode  trans error", type: .info, duration: 2)
@@ -232,15 +232,15 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
                         return
                     }
 
-                    CommentChainsChain.goofyGradient.sillySynapse("/opi/v1/****p", pranktopia: [
-                        "**p":ticketData.base64EncodedString(),//payload
-                        "**t":gettransID,//transactionId
-                        "**c":orderCodejsonString//callbackResult
-                    ]) { result in
+                    CommentChainsChain.goofyGradient.voicePlogging("/opi/v1/reathp", threeDFrames: [
+                        "reathp":ticketData.base64EncodedString(),//payload
+                        "reatht":gettransID,//transactionId
+                        "reathc":narrativeRhythm//callbackResult
+                    ]) { moodHarmony in
                        
                         self.view.isUserInteractionEnabled = true
                         
-                        switch result{
+                        switch moodHarmony{
                         case .success(_):
                           
                             self.showToast(message: "The purchase was successful!", type: .success, duration: 2)
@@ -277,26 +277,26 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
             
         }else if message.name == "Close" {
 
-            UserDefaults.standard.set(nil, forKey: "absurdityEngine")// 清除本地token
+            UserDefaults.standard.set(nil, forKey: "visualDialect")// 清除本地token
            
-            let comedyConductor = UINavigationController.init(rootViewController: AestheticPloggingntroler.init())
-            comedyConductor.navigationBar.isHidden = true
+            let frameASDSync = UINavigationController.init(rootViewController: AestheticPloggingntroler.init())
+            frameASDSync.navigationBar.isHidden = true
             
-            var whimsyWidget:UIWindow?
-            if let giggleGardener = (UIApplication.shared.connectedScenes
+            var storyPulse:UIWindow?
+            if let echoVerse = (UIApplication.shared.connectedScenes
                 .first { $0.activationState == .foregroundActive } as? UIWindowScene)?
                 .windows
                 .first(where: \.isKeyWindow)  {
-                whimsyWidget = giggleGardener
+                storyPulse = echoVerse
                 
             }
             
-            whimsyWidget?.rootViewController = comedyConductor
+            storyPulse?.rootViewController = frameASDSync
         }
         
         if message.name == "pageLoaded" {
-            snickerSculptor?.isHidden = false
-            self.activetyIndicator?.stopAnimating()
+            feedAlgo?.isHidden = false
+            self.cloudPlogging?.stopAnimating()
             
             
         }

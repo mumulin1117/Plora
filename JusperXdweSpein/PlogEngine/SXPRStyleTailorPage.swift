@@ -172,7 +172,7 @@ class SXPRStyleTailorPage: UIViewController {
             var newInfo = Dictionary<String,Any>()
             newInfo["frameluxe"] = user["frameluxe"]
             newInfo["echozoa"] = user["echozoa"]
-            currentuserloginINfomation = newInfo
+            TrrendTides = newInfo
             ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController = SXPRMainbarPage.init()
             
          

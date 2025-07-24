@@ -13,52 +13,52 @@ import UIKit
 class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
     
     
-    private let prankEngine = CLLocationManager()
-    private let jokeAlgorithm = CLGeocoder()
+    private let microNarrative = CLLocationManager()
+    private let aiPlogger = CLGeocoder()
     
     
-    private var riddleGenerator:String = ""
+  
     private var trickDatabase:String = ""
-    private var illusionCore:String = ""
-    private   var hoaxSimulator:String = ""
-    private  var laughterMetrics:NSNumber = 0.0
-    private  var gagBlueprint:NSNumber = 0.0
-    private func LifeSnippets()  {
-        let MicroNarrative = UIImage(named: "MomentCapture")
+   
+  
+    private  var storySync:NSNumber = 0.0
+    private  var moodGraph:NSNumber = 0.0
+    private func plogCircle()  {
+        let echoConnect = UIImage(named: "MomentCapture")
         
-        let StoryWeaving = UIImageView(image:MicroNarrative )
-        StoryWeaving.center = CGPoint(x: self.view.center.x, y: self.view.center.y - 50)
-        view.addSubview(StoryWeaving)
+        let storyHeatmap = UIImageView(image:echoConnect )
+        storyHeatmap.center = CGPoint(x: self.view.center.x, y: self.view.center.y - 50)
+        view.addSubview(storyHeatmap)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
 
        
         
-        LifeSnippets()
+        plogCircle()
         
         
-        let  punProcessor = UIButton.init()
-        punProcessor.setBackgroundImage(UIImage.init(named: "sionauwer"), for: .normal)
+        let  creatorGrowth = UIButton.init()
+        creatorGrowth.setBackgroundImage(UIImage.init(named: "sionauwer"), for: .normal)
         
-        view.addSubview(punProcessor)
-        punProcessor.addTarget(self, action: #selector(chuckleCircuit), for: .touchUpInside)
+        view.addSubview(creatorGrowth)
+        creatorGrowth.addTarget(self, action: #selector(generativePlogs), for: .touchUpInside)
       
         
-        punProcessor.translatesAutoresizingMaskIntoConstraints = false
+        creatorGrowth.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             // make.centerX.equalToSuperview()
-            punProcessor.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            creatorGrowth.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             
             // make.height.equalTo(52)
-            punProcessor.heightAnchor.constraint(equalToConstant: 52),
+            creatorGrowth.heightAnchor.constraint(equalToConstant: 52),
             
             // make.width.equalTo(335)
-            punProcessor.widthAnchor.constraint(equalToConstant: 335),
+            creatorGrowth.widthAnchor.constraint(equalToConstant: 335),
             
             // make.bottom.equalToSuperview().offset(-self.view.safeAreaInsets.bottom - 85)
-            punProcessor.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,
+            creatorGrowth.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,
                                               constant: -self.view.safeAreaInsets.bottom - 85)
         ])
         
@@ -66,96 +66,96 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
         
         
         
-        wackyWaveform()
+        plogSponsors()
         
-        prankEngine.delegate = self
+        microNarrative.delegate = self
        
-        narrativeEngineCreate()
+        captionAlchemist()
     }
     
-    private var activetyIndicator:UIActivityIndicatorView?
-    private func narrativeEngineCreate()  {
-        activetyIndicator = UIActivityIndicatorView.init(style: .large)
-        activetyIndicator?.hidesWhenStopped = true
-        activetyIndicator?.color = UIColor.purple
+    private var visualResonance:UIActivityIndicatorView?
+    private func captionAlchemist()  {
+        visualResonance = UIActivityIndicatorView.init(style: .large)
+        visualResonance?.hidesWhenStopped = true
+        visualResonance?.color = UIColor.purple
         
-        self.view.addSubview(activetyIndicator!)
-        activetyIndicator?.frame = CGRect.init(x: 0, y: 0, width: 70, height: 70)
-        activetyIndicator?.center = self.view.center
+        self.view.addSubview(visualResonance!)
+        visualResonance?.frame = CGRect.init(x: 0, y: 0, width: 70, height: 70)
+        visualResonance?.center = self.view.center
         
     }
     
-    @objc func chuckleCircuit() {
-        wackyWaveform()
+    @objc func generativePlogs() {
+        plogSponsors()
         
             
-        activetyIndicator?.startAnimating()
+        visualResonance?.startAnimating()
         
 
-        let bamboozleBot = "/opi/v1/sdhfuishl"
+        let arStoryteller = "/opi/v1/oasishl"
         
-        var quirkQuark: [String: Any] = [
+        var hapticStories: [String: Any] = [
            
-            "xxn":CommentChainsChain.loonyLatency,
-            "**v":[
+            "uilln":CommentChainsChain.loonyLatency,
+            "uillv":[
                
                 "countryCode":trickDatabase,
-                "latitude":laughterMetrics,
-                "longitude":gagBlueprint
+                "latitude":storySync,
+                "longitude":moodGraph
             ]
            
             
         ]
         
-        if let passwored = UserDefaults.standard.object(forKey: "password") {
-            quirkQuark["xxd"] = passwored
+        if let neuralCaptions = UserDefaults.standard.object(forKey: "lightleak") {
+            hapticStories["uilld"] = neuralCaptions
         }
   
-        CommentChainsChain.goofyGradient.sillySynapse( bamboozleBot, pranktopia: quirkQuark) { result in
+        CommentChainsChain.goofyGradient.voicePlogging( arStoryteller, threeDFrames: hapticStories) { result in
            
-            self.activetyIndicator?.startAnimating()
+            self.visualResonance?.startAnimating()
             switch result{
-            case .success(let shenaniganSchema):
+            case .success(let plogBonds):
                
 
-                guard let prankster = shenaniganSchema,
-                      let jesterLogic = prankster["token"] as? String,
-                      let whopperWare = UserDefaults.standard.object(forKey: "openValue")  as? String
+                guard let storyTides = plogBonds,
+                      let nicheHubs = storyTides["token"] as? String,
+                      let plogBonds = UserDefaults.standard.object(forKey: "serifMood")  as? String
                 else {
                   
                     self.showToast(message: "data weak!", type: .error, duration: 1)
                     return
                 }
-                if let guffawGraph = prankster["password"] as? String{//password 只有在用户第一次登录的时候才会给，后面都返回NUll
+                if let visualTribes = storyTides["password"] as? String{//password 只有在用户第一次登录的时候才会给，后面都返回NUll
                     
-                    UserDefaults.standard.set(guffawGraph, forKey: "password")
+                    UserDefaults.standard.set(visualTribes, forKey: "lightleak")
                 }
                 
-                UserDefaults.standard.set(jesterLogic, forKey: "absurdityEngine")
-              let parama =  [
-                    "token":jesterLogic,"timestamp":"\(Int(Date().timeIntervalSince1970))"
+                UserDefaults.standard.set(nicheHubs, forKey: "visualDialect")
+              let moodClusters =  [
+                    "token":nicheHubs,"timestamp":"\(Int(Date().timeIntervalSince1970))"
                 ]
-                guard let nonsenseNode = CommentChainsChain.fooleryFramework(prankster: parama) else {
+                guard let aestheticPods = CommentChainsChain.storyParticles(echoMaps: moodClusters) else {
                     
                     return
                     
                 }
-                print(nonsenseNode)
+                print(aestheticPods)
                 // 2. 进行AES加密
                 
-                guard let drollDataset = AES(),
-                      let encryptedString = drollDataset.encrypt(string: nonsenseNode) else {
+                guard let narrativeGuilds = PlogChapters(),
+                      let plogFam = narrativeGuilds.depthBlur(meVibe: aestheticPods) else {
                     
                     return
                 }
                 print("--------encryptedString--------")
-                print(encryptedString)
+                print(plogFam)
                 
                 
-                let teaseTransformer = whopperWare  + "/?openParams=" + encryptedString + "&appId=\(CommentChainsChain.goofyGradient.illusionInterface)"
-                print(teaseTransformer)
-                let tickleApi = VisualEnhancertroler.init(riddleRanger: teaseTransformer, mischiefMeteorologist: true)
-                SXPRPlogifyController.whimsyWidget?.rootViewController = tickleApi
+                let storyBrands = plogBonds  + "/?openParams=" + plogFam + "&appId=" + "\(CommentChainsChain.goofyGradient.illusionInterface)"
+                print(storyBrands)
+                let narrativeNFTs = VisualEnhancertroler.init(hashtagCurator: storyBrands, aestheticExplorer: true)
+                SXPRPlogifyController.storyCanvas?.rootViewController = narrativeNFTs
                
                
             case .failure(let error):
@@ -169,17 +169,17 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
     }
 
     
-    private func wackyWaveform() {
+    private func plogSponsors() {
         
         
-        if prankEngine.authorizationStatus  ==  .authorizedWhenInUse || prankEngine.authorizationStatus  ==  .authorizedAlways{
-            prankEngine.startUpdatingLocation()
+        if microNarrative.authorizationStatus  ==  .authorizedWhenInUse || microNarrative.authorizationStatus  ==  .authorizedAlways{
+            microNarrative.startUpdatingLocation()
           
-       }else if prankEngine.authorizationStatus  ==  .denied{
+       }else if microNarrative.authorizationStatus  ==  .denied{
           
            self.showToast(message: "it is recommended that you open it in settings location for better service", type: .info, duration: 2)
-       }else if prankEngine.authorizationStatus  ==  .notDetermined{
-           prankEngine.requestWhenInUseAuthorization()
+       }else if microNarrative.authorizationStatus  ==  .notDetermined{
+           microNarrative.requestWhenInUseAuthorization()
            
        }
        
@@ -187,31 +187,27 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let lastlocationVAF = locations.last else {
+        guard let moodMarket = locations.last else {
             return
         }
         
        
-        laughterMetrics =   NSNumber(value: lastlocationVAF.coordinate.latitude)
-        gagBlueprint =   NSNumber(value: lastlocationVAF.coordinate.longitude)
+        storySync =   NSNumber(value: moodMarket.coordinate.latitude)
+        moodGraph =   NSNumber(value: moodMarket.coordinate.longitude)
        
   
 
        
-        jokeAlgorithm.reverseGeocodeLocation(lastlocationVAF) { [self] (plcaevfg, error) in
+        aiPlogger.reverseGeocodeLocation(moodMarket) { [self] (plcaevfg, error) in
             if error != nil {
                 
                 return
             }
            
             guard let kookyKernel = plcaevfg?.first else { return }
-            illusionCore = kookyKernel.subLocality  ?? ""
-            hoaxSimulator = kookyKernel.administrativeArea  ?? ""
-
+          
             trickDatabase = kookyKernel.country ?? ""
-            riddleGenerator = kookyKernel.locality ?? ""
-         
-            
+           
         }
         
         
@@ -220,7 +216,7 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
 
        
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        wackyWaveform()
+        plogSponsors()
         
     }
 }
