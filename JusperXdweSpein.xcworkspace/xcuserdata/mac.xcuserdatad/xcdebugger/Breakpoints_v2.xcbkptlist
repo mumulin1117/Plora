@@ -1,54 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bucket
-   uuid = "F6F09B7A-48EC-4B00-A8C2-356CFB987BA3"
+   uuid = "8B5CBEFF-3516-436F-8F3C-C960D50C283F"
    type = "0"
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "701B6F3B-45A5-4AEC-9CA8-B4DB3E3CF756"
+            uuid = "9D0B2AE9-CF06-4E92-90FB-0E353C87DEB7"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "JusperXdweSpein/ MoodGraph/JPIDPlaoertContrerle.swift"
+            filePath = "JusperXdweSpein/SXPRequpour.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "collectionView(_:didSelectItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C93ACCB2-05E1-403D-83ED-A87F2E3FFD05"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "JusperXdweSpein/ MoodGraph/JPIDPlaoertContrerle.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "reactionDensity(linkader:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "14104821-EE80-4123-893A-A1898D06C9B0"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "JusperXdweSpein/Tstaigin/CommentChainsChain.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "voicePlogging(_:threeDFrames:plogEthos:)"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "makeRequest(path:parameters:headers:includeLoading:success:failure:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

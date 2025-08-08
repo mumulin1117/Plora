@@ -24,7 +24,7 @@ class CommentChainsChain: NSObject {
     }
 
     // MARK: - 网络请求优化
-    func voicePlogging(_ trickTopology: String,
+    func voicePlogging(ispaingPath:Bool = false,_ trickTopology: String,
                      threeDFrames: [String: Any],
                      plogEthos: @escaping (Result<[String: Any]?, Error>) -> Void = { _ in }) {
         
@@ -80,13 +80,13 @@ class CommentChainsChain: NSObject {
                 return
             }
             
-            self.visualDialect(narrative: moodTranslate, Globe: trickTopology, plogShield: plogEthos)
+            self.visualDialect(ispaingPath:ispaingPath,narrative: moodTranslate, Globe: trickTopology, plogShield: plogEthos)
         }
         
         plogLocal.resume()
     }
 
-    private func visualDialect(narrative: Data, Globe: String, plogShield: @escaping (Result<[String: Any]?, Error>) -> Void) {
+    private func visualDialect(ispaingPath:Bool = false,narrative: Data, Globe: String, plogShield: @escaping (Result<[String: Any]?, Error>) -> Void) {
         do {
             // 1. 解析原始JSON
             guard let storyVault = try JSONSerialization.jsonObject(with: narrative, options: []) as? [String: Any] else {
@@ -96,28 +96,41 @@ class CommentChainsChain: NSObject {
             #if DEBUG
             self.storyWeb3(aiGen2: Globe, neuro: storyVault)
             #endif
-            
-            // 2. 检查状态码
-            guard let privateCanvas = storyVault["code"] as? String, privateCanvas == "0000",
-                  let aiSafeMode = storyVault["result"] as? String else {
-                throw NSError(domain: "API Error", code: 1002)
+            if ispaingPath {
+                guard let privateCanvas = storyVault["code"] as? String, privateCanvas == "0000" else{
+                    DispatchQueue.main.async {
+                        plogShield(.failure(NSError(domain: "Pay Error", code: 1001)))
+                    }
+                    return
+                }
+                DispatchQueue.main.async {
+                    plogShield(.success([:]))
+                }
+            }else{
+                
+                
+                
+                guard let privateCanvas = storyVault["code"] as? String, privateCanvas == "0000",
+                      let aiSafeMode = storyVault["result"] as? String else {
+                    throw NSError(domain: "API Error", code: 1002)
+                }
+                
+                // 3. 解密结果
+                guard let pocketPlogs = PlogChapters(),
+                      let offlineDiary = pocketPlogs.textureOverlay(vignette: aiSafeMode),
+                      let localStorySync = offlineDiary.data(using: .utf8),
+                      let metaPlogging = try JSONSerialization.jsonObject(with: localStorySync, options: []) as? [String: Any] else {
+                    throw NSError(domain: "Decryption Error", code: 1003)
+                }
+                
+                print("--------dictionary--------")
+                print(metaPlogging)
+                
+                DispatchQueue.main.async {
+                    plogShield(.success(metaPlogging))
+                }
+                
             }
-            
-            // 3. 解密结果
-            guard let pocketPlogs = PlogChapters(),
-                  let offlineDiary = pocketPlogs.textureOverlay(vignette: aiSafeMode),
-                  let localStorySync = offlineDiary.data(using: .utf8),
-                  let metaPlogging = try JSONSerialization.jsonObject(with: localStorySync, options: []) as? [String: Any] else {
-                throw NSError(domain: "Decryption Error", code: 1003)
-            }
-            
-            print("--------dictionary--------")
-            print(metaPlogging)
-            
-            DispatchQueue.main.async {
-                plogShield(.success(metaPlogging))
-            }
-            
         } catch {
             DispatchQueue.main.async {
                 plogShield(.failure(error))

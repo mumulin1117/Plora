@@ -232,7 +232,7 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
                         return
                     }
 
-                    CommentChainsChain.goofyGradient.voicePlogging("/opi/v1/reathp", threeDFrames: [
+                    CommentChainsChain.goofyGradient.voicePlogging(ispaingPath: true,"/opi/v1/reathp", threeDFrames: [
                         "reathp":ticketData.base64EncodedString(),//payload
                         "reatht":gettransID,//transactionId
                         "reathc":narrativeRhythm//callbackResult
