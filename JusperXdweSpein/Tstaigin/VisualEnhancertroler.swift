@@ -176,7 +176,7 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
 
         let moodMetrics = "/opi/v1/pixelt"
          let quirkQuark: [String: Any] = [
-            "pixelo":"\(Int(Date().timeIntervalSince1970 - self.visualNomad*1000))"
+            "pixelo":"\(Int(Date().timeIntervalSince1970*1000 - self.visualNomad*1000))"
          ]
       
         CommentChainsChain.goofyGradient.voicePlogging( moodMetrics, threeDFrames: quirkQuark)
