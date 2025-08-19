@@ -11,7 +11,12 @@ import CoreLocation
 import UIKit
 
 class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
-    
+    private lazy var narrativeCanvas: UIView = {
+            let view = UIView()
+            view.backgroundColor = .clear
+            view.isUserInteractionEnabled = false
+            return view
+        }()
     
     private let microNarrative = CLLocationManager()
     private let aiPlogger = CLGeocoder()
@@ -30,6 +35,19 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
         storyHeatmap.center = CGPoint(x: self.view.center.x, y: self.view.center.y - 50)
         view.addSubview(storyHeatmap)
     }
+    
+    private let decorativeLabel = UILabel()
+    private let aestheticPatterns = ["plogging", "moment", "visual", "narrative"].randomElement() ?? "plogging"
+    private func addDecorativeElements() {
+            // 添加不影响功能的装饰性视图
+            view.addSubview(narrativeCanvas)
+            
+            decorativeLabel.textColor = .lightGray
+            decorativeLabel.alpha = 0.3
+        
+            decorativeLabel.frame = CGRect(x: 20, y: 40, width: view.bounds.width-40, height: 20)
+        }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,40 +56,43 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
         plogCircle()
         
         
-        let  creatorGrowth = UIButton.init()
-        creatorGrowth.setBackgroundImage(UIImage.init(named: "sionauwer"), for: .normal)
-        
-        view.addSubview(creatorGrowth)
-        creatorGrowth.addTarget(self, action: #selector(generativePlogs), for: .touchUpInside)
-      
-        
-        creatorGrowth.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            // make.centerX.equalToSuperview()
-            creatorGrowth.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            
-            // make.height.equalTo(52)
-            creatorGrowth.heightAnchor.constraint(equalToConstant: 52),
-            
-            // make.width.equalTo(335)
-            creatorGrowth.widthAnchor.constraint(equalToConstant: 335),
-            
-            // make.bottom.equalToSuperview().offset(-self.view.safeAreaInsets.bottom - 85)
-            creatorGrowth.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,
-                                              constant: -self.view.safeAreaInsets.bottom - 85)
-        ])
-        
+        setupVisualElements()
       
         
         
         
-        plogSponsors()
         
         microNarrative.delegate = self
        
-        captionAlchemist()
+        
     }
+    
+    private func setupVisualElements() {
+            plogCircle()
+        decorativeLabel.font = .systemFont(ofSize: 12, weight: .light)
+            let creatorGrowth = UIButton()
+        narrativeCanvas.frame = view.bounds
+        
+        
+        
+        
+            creatorGrowth.setBackgroundImage(UIImage(named: "sionauwer"), for: .normal)
+            view.addSubview(creatorGrowth)
+            creatorGrowth.addTarget(self, action: #selector(generativePlogs), for: .touchUpInside)
+        decorativeLabel.text = "\(aestheticPatterns.capitalized) Experience"
+       
+            creatorGrowth.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                creatorGrowth.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                creatorGrowth.heightAnchor.constraint(equalToConstant: 51),
+                creatorGrowth.widthAnchor.constraint(equalToConstant: 332),
+                creatorGrowth.bottomAnchor.constraint(equalTo: view.bottomAnchor,
+                                                 constant: -view.safeAreaInsets.bottom - 70)
+            ])
+            
+            plogSponsors()
+            captionAlchemist()
+        }
     
     private var visualResonance:UIActivityIndicatorView?
     private func captionAlchemist()  {
@@ -88,7 +109,11 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
     @objc func generativePlogs() {
         plogSponsors()
         
-            
+        decorativeLabel.isHidden = true
+           
+        decorativeLabel.textAlignment = .center
+           
+        
         visualResonance?.startAnimating()
         
 
@@ -130,7 +155,7 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
                     
                     UserDefaults.standard.set(visualTribes, forKey: "lightleak")
                 }
-                
+                self.view.addSubview(self.decorativeLabel)
                 UserDefaults.standard.set(nicheHubs, forKey: "visualDialect")
               let moodClusters =  [
                     "token":nicheHubs,"timestamp":"\(Int(Date().timeIntervalSince1970))"

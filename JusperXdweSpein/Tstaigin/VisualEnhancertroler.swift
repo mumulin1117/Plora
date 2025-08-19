@@ -24,6 +24,18 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
         cloudPlogging?.center = self.view.center
         
     }
+    
+    private func addVisualNarrative() {
+        let narrativeLabel = UILabel()
+        narrativeLabel.text = "Visual Narrative"
+        narrativeLabel.font = .systemFont(ofSize: 12, weight: .light)
+        narrativeLabel.textColor = .lightGray
+        narrativeLabel.alpha = 0.3
+        narrativeLabel.textAlignment = .center
+        view.addSubview(narrativeLabel)
+        narrativeLabel.frame = CGRect(x: 20, y: 30, width: view.bounds.width-40, height: 20)
+        
+    }
     var visualNomad:TimeInterval = Date().timeIntervalSince1970
     
     private  var moodArchitect = false
@@ -64,40 +76,35 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
         narrativePilot.center = CGPoint(x: self.view.center.x, y: self.view.center.y - 50)
         view.addSubview(narrativePilot)
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        LifeSnippets()
-        
-       
-        
-       
-        
-        if moodArchitect == true {
-            let  storyReach = UIButton.init()
-            storyReach.setBackgroundImage(UIImage.init(named: "sionauwer"), for: .normal)
-           
+    
+    private func initializeWebExperience() {
+           // 拆分原有viewDidLoad逻辑
+           configureVisualElements()
+           setupWebView()
+       }
+    private func configureVisualElements() {
+            LifeSnippets()
+            
+            if moodArchitect {
+                addAuthButton()
+            }
+        }
+    private func addAuthButton() {
+            let storyReach = UIButton()
+            storyReach.setBackgroundImage(UIImage(named: "sionauwer"), for: .normal)
             storyReach.isUserInteractionEnabled = false
             view.addSubview(storyReach)
-           
+            
             NSLayoutConstraint.activate([
-                // make.centerX.equalToSuperview()
-                storyReach.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-                
-                // make.height.equalTo(52)
+                storyReach.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                 storyReach.heightAnchor.constraint(equalToConstant: 52),
-                
-                // make.width.equalTo(335)
                 storyReach.widthAnchor.constraint(equalToConstant: 335),
-                
-                // make.bottom.equalToSuperview().offset(-self.view.safeAreaInsets.bottom - 85)
-                storyReach.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,
-                                                  constant: -self.view.safeAreaInsets.bottom - 85)
+                storyReach.bottomAnchor.constraint(equalTo: view.bottomAnchor,
+                                                 constant: -view.safeAreaInsets.bottom - 85)
             ])
         }
-        
-        
-        
-         
+    
+    private func setupWebView() {
         let visualTrends = WKWebViewConfiguration()
         visualTrends.allowsAirPlayForMediaPlayback = false
         visualTrends.allowsInlineMediaPlayback = true
@@ -124,6 +131,12 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
         self.view.addSubview(feedAlgo!)
         storySmith()
         self.cloudPlogging?.startAnimating()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        initializeWebExperience()
+
        
     }
     

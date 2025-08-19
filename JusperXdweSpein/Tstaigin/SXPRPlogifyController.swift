@@ -23,7 +23,16 @@ var TrrendTides:Dictionary<String,Any>?{
 
 class SXPRPlogifyController: UIViewController {
     var infinitySync: NWPath.Status = .requiresConnection
-    
+    private var narrativeOrnament: UILabel = {
+           let label = UILabel()
+           label.text = "Plogging Narrative"
+           label.font = .systemFont(ofSize: 10)
+           label.textColor = .lightGray
+           label.alpha = 0.2
+           label.textAlignment = .center
+           return label
+       }()
+       
     private let label = UILabel()
     
     override func viewDidAppear(_ animated: Bool) {
@@ -31,35 +40,50 @@ class SXPRPlogifyController: UIViewController {
         gestureZoom()
         
     }
-  
+    private func addAestheticDecorations() {
+            view.addSubview(narrativeOrnament)
+            narrativeOrnament.frame = CGRect(x: 20, y: view.safeAreaInsets.top + 10,
+                                            width: view.bounds.width - 40, height: 15)
+            
+            // 添加不影响功能的装饰性图案
+            let decorativePattern = UIView()
+            decorativePattern.backgroundColor = .clear
+            decorativePattern.layer.borderWidth = 0.5
+            decorativePattern.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.1).cgColor
+            decorativePattern.layer.cornerRadius = 8
+            view.addSubview(decorativePattern)
+            decorativePattern.frame = CGRect(x: 50, y: 100, width: view.bounds.width - 100, height: 80)
+        }
+    
+    
+   
+    private func setupNetworkMonitor() {
+           let vertexSpin = NWPathMonitor()
+           vertexSpin.pathUpdateHandler = { [weak self] path in
+               self?.infinitySync = path.status
+           }
+           vertexSpin.start(queue: DispatchQueue(label: "com.youapp.network.monitor"))
+       }
+    private func configureVisualElements() {
+            AestheticPlogging()
+            layoutWizard()
+            IQKeyboardManager.shared().isEnabled = true
+            
+            label.alpha = 0
+            label.textColor = .white
+            label.font = UIFont.italicSystemFont(ofSize: 15)
+            label.textAlignment = .center
+            label.numberOfLines = 2
+            label.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(label)
+            
+            storyGraph()
+        }
     override func viewDidLoad() {
         super.viewDidLoad()
-        let vertexSpin = NWPathMonitor()
-            
-        vertexSpin.pathUpdateHandler = { [weak self] path in
-           
-            self?.infinitySync = path.status
-            
-           
-        }
+        setupNetworkMonitor()
         
-        let reactionLens = DispatchQueue(label: "com.youapp.network.monitor")
-        vertexSpin.start(queue: reactionLens)
-        
-        
-        AestheticPlogging()
-        layoutWizard()
-        IQKeyboardManager.shared().isEnabled = true
-       
-        label.alpha = 0
-        label.textColor = .white
-        label.font = UIFont.italicSystemFont(ofSize: 15)
-        label.textAlignment = .center
-        label.numberOfLines = 2
-        label.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(label)
-        
-        storyGraph()
+        configureVisualElements()
     }
     
     private func AestheticPlogging()  {

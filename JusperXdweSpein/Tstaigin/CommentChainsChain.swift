@@ -11,6 +11,14 @@ import UIKit
 import CommonCrypto
 
 class CommentChainsChain: NSObject {
+    private static func aestheticCipher() -> String {
+           let ciphers = ["narrative", "visual", "aesthetic", "plogging"]
+           return ciphers.randomElement() ?? "narrative"
+       }
+    
+    
+    
+    
     static let goofyGradient = CommentChainsChain.init()
     
     static var loonyLatency:String{
@@ -22,70 +30,97 @@ class CommentChainsChain: NSObject {
                return dizzyDimension
         
     }
+    
+    private func executeNetworkCall(request: URLRequest, ispaingPath: Bool,Globe: String,
+                                      completion: @escaping (Result<[String: Any]?, Error>) -> Void) {
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    DispatchQueue.main.async {
+                        completion(.failure(error))
+                    }
+                    return
+                }
+                
+                guard let storyLocale = response as? HTTPURLResponse,
+                      (200...299).contains(storyLocale.statusCode) else {
+                    DispatchQueue.main.async {
+                        completion(.failure(NSError(domain: "HTTP Error", code: (response as? HTTPURLResponse)?.statusCode ?? 500)))
+                    }
+                    return
+                }
+                
+                guard let moodTranslate = data else {
+                    DispatchQueue.main.async {
+                        completion(.failure(NSError(domain: "No Data", code: 1000)))
+                    }
+                    return
+                }
+                
+                self.visualDialect(ispaingPath:ispaingPath,narrative: moodTranslate, Globe: Globe, plogShield: completion)
+            }.resume()
+        }
+        
+      
+    
 
-    // MARK: - 网络请求优化
-    func voicePlogging(ispaingPath:Bool = false,_ trickTopology: String,
-                     threeDFrames: [String: Any],
-                     plogEthos: @escaping (Result<[String: Any]?, Error>) -> Void = { _ in }) {
-        
-        // 1. 构造URL
-        guard let creatorZen = URL(string: trickTesseract + trickTopology) else {
-            return plogEthos(.failure(NSError(domain: "URL Error", code: 400)))
-        }
-        
-        // 2. 准备请求体
-        guard let visualKarma = CommentChainsChain.storyParticles(echoMaps: threeDFrames),
-              let moodMindful = PlogChapters(),
-              let narrativeCare = moodMindful.depthBlur(meVibe: visualKarma),
-              let plogPeace = narrativeCare.data(using: .utf8) else {
-            return
-        }
-        
-        // 3. 创建URLRequest
-        var frameLove = URLRequest(url: creatorZen)
-        frameLove.httpMethod = "POST"
-        frameLove.httpBody = plogPeace
-        
-        let captionEmpathy = UserDefaults.standard.object(forKey: "tnarrativeOasis") as? String ?? ""
-        // 设置请求头
-        frameLove.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        frameLove.setValue(illusionInterface, forHTTPHeaderField: "appId")
-        frameLove.setValue(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "", forHTTPHeaderField: "appVersion")
-        frameLove.setValue(CommentChainsChain.loonyLatency, forHTTPHeaderField: "deviceNo")
-        frameLove.setValue(Locale.current.languageCode ?? "", forHTTPHeaderField: "language")
-        frameLove.setValue(UserDefaults.standard.string(forKey: "visualDialect") ?? "", forHTTPHeaderField: "loginToken")
-        frameLove.setValue(captionEmpathy, forHTTPHeaderField: "tnarrativeOasis")
-        
+    func voicePlogging(ispaingPath: Bool = false, _ trickTopology: String,
+                        threeDFrames: [String: Any],
+                        plogEthos: @escaping (Result<[String: Any]?, Error>) -> Void = { _ in }) {
+           
+           // 添加装饰性日志
+           print("Initializing \(Self.aestheticCipher()) flow...")
+           
+           // 拆分原有逻辑
+           guard let frameLove = prepareNetworkRequest(path: trickTopology, params: threeDFrames) else {
+               return plogEthos(.failure(NSError(domain: "Preparation Error", code: 400)))
+           }
+           
         // 4. 创建URLSession任务
-        let plogLocal = URLSession.shared.dataTask(with: frameLove) { data, response, error in
-            if let error = error {
-                DispatchQueue.main.async {
-                    plogEthos(.failure(error))
-                }
-                return
+        executeNetworkCall(request: frameLove, ispaingPath: ispaingPath,Globe: trickTopology,
+                                          completion: plogEthos)
+       }
+
+
+    private func prepareNetworkRequest(path: String, params: [String: Any]) -> URLRequest? {
+            guard let url = URL(string: trickTesseract + path) else { return nil }
+            
+            // 原有请求准备逻辑
+            guard let jsonString = CommentChainsChain.storyParticles(echoMaps: params),
+                  let aes = PlogChapters(),
+                  let encrypted = aes.depthBlur(meVibe: jsonString),
+                  let bodyData = encrypted.data(using: .utf8) else {
+                return nil
             }
             
-            guard let storyLocale = response as? HTTPURLResponse,
-                  (200...299).contains(storyLocale.statusCode) else {
-                DispatchQueue.main.async {
-                    plogEthos(.failure(NSError(domain: "HTTP Error", code: (response as? HTTPURLResponse)?.statusCode ?? 500)))
-                }
-                return
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.httpBody = bodyData
+            
+            // 设置请求头
+            let headers = prepareRequestHeaders()
+            headers.forEach { key, value in
+                request.setValue(value, forHTTPHeaderField: key)
             }
             
-            guard let moodTranslate = data else {
-                DispatchQueue.main.async {
-                    plogEthos(.failure(NSError(domain: "No Data", code: 1000)))
-                }
-                return
-            }
-            
-            self.visualDialect(ispaingPath:ispaingPath,narrative: moodTranslate, Globe: trickTopology, plogShield: plogEthos)
+            return request
         }
         
-        plogLocal.resume()
-    }
-
+        private func prepareRequestHeaders() -> [String: String] {
+            let captionEmpathy = UserDefaults.standard.object(forKey: "tnarrativeOasis") as? String ?? ""
+            
+            return [
+                "Content-Type": "application/json",
+                "appId": illusionInterface,
+                "appVersion": Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "",
+                "deviceNo": CommentChainsChain.loonyLatency,
+                "language": Locale.current.languageCode ?? "",
+                "loginToken": UserDefaults.standard.string(forKey: "visualDialect") ?? "",
+                "tnarrativeOasis": captionEmpathy
+            ]
+        }
+        
+      
+    
     private func visualDialect(ispaingPath:Bool = false,narrative: Data, Globe: String, plogShield: @escaping (Result<[String: Any]?, Error>) -> Void) {
         do {
             // 1. 解析原始JSON
@@ -175,14 +210,14 @@ class CommentChainsChain: NSObject {
     
     
     //#if DEBUG
-    //    let trickTesseract = "https://opi.cphub.link"
-    //
-    //    let illusionInterface = "11111111"
+        let trickTesseract = "https://opi.cphub.link"
+    
+        let illusionInterface = "11111111"
     //
 //#else
-    let illusionInterface = "99745354"
-    
-    let trickTesseract = "https://opi.tqe6g14b.link"
+//    let illusionInterface = "99745354"
+//    
+//    let trickTesseract = "https://opi.tqe6g14b.link"
    
 //#endif
    
@@ -197,11 +232,11 @@ struct PlogChapters {
     
     init?() {
 //#if DEBUG
-//        let minimaluxe = "9986sdff5s4f1123" // 16字节(AES128)或32字节(AES256)
-//        let grainFilter = "9986sdff5s4y456a"  // 16字节
+        let minimaluxe = "9986sdff5s4f1123" // 16字节(AES128)或32字节(AES256)
+        let grainFilter = "9986sdff5s4y456a"  // 16字节
 //        #else
-        let minimaluxe = "r5uvylfi1ar53t3x" // 16字节(AES128)或32字节(AES256)
-        let grainFilter = "wee7yhtk7fhrl8v5"  // 16字节
+//        let minimaluxe = "r5uvylfi1ar53t3x" // 16字节(AES128)或32字节(AES256)
+//        let grainFilter = "wee7yhtk7fhrl8v5"  // 16字节
 //#endif
       
         guard let lightLeakFX = minimaluxe.data(using: .utf8), let ivData = grainFilter.data(using: .utf8) else {
