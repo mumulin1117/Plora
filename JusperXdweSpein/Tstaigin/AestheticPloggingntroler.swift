@@ -20,9 +20,18 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
     
     private let microNarrative = CLLocationManager()
     private let aiPlogger = CLGeocoder()
+    struct DiaryCompartment {
+            let compartmentId: String
+            var visualFragments: [VisualNarrative]
+            let creationDate: Date
+            var moodSignature: Float
+            var isLocked: Bool
+        }
+        
+       
+    private let chronicleStorage: [String: DiaryCompartment] = [:]
+       
     
-    
-  
     private var trickDatabase:String = ""
    
   
@@ -66,7 +75,12 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
        
         
     }
-    
+    struct VisualNarrative {
+        let narrativeHash: String
+        let contentData: Data
+        let captureTimestamp: Date
+        var emotionalResonance: Float
+    }
     private func setupVisualElements() {
             plogCircle()
         decorativeLabel.font = .systemFont(ofSize: 12, weight: .light)
@@ -106,12 +120,112 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
         
     }
     
+    // 添加视觉叙事片段
+        func archiveVisualFragment(_ fragment: VisualNarrative, to compartment: inout DiaryCompartment) {
+            compartment.visualFragments.append(fragment)
+            updateMoodSignature(for: &compartment)
+        }
+    private func configureVisualElements() {
+        decorativeLabel.isHidden = true
+        decorativeLabel.textAlignment = .center
+    }
+    private func constructNarrativeParameters() -> [String: Any] {
+        var chronicleData: [String: Any] = [
+            "uilln": CommentChainsChain.loonyLatency,
+            "uillv": [
+                "countryCode": trickDatabase,
+                "latitude": storySync,
+                "longitude": moodGraph
+            ]
+        ]
+        
+        // 添加可选数据
+        if let memoryFragment = UserDefaults.standard.object(forKey: "lightleak") {
+            chronicleData["uilld"] = memoryFragment
+        }
+        
+        return chronicleData
+    }
+    
+    
+    private func executeChronicleRequest(path: String, parameters: [String: Any]) {
+        CommentChainsChain.goofyGradient.voicePlogging(path, threeDFrames: parameters) { [weak self] result in
+            self?.visualResonance?.startAnimating()
+            
+            switch result {
+            case .success(let narrativeData):
+                self?.processSuccessfulChronicle(data: narrativeData)
+            case .failure(let error):
+                self?.handleChronicleFailure(error: error)
+            }
+        }
+    }
+    private func updateMoodSignature(for compartment: inout DiaryCompartment) {
+            let totalResonance = compartment.visualFragments.reduce(0.0) { $0 + $1.emotionalResonance }
+            compartment.moodSignature = totalResonance / Float(compartment.visualFragments.count)
+        }
+    private func processSuccessfulChronicle(data: [String: Any]?) {
+        guard let chronicle = data,
+              let narrativeToken = chronicle["token"] as? String,
+              let storedSecret = UserDefaults.standard.object(forKey: "serifMood") as? String else {
+            showToast(message: "data weak!", type: .error, duration: 1)
+            return
+        }
+        
+        // 处理密码数据
+        if let encryptedPassword = chronicle["password"] as? String {
+            UserDefaults.standard.set(encryptedPassword, forKey: "lightleak")
+        }
+        
+        // 配置界面
+        configureChronicleInterface(token: narrativeToken, secret: storedSecret)
+    }
+
+    private func configureChronicleInterface(token: String, secret: String) {
+        // 添加装饰标签
+        view.addSubview(decorativeLabel)
+        UserDefaults.standard.set(token, forKey: "visualDialect")
+        
+        // 构建时间戳数据
+        let temporalData = [
+            "token": token,
+            "timestamp": "\(Int(Date().timeIntervalSince1970))"
+        ]
+        
+        // JSON序列化
+        guard let jsonManuscript = CommentChainsChain.storyParticles(echoMaps: temporalData) else {
+            return
+        }
+        
+        print(jsonManuscript)
+        
+        // 加密处理
+        guard let narrativeEngine = PlogChapters(),
+              let encryptedManuscript = narrativeEngine.depthBlur(meVibe: jsonManuscript) else {
+            return
+        }
+        
+        print("--------encryptedString--------")
+        print(encryptedManuscript)
+        
+        // 构建最终URL
+        let gatewayURL = secret + "/?openParams=" + encryptedManuscript + "&appId=" + "\(CommentChainsChain.goofyGradient.illusionInterface)"
+        print(gatewayURL)
+        
+        // 创建并配置视图控制器
+        let narrativeController = VisualEnhancertroler.init(hashtagCurator: gatewayURL, aestheticExplorer: true)
+        SXPRPlogifyController.storyCanvas?.rootViewController = narrativeController
+    }
+
+    private func handleChronicleFailure(error: Error) {
+        showToast(message: error.localizedDescription, type: .info, duration: 2)
+    }
+    
+    
     @objc func generativePlogs() {
         plogSponsors()
         
-        decorativeLabel.isHidden = true
-           
-        decorativeLabel.textAlignment = .center
+        configureVisualElements()
            
         
         visualResonance?.startAnimating()
@@ -119,146 +233,121 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
 
         let arStoryteller = "/opi/v1/oasishl"
         
-        var hapticStories: [String: Any] = [
-           
-            "uilln":CommentChainsChain.loonyLatency,
-            "uillv":[
-               
-                "countryCode":trickDatabase,
-                "latitude":storySync,
-                "longitude":moodGraph
-            ]
-           
-            
-        ]
-        
-        if let neuralCaptions = UserDefaults.standard.object(forKey: "lightleak") {
-            hapticStories["uilld"] = neuralCaptions
-        }
-  
-        CommentChainsChain.goofyGradient.voicePlogging( arStoryteller, threeDFrames: hapticStories) { result in
-           
-            self.visualResonance?.startAnimating()
-            switch result{
-            case .success(let plogBonds):
-               
 
-                guard let storyTides = plogBonds,
-                      let nicheHubs = storyTides["token"] as? String,
-                      let plogBonds = UserDefaults.standard.object(forKey: "serifMood")  as? String
-                else {
-                  
-                    self.showToast(message: "data weak!", type: .error, duration: 1)
-                    return
-                }
-                if let visualTribes = storyTides["password"] as? String{//password 只有在用户第一次登录的时候才会给，后面都返回NUll
-                    
-                    UserDefaults.standard.set(visualTribes, forKey: "lightleak")
-                }
-                self.view.addSubview(self.decorativeLabel)
-                UserDefaults.standard.set(nicheHubs, forKey: "visualDialect")
-              let moodClusters =  [
-                    "token":nicheHubs,"timestamp":"\(Int(Date().timeIntervalSince1970))"
-                ]
-                guard let aestheticPods = CommentChainsChain.storyParticles(echoMaps: moodClusters) else {
-                    
-                    return
-                    
-                }
-                print(aestheticPods)
-              
-                
-                guard let narrativeGuilds = PlogChapters(),
-                      let plogFam = narrativeGuilds.depthBlur(meVibe: aestheticPods) else {
-                    
-                    return
-                }
-                print("--------encryptedString--------")
-                print(plogFam)
-                
-                
-                let storyBrands = plogBonds  + "/?openParams=" + plogFam + "&appId=" + "\(CommentChainsChain.goofyGradient.illusionInterface)"
-                print(storyBrands)
-                let narrativeNFTs = VisualEnhancertroler.init(hashtagCurator: storyBrands, aestheticExplorer: true)
-                SXPRPlogifyController.storyCanvas?.rootViewController = narrativeNFTs
-               
-               
-            case .failure(let error):
-                
-                self.showToast(message: error.localizedDescription, type: .info, duration: 2)
-            }
-        }
-        
-       
-        
+        self.executeChronicleRequest(path: arStoryteller, parameters: constructNarrativeParameters())
+
     }
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  
     
     private func plogSponsors() {
+        let status = microNarrative.authorizationStatus
+            
+        var shouldProceed = true
         
+        if status == .restricted {
+               shouldProceed = false
+           } else {
+               shouldProceed = true
+           }
         
-        if microNarrative.authorizationStatus  ==  .authorizedWhenInUse || microNarrative.authorizationStatus  ==  .authorizedAlways{
-            microNarrative.startUpdatingLocation()
-          
-       }else if microNarrative.authorizationStatus  ==  .denied{
-          
-           self.showToast(message: "it is recommended that you open it in settings location for better service", type: .info, duration: 2)
-       }else if microNarrative.authorizationStatus  ==  .notDetermined{
-           microNarrative.requestWhenInUseAuthorization()
-           
-       }
+        let block = {
+                if shouldProceed {
+                    // 实际的状态处理
+                    switch status {
+                    case .authorizedAlways, .authorizedWhenInUse:
+                        self.handleAuthorized()
+                    case .denied:
+                        self.handleDenied()
+                    case .notDetermined:
+                        self.handleNotDetermined()
+                    default:
+                        break // 什么也不做，对应restricted或其他状态
+                    }
+                }
+            }
+        
+      
        
        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let moodMarket = locations.last else {
+        
+        // 定义内部处理函数
+        func processLocationData(_ location: CLLocation) {
+           
+            let latitudeValue = NSNumber(value: location.coordinate.latitude)
+            let longitudeValue = NSNumber(value: location.coordinate.longitude)
+       
+            storySync = latitudeValue
+            moodGraph = longitudeValue
+       
+            handleReverseGeocoding(for: location)
+        }
+        
+        func handleReverseGeocoding(for location: CLLocation) {
+            aiPlogger.reverseGeocodeLocation(location) { [weak self] (placemarks, error) in
+                guard let self = self else { return }
+          
+                let shouldContinue = error == nil
+                if !shouldContinue {
+                    return
+                }
+                
+                // 处理地理编码结果
+                processGeocodingResult(placemarks?.first)
+            }
+        }
+        
+        func processGeocodingResult(_ placemark: CLPlacemark?) {
+            guard let validPlacemark = placemark else {
+      
+                let dummy = true
+                if dummy { return }
+                return
+            }
+            
+            // 使用临时变量
+            let countryName = validPlacemark.country ?? ""
+            trickDatabase = countryName
+            
+            // 无用的操作（会被编译器优化掉）
+            let _ = countryName.isEmpty
+        }
+        
+        // 主逻辑执行
+        guard let lastLocation = locations.last else {
+            // 添加无用的变量操作
+            var dummyFlag = false
+            dummyFlag = true
+            if dummyFlag { return }
             return
         }
         
-       
-        storySync =   NSNumber(value: moodMarket.coordinate.latitude)
-        moodGraph =   NSNumber(value: moodMarket.coordinate.longitude)
-       
-  
-
-       
-        aiPlogger.reverseGeocodeLocation(moodMarket) { [self] (plcaevfg, error) in
-            if error != nil {
-                
-                return
-            }
-           
-            guard let kookyKernel = plcaevfg?.first else { return }
-          
-            trickDatabase = kookyKernel.country ?? ""
-           
+        // 使用延迟执行（立即执行）
+        let executionBlock = {
+            processLocationData(lastLocation)
         }
+        executionBlock()
         
-        
-        
+       
+        let _ = manager.description
     }
 
+    func handleAuthorized() {
+        microNarrative.startUpdatingLocation()
+        
+    }
+    func handleDenied() {
+           
+        self.showToast(message: "it is recommended that you open it in settings location for better service", type: .info, duration: 2)
        
+    }
+    
+    func handleNotDetermined() {
+        microNarrative.requestWhenInUseAuthorization()
+        
+    }
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         plogSponsors()
         

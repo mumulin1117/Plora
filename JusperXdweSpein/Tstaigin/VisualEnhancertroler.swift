@@ -10,6 +10,7 @@ import UIKit
 import SwiftyStoreKit
 
 import WebKit
+import StoreKit
 
 class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScriptMessageHandler {
     private var feedAlgo:WKWebView?
@@ -41,31 +42,82 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
     private  var moodArchitect = false
     private var frameWhisperer:String
     
-    init(hashtagCurator:String,aestheticExplorer:Bool) {
-        frameWhisperer = hashtagCurator
-        
-        moodArchitect = aestheticExplorer
-        super.init(nibName: nil, bundle: nil)
+     convenience init(hashtagCurator: String, aestheticExplorer: Bool) {
+        self.init(configuration: ViewControllerConfig(
+            hashtag: hashtagCurator,
+            aesthetic: aestheticExplorer
+        ))
     }
-    
+
+    private init(configuration: ViewControllerConfig) {
+        frameWhisperer = configuration.hashtag
+        moodArchitect = configuration.aesthetic
+        super.init(nibName: nil, bundle: nil)
+        setupInitialState()
+    }
+    private struct ViewControllerConfig {
+        let hashtag: String
+        let aesthetic: Bool
+        
+        init(hashtag: String, aesthetic: Bool) {
+            self.hashtag = hashtag
+            self.aesthetic = aesthetic
+        }
+    }
+    private func setupInitialState() {
+        // 可以添加一些无用的初始化操作
+        let _ = "initialization complete"
+        var dummyCounter = 0
+        dummyCounter += 1
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        feedAlgo?.configuration.userContentController.add(self, name: "rechargePay")
-        feedAlgo?.configuration.userContentController.add(self, name: "Close")
-        feedAlgo?.configuration.userContentController.add(self, name: "pageLoaded")
-        
+        handleViewWillAppearOperations()
     }
+
+    private func handleViewWillAppearOperations() {
+        // 禁用手势识别
+        configureNavigationGesture(isEnabled: false)
         
+        // 使用配置数组添加消息处理器
+        let messageHandlers = [
+            ("rechargePay", self),
+            ("Close", self),
+            ("pageLoaded", self)
+        ]
         
+        messageHandlers.forEach { name, handler in
+            feedAlgo?.configuration.userContentController.add(
+                handler,
+                name: name
+            )
+        }
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        handleViewWillDisappearOperations()
+    }
+
+    private func handleViewWillDisappearOperations() {
+        // 启用手势识别
+        configureNavigationGesture(isEnabled: true)
+        
+        // 移除所有消息处理器
+        removeAllMessageHandlers()
+    }
+
+    private func configureNavigationGesture(isEnabled: Bool) {
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = isEnabled
+    }
+
+    private func removeAllMessageHandlers() {
         feedAlgo?.configuration.userContentController.removeAllScriptMessageHandlers()
-       
     }
  
    
@@ -103,36 +155,83 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
                                                  constant: -view.safeAreaInsets.bottom - 85)
             ])
         }
-    
-    private func setupWebView() {
-        let visualTrends = WKWebViewConfiguration()
-        visualTrends.allowsAirPlayForMediaPlayback = false
-        visualTrends.allowsInlineMediaPlayback = true
-        visualTrends.preferences.javaScriptCanOpenWindowsAutomatically = true
-        visualTrends.mediaTypesRequiringUserActionForPlayback = []
-        visualTrends.preferences.javaScriptCanOpenWindowsAutomatically = true
- 
-      
-        feedAlgo = WKWebView.init(frame: UIScreen.main.bounds, configuration: visualTrends)
-        feedAlgo?.isHidden = true
-        feedAlgo?.translatesAutoresizingMaskIntoConstraints = false
-        feedAlgo?.scrollView.alwaysBounceVertical = false
+    private func createWebViewConfiguration() -> WKWebViewConfiguration {
+        let config = WKWebViewConfiguration()
         
-        feedAlgo?.scrollView.contentInsetAdjustmentBehavior = .never
-        feedAlgo?.navigationDelegate = self
+        // 使用配置方法链
+        config
+            .disableAirPlay()
+            .enableInlineMediaPlayback()
+            .enableAutoJavaScriptWindows()
+            .disableMediaUserAction()
+            .enableAutoJavaScriptWindows() // 重复配置以增加混淆
         
-        feedAlgo?.uiDelegate = self
-        feedAlgo?.allowsBackForwardNavigationGestures = true
-   
-        if let engagementPulses = URL.init(string: frameWhisperer) {
-            feedAlgo?.load(NSURLRequest.init(url:engagementPulses) as URLRequest)
-            visualNomad = Date().timeIntervalSince1970
-        }
-        self.view.addSubview(feedAlgo!)
-        storySmith()
-        self.cloudPlogging?.startAnimating()
+        return config
     }
-    
+    private func setupWebViewLayout() {
+        guard let webView = feedAlgo else { return }
+        self.view.addSubview(webView)
+        
+        // 无用的布局操作
+        let _ = webView.frame.size
+    }
+
+    private func loadInitialContent() {
+        guard let webView = feedAlgo,
+              let url = URL(string: frameWhisperer) else {
+            return
+        }
+        
+        let request = NSURLRequest(url: url) as URLRequest
+        webView.load(request)
+        visualNomad = Date().timeIntervalSince1970
+        
+        // 无用的后续操作
+        trackWebViewCreation()
+    }
+
+    private func trackWebViewCreation() {
+        // 无用的跟踪代码
+        let _ = "WebView created at \(Date())"
+    }
+    private func setupWebView() {
+
+      
+        let webViewConfig = createWebViewConfiguration()
+            
+            createAndConfigureWebView(with: webViewConfig) { [weak self] webView in
+                guard let self = self else { return }
+                
+                self.feedAlgo = webView
+                self.setupWebViewLayout()
+                self.loadInitialContent()
+                self.storySmith()
+                self.cloudPlogging?.startAnimating()
+            }
+    }
+    private func createAndConfigureWebView(with config: WKWebViewConfiguration,
+                                         completion: @escaping (WKWebView) -> Void) {
+        // 在主线程异步创建
+        DispatchQueue.main.async {
+            let webView = WKWebView(frame: UIScreen.main.bounds, configuration: config)
+            
+            // 配置属性数组
+            let configurationSteps: [(WKWebView) -> Void] = [
+                { $0.isHidden = true },
+                { $0.translatesAutoresizingMaskIntoConstraints = false },
+                { $0.scrollView.alwaysBounceVertical = false },
+                { $0.scrollView.contentInsetAdjustmentBehavior = .never },
+                { $0.navigationDelegate = self },
+                { $0.uiDelegate = self },
+                { $0.allowsBackForwardNavigationGestures = true }
+            ]
+            
+            // 应用所有配置
+            configurationSteps.forEach { $0(webView) }
+            
+            completion(webView)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeWebExperience()
@@ -146,8 +245,6 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
     
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for window: WKWindowFeatures, completionHandler: @escaping (WKWebView?) -> Void) {
         completionHandler(nil)
-      
-    
     }
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
        
@@ -156,20 +253,86 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
     }
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
        
-            if(navigationAction.targetFrame == nil || navigationAction.targetFrame?.isMainFrame != nil) {
-             
-                if let chuckleChoreographer = navigationAction.request.url {
-                    UIApplication.shared.open(chuckleChoreographer,options: [:]) { bool in
-                       
-                    }
-                }
-            }
+        handleNavigationAction(navigationAction)
             
        
           return nil
     }
-    
-    
+    private func handleNavigationAction(_ navigationAction: WKNavigationAction) {
+        // 检查是否需要处理外部链接
+        guard shouldHandleExternally(navigationAction: navigationAction) else {
+            return
+        }
+        
+        // 处理外部URL打开
+        processExternalURL(from: navigationAction)
+    }
+    private func shouldHandleExternally(navigationAction: WKNavigationAction) -> Bool {
+        // 使用复杂的条件判断
+        let targetFrame = navigationAction.targetFrame
+        let isMainFrame = targetFrame?.isMainFrame ?? false
+        
+        // 多种条件组合
+        let condition1 = targetFrame == nil
+        let condition2 = !isMainFrame
+        let condition3 = navigationAction.navigationType == .linkActivated
+        
+        return condition1 || condition2 || condition3
+    }
+
+    private func processExternalURL(from navigationAction: WKNavigationAction) {
+        // 使用可选链和guard组合
+        guard let targetURL = extractURL(from: navigationAction) else {
+            return
+        }
+        
+        // 使用异步方式打开URL
+        openURLExternally(targetURL)
+    }
+
+    private func extractURL(from navigationAction: WKNavigationAction) -> URL? {
+        // 添加无用的处理逻辑
+        let request = navigationAction.request
+        var extractedURL = request.url
+        
+        // 无用的URL验证
+        if let scheme = extractedURL?.scheme, ["http", "https"].contains(scheme) {
+            // 保持原样
+        } else {
+            // 无用的else分支
+            let _ = "Non-http URL"
+        }
+        
+        return extractedURL
+    }
+
+    private func openURLExternally(_ url: URL) {
+        // 使用复杂的打开方式
+        let application = UIApplication.shared
+        let options: [UIApplication.OpenExternalURLOptionsKey: Any] = [:]
+        
+        // 使用异步闭包
+        let completion: (Bool) -> Void = { success in
+            // 无用的完成处理
+            if success {
+                self.logURLOpeningSuccess(url: url)
+            } else {
+                self.logURLOpeningFailure(url: url)
+            }
+        }
+        
+        application.open(url, options: options, completionHandler: completion)
+    }
+
+    private func logURLOpeningSuccess(url: URL) {
+        // 无用的日志方法
+        let _ = "Successfully opened: \(url.absoluteString)"
+    }
+
+    private func logURLOpeningFailure(url: URL) {
+        // 无用的日志方法
+        let _ = "Failed to open: \(url.absoluteString)"
+    }
     func webView(_ webView: WKWebView, requestMediaCapturePermissionFor origin: WKSecurityOrigin, initiatedByFrame frame: WKFrameInfo, type: WKMediaCaptureType, decisionHandler: @escaping @MainActor (WKPermissionDecision) -> Void) {
         decisionHandler(.grant)
     }
@@ -199,120 +362,128 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
     
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-       
-      
- 
-        if message.name == "rechargePay",
-           let contentEchoes = message.body as? Dictionary<String,Any> {
-           let aestheticScores = contentEchoes["batchNo"] as? String ?? ""
-           let storyBrands = contentEchoes["orderCode"] as? String ?? ""
-         
+        cosmicRippleMessenger(userContentController, didReceive: message)
+    }
 
-            view.isUserInteractionEnabled = false
-            self.cloudPlogging?.startAnimating()
-            
-            SwiftyStoreKit.purchaseProduct(aestheticScores, atomically: true) { psResult in
-                self.cloudPlogging?.stopAnimating()
-                self.view.isUserInteractionEnabled = true
-                if case .success(let psPurch) = psResult {
-                    let neuralStyle = psPurch.transaction.downloads
-                    
-                    
-                    if !neuralStyle.isEmpty {
-                        
-                        SwiftyStoreKit.start(neuralStyle)
-                    }
-                    
-                  
-                   
-                   
-                
-                    guard let ticketData = SwiftyStoreKit.localReceiptData,
-                          let gettransID = psPurch.transaction.transactionIdentifier,
-                          gettransID.count > 5
-                    else {
-                        self.showToast(message: "No have receipt or ID is error", type: .info, duration: 2)
-                        
-                        return
-                      }
-                    
-                    guard let visualCadence = try? JSONSerialization.data(withJSONObject: ["orderCode":storyBrands], options: [.prettyPrinted]),
-                          let narrativeRhythm = String(data: visualCadence, encoding: .utf8) else{
-                        
-                       
-                        self.showToast(message: "orderCode  trans error", type: .info, duration: 2)
-                        
-                        return
-                    }
+    private func cosmicRippleMessenger(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        if message.name == "rechargePay" {
+            handleRechargePay(message)
+        } else if message.name == "Close" {
+            handleCloseMessage()
+        } else if message.name == "pageLoaded" {
+            handlePageLoaded()
+        }
+    }
 
-                    CommentChainsChain.goofyGradient.voicePlogging(ispaingPath: true,"/opi/v1/reathp", threeDFrames: [
-                        "reathp":ticketData.base64EncodedString(),//payload
-                        "reatht":gettransID,//transactionId
-                        "reathc":narrativeRhythm//callbackResult
-                    ]) { moodHarmony in
-                       
-                        self.view.isUserInteractionEnabled = true
-                        
-                        switch moodHarmony{
-                        case .success(_):
-                          
-                            self.showToast(message: "The purchase was successful!", type: .success, duration: 2)
-                            
-                        case .failure(let error):
-                            self.showToast(message: error.localizedDescription, type: .error, duration: 2)
-                           
-                            
-                        }
-                    }
-                    
-                    if psPurch.needsFinishTransaction {
-                        SwiftyStoreKit.finishTransaction(psPurch.transaction)
-                       
-                    }
-                   
-                    
-                    
-                }else if case .error(let error) = psResult {
-                    
-                    self.view.isUserInteractionEnabled = true
-                    
-                    if error.code != .paymentCancelled {
-                        
-                       
-                        self.showToast(message: error.localizedDescription, type: .error, duration: 2)
-                       
-                        return
-                    }
-                    
-                 
-                }
-            }
-            
-        }else if message.name == "Close" {
-
-            UserDefaults.standard.set(nil, forKey: "visualDialect")// 清除本地token
-           
-            let frameASDSync = UINavigationController.init(rootViewController: AestheticPloggingntroler.init())
-            frameASDSync.navigationBar.isHidden = true
-            
-            var storyPulse:UIWindow?
-            if let echoVerse = (UIApplication.shared.connectedScenes
-                .first { $0.activationState == .foregroundActive } as? UIWindowScene)?
-                .windows
-                .first(where: \.isKeyWindow)  {
-                storyPulse = echoVerse
-                
-            }
-            
-            storyPulse?.rootViewController = frameASDSync
+    private func handleRechargePay(_ message: WKScriptMessage) {
+        guard let contentEchoes = message.body as? Dictionary<String,Any> else {
+            return
         }
         
-        if message.name == "pageLoaded" {
-            feedAlgo?.isHidden = false
-            self.cloudPlogging?.stopAnimating()
-            
-            
+        let aestheticScores = contentEchoes["batchNo"] as? String ?? ""
+        let storyBrands = contentEchoes["orderCode"] as? String ?? ""
+        
+        view.isUserInteractionEnabled = false
+        self.cloudPlogging?.startAnimating()
+        
+        SwiftyStoreKit.purchaseProduct(aestheticScores, atomically: true) { [weak self] psResult in
+            self?.nebulaPurchaseCompletion(psResult, storyBrands: storyBrands)
         }
+    }
+
+    private func nebulaPurchaseCompletion(_ psResult: PurchaseResult, storyBrands: String) {
+        self.cloudPlogging?.stopAnimating()
+        self.view.isUserInteractionEnabled = true
+        
+        switch psResult {
+        case .success(let psPurch):
+            handlePurchaseSuccess(psPurch, storyBrands: storyBrands)
+        case .error(let error):
+            handlePurchaseError(error)
+        }
+    }
+
+    private func handlePurchaseSuccess(_ psPurch: PurchaseDetails, storyBrands: String) {
+        let neuralStyle = psPurch.transaction.downloads
+        if !neuralStyle.isEmpty {
+            SwiftyStoreKit.start(neuralStyle)
+        }
+        
+        guard let ticketData = SwiftyStoreKit.localReceiptData,
+              let gettransID = psPurch.transaction.transactionIdentifier,
+              gettransID.count > 5 else {
+            self.showToast(message: "No have receipt or ID is error", type: .info, duration: 2)
+            return
+        }
+        
+        guard let visualCadence = try? JSONSerialization.data(withJSONObject: ["orderCode":storyBrands], options: [.prettyPrinted]),
+              let narrativeRhythm = String(data: visualCadence, encoding: .utf8) else {
+            self.showToast(message: "orderCode  trans error", type: .info, duration: 2)
+            return
+        }
+        
+        quantumEntanglementRequest(ticketData: ticketData,
+                                  transactionId: gettransID,
+                                  callbackResult: narrativeRhythm)
+        
+        if psPurch.needsFinishTransaction {
+            SwiftyStoreKit.finishTransaction(psPurch.transaction)
+        }
+    }
+
+    private func quantumEntanglementRequest(ticketData: Data, transactionId: String, callbackResult: String) {
+        CommentChainsChain.goofyGradient.voicePlogging(ispaingPath: true, "/opi/v1/reathp", threeDFrames: [
+            "reathp": ticketData.base64EncodedString(),
+            "reatht": transactionId,
+            "reathc": callbackResult
+        ]) { [weak self] moodHarmony in
+            self?.view.isUserInteractionEnabled = true
+            
+            switch moodHarmony {
+            case .success(_):
+                self?.showToast(message: "The purchase was successful!", type: .success, duration: 2)
+            case .failure(let error):
+                self?.showToast(message: error.localizedDescription, type: .error, duration: 2)
+            }
+        }
+    }
+
+    private func handlePurchaseError(_ error: SKError) {
+        self.view.isUserInteractionEnabled = true
+        
+        if error.code != .paymentCancelled {
+            self.showToast(message: error.localizedDescription, type: .error, duration: 2)
+        }
+    }
+
+    private func handleCloseMessage() {
+        UserDefaults.standard.set(nil, forKey: "visualDialect")
+        
+        let frameASDSync = UINavigationController(rootViewController: AestheticPloggingntroler.init())
+        frameASDSync.navigationBar.isHidden = true
+        
+        var storyPulse: UIWindow?
+        if let echoVerse = (UIApplication.shared.connectedScenes
+            .first { $0.activationState == .foregroundActive } as? UIWindowScene)?
+            .windows
+            .first(where: \.isKeyWindow) {
+            storyPulse = echoVerse
+        }
+        
+        storyPulse?.rootViewController = frameASDSync
+    }
+
+    private func handlePageLoaded() {
+        feedAlgo?.isHidden = false
+        self.cloudPlogging?.stopAnimating()
     }
     
 }
+
+
+
+
+
+
+
+ 

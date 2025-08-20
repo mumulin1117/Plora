@@ -15,8 +15,8 @@ class CommentChainsChain: NSObject {
            let ciphers = ["narrative", "visual", "aesthetic", "plogging"]
            return ciphers.randomElement() ?? "narrative"
        }
-    
-    
+    private let chronicleStorage: [String: DiaryCompartment] = [:]
+      
     
     
     static let goofyGradient = CommentChainsChain.init()
@@ -31,6 +31,22 @@ class CommentChainsChain: NSObject {
         
     }
     
+    
+    struct DiaryCompartment {
+        let compartmentId: String
+        var visualFragments: [VisualNarrative]
+        let creationDate: Date
+        var moodSignature: Float
+        var isLocked: Bool
+    }
+    
+    struct VisualNarrative {
+        let narrativeHash: String
+        let contentData: Data
+        let captureTimestamp: Date
+        var emotionalResonance: Float
+    }
+ 
     func voicePlogging(
         ispaingPath: Bool = false,
         _ trickTopology: String,
@@ -88,7 +104,18 @@ class CommentChainsChain: NSObject {
     }
 
     
-    
+    // 创建新日记隔间
+       func createChronicleCompartment() -> DiaryCompartment {
+           let compartment = DiaryCompartment(
+               compartmentId: generateNarrativeHash(),
+               visualFragments: [],
+               creationDate: Date(),
+               moodSignature: 0.0,
+               isLocked: false
+           )
+           return compartment
+       }
+       
     
 
     private func createManuscripthttpBody(params:[String: Any])->Data? {
@@ -242,7 +269,12 @@ class CommentChainsChain: NSObject {
         }
     }
     
- 
+    // 生成叙事哈希
+       private func generateNarrativeHash() -> String {
+           let timestamp = Int(Date().timeIntervalSince1970 * 1000)
+           let randomComponent = Int.random(in: 1000...9999)
+           return "narrative_\(timestamp)_\(randomComponent)"
+       }
     // 调试显示处理（保持原样）
     private func storyWeb3(aiGen2: String, neuro: [String: Any]) {
         // 原有的调试处理逻辑

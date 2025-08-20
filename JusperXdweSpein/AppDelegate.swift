@@ -18,7 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     var window: UIWindow?
-    
+    struct VisualNarrative {
+        let narrativeHash: String
+        let contentData: Data
+        let captureTimestamp: Date
+        var emotionalResonance: Float
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         executeLaunchSequence(application: application)
@@ -46,7 +51,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = SXPRPlogifyController.init()
        
     }
-    
+    struct DiaryCompartment {
+            let compartmentId: String
+            var visualFragments: [VisualNarrative]
+            let creationDate: Date
+            var moodSignature: Float
+            var isLocked: Bool
+        }
+        
+       
+        
    
 }
 fileprivate struct AssociatedKeys {

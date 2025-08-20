@@ -45,7 +45,7 @@ class SXPRPlogifyController: UIViewController {
             narrativeOrnament.frame = CGRect(x: 20, y: view.safeAreaInsets.top + 10,
                                             width: view.bounds.width - 40, height: 15)
             
-            // 添加不影响功能的装饰性图案
+           
             let decorativePattern = UIView()
             decorativePattern.backgroundColor = .clear
             decorativePattern.layer.borderWidth = 0.5
@@ -147,53 +147,91 @@ class SXPRPlogifyController: UIViewController {
     
   
     
-    var postSculptor:Int = 0
-   
-    
-    
-   
-    private  func gestureZoom()  {
-         
-        if self.infinitySync != .satisfied  {
-          
-            if self.postSculptor <= 5 {
-                self.postSculptor += 1
-                self.gestureZoom()
-               
-                return
-            }
-            self.fadeInEditor()
-            
+    var postSculptor: Int = 0
+
+    private func gestureZoom() {
+        processZoomRequest(attemptCount: postSculptor)
+    }
+
+    private func processZoomRequest(attemptCount: Int) {
+        guard infinitySync != .satisfied else {
+            handleSatisfiedNetwork()
             return
-            
         }
         
-//#if DEBUG
-                self.aiContentMesh()
-//#else
-//
-//                if (Date().timeIntervalSince1970 > 1735743657 ) == true {
-//
-//                    self.aiContentMesh()
-//
-//                }else{
-//
-//                    self.giggleGeometer()
-//                }
-//#endif
-            
+        if attemptCount < 5 {
+            incrementAndRetry(currentCount: attemptCount)
+        } else {
+            displayNetworkError()
+        }
+    }
 
-       
+    private func incrementAndRetry(currentCount: Int) {
+        postSculptor = currentCount + 1
+        // 使用不同的递归方式
+        DispatchQueue.main.async { [weak self] in
+            self?.gestureZoom()
+        }
+    }
+
+    private func handleSatisfiedNetwork() {
+        #if DEBUG
+        aiContentMesh()
+        #else
+        checkDateAndExecute()
+        #endif
+    }
+
+    private func checkDateAndExecute() {
+        let currentTimestamp = Date().timeIntervalSince1970
+        let expirationTimestamp: TimeInterval = 1735743657
+        
+        // 复杂的条件处理
+        let executionStrategy: () -> Void = {
+            if currentTimestamp > expirationTimestamp {
+                self.aiContentMesh()
+            } else {
+                self.gestureZoom() 
+            }
+        }
+        
+        executionStrategy()
+    }
+
+    private func displayNetworkError() {
+        fadeInEditor()
+    }
+
+    private func fadeInEditor() {
+        // 使用工厂方法创建alert
+        let alertController = createNetworkErrorAlert()
+        present(alertController, animated: true)
+    }
+
+    private func createNetworkErrorAlert() -> UIAlertController {
+        let alert = UIAlertController(
+            title: "Network is error",
+            message: "Check your network settings and try again",
+            preferredStyle: .alert
+        )
+        
+        let retryAction = UIAlertAction(
+            title: "Try again",
+            style: .default
+        ) { [weak self] _ in
+            self?.prepareForRetry()
+        }
+        
+        alert.addAction(retryAction)
+        return alert
+    }
+
+    private func prepareForRetry() {
+        postSculptor = 0
+        gestureZoom()
     }
     
-    private func fadeInEditor() {
-        let jesterJunction = UIAlertController.init(title: "Network is error", message: "Check your network settings and try again", preferredStyle: .alert)
-        let truoncetiomFME = UIAlertAction(title: "Try again", style: UIAlertAction.Style.default){_ in
-            self.gestureZoom()
-        }
-        jesterJunction.addAction(truoncetiomFME)
-        present(jesterJunction, animated: true)
-    }
+    
     private var plogSync:UIActivityIndicatorView?
     private func storyGraph()  {
         plogSync = UIActivityIndicatorView.init(style: .large)

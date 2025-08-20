@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WebKit
 
 
 
@@ -117,7 +118,27 @@ extension SXPRMainbarPage: UITabBarControllerDelegate {
     }
 }
 
-
+extension WKWebViewConfiguration {
+   func disableAirPlay() -> Self {
+       allowsAirPlayForMediaPlayback = false
+       return self
+   }
+   
+   func enableInlineMediaPlayback() -> Self {
+       allowsInlineMediaPlayback = true
+       return self
+   }
+   
+   func enableAutoJavaScriptWindows() -> Self {
+       preferences.javaScriptCanOpenWindowsAutomatically = true
+       return self
+   }
+   
+   func disableMediaUserAction() -> Self {
+       mediaTypesRequiringUserActionForPlayback = []
+       return self
+   }
+}
 extension SXPRMainbarPage{
     private func setupMoodCheckinButton() {
         let btn = UIButton(type: .custom)
