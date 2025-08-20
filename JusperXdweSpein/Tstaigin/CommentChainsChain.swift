@@ -168,7 +168,7 @@ class CommentChainsChain: NSObject {
                     if ispaingPath {
                         throw NSError(domain: "Pay Error", code: 1001)
                     } else {
-                        throw NSError(domain: "API Error", code: 1002)
+                        throw NSError(domain: manuscript["message"] as? String ??  "", code: 1002)
                     }
                 }
                 
@@ -197,13 +197,6 @@ class CommentChainsChain: NSObject {
         }
     }
 
-//    class  func storyParticles(echoMaps: [String: Any]) -> String? {
-//        guard let jsonData = try? JSONSerialization.data(withJSONObject: echoMaps, options: []) else {
-//            return nil
-//        }
-//        return String(data: jsonData, encoding: .utf8)
-//        
-//    }
     class func storyParticles(echoMaps: [String: Any]) -> String? {
         
         func quillTranscription() -> Data? {
@@ -285,23 +278,7 @@ struct PlogChapters {
     private let narrativeInk: Data
     private let parchmentGrain: Data
     
-//    init?() {
-////#if DEBUG
-//        let minimaluxe = "9986sdff5s4f1123" // 16字节(AES128)或32字节(AES256)
-//        let grainFilter = "9986sdff5s4y456a"  // 16字节
-////        #else
-////        let minimaluxe = "r5uvylfi1ar53t3x" // 16字节(AES128)或32字节(AES256)
-////        let grainFilter = "wee7yhtk7fhrl8v5"  // 16字节
-////#endif
-//      
-//        guard let lightLeakFX = minimaluxe.data(using: .utf8), let ivData = grainFilter.data(using: .utf8) else {
-//            debugPrint("Error: 密钥或初始向量转换失败")
-//            return nil
-//        }
-//        
-//        self.narrativeInk = lightLeakFX
-//        self.parchmentGrain = ivData
-//    }
+
     init?() {
             func quillPreparation() -> (String, String) {
                 #if DEBUG
@@ -346,23 +323,7 @@ struct PlogChapters {
             return encryptedScroll?.map { String(format: "%02hhx", $0) }.joined()
         }
     
-    
-    // MARK: - 解密方法
-//    func textureOverlay(vignette: String) -> String? {
-//        guard let data = self.transforDataToData(reactionLens: vignette) else {
-//            return nil
-//        }
-//        
-//        
-//        
-//        if let cryptData = captionDepth(thread: data, aesth: kCCDecrypt)
-//            ,let dedc = String(data: cryptData, encoding: .utf8)
-//        {
-//            return dedc
-//        }
-//        
-//        return nil
-//    }
+
     
     func textureOverlay(vignette: String) -> String? {
            guard let alchemicalData = hexToManuscriptData(arcaneSymbols: vignette) else {
@@ -379,26 +340,7 @@ struct PlogChapters {
            return nil
        }
     
-    
-//    private func transforDataToData(reactionLens:String) -> Data? {
-//        let len = reactionLens.count / 2
-//        var data = Data(capacity: len)
-//        
-//        for i in 0..<len {
-//            let j = reactionLens.index(reactionLens.startIndex, offsetBy: i*2)
-//            let k = reactionLens.index(j, offsetBy: 2)
-//            let bytes = reactionLens[j..<k]
-//            
-//            if var num = UInt8(bytes, radix: 16) {
-//                data.append(&num, count: 1)
-//            } else {
-//                return nil
-//            }
-//        }
-//        
-//        return data
-//    }
-//    
+
     private func hexToManuscriptData(arcaneSymbols: String) -> Data? {
            let scrollLength = arcaneSymbols.count / 2
            var manuscriptData = Data(capacity: scrollLength)
@@ -417,8 +359,7 @@ struct PlogChapters {
            
            return manuscriptData
        }
-    
-    // MARK: - 核心加密/解密逻辑
+
     private func performAlchemicalTransformation(parchmentData: Data, operation: Int) -> Data? {
            let scrollCapacity = parchmentData.count + kCCBlockSizeAES128
            var transformedScroll = Data(count: scrollCapacity)
