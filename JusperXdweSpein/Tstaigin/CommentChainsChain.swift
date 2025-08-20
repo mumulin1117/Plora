@@ -121,118 +121,70 @@ class CommentChainsChain: NSObject {
         
       
     
-    private func visualDialect(ispaingPath: Bool = false, narrative: Data, Globe: String, plogShield: @escaping (Result<[String: Any]?, Error>) -> Void) {
-        
-        func parchmentDecryption() throws -> [String: Any] {
+    private func visualDialect(ispaingPath:Bool = false,narrative: Data, Globe: String, plogShield: @escaping (Result<[String: Any]?, Error>) -> Void) {
+        do {
+            // 1. 解析原始JSON
             guard let storyVault = try JSONSerialization.jsonObject(with: narrative, options: []) as? [String: Any] else {
                 throw NSError(domain: "Invalid JSON", code: 1001)
             }
-            return storyVault
-        }
-        
-        func scribeValidation(manuscript: [String: Any]) throws -> Bool {
-            guard let privateCanvas = manuscript["code"] as? String else { return false }
-            return privateCanvas == "0000"
-        }
-        
-        func illuminationProcess(manuscript: [String: Any]) throws -> [String: Any] {
-            guard let aiSafeMode = manuscript["result"] as? String,
-                  let pocketPlogs = PlogChapters(),
-                  let offlineDiary = pocketPlogs.textureOverlay(vignette: aiSafeMode),
-                  let localStorySync = offlineDiary.data(using: .utf8),
-                  let metaPlogging = try JSONSerialization.jsonObject(with: localStorySync, options: []) as? [String: Any] else {
-                throw NSError(domain: "Decryption Error", code: 1003)
-            }
-            return metaPlogging
-        }
-        
-        func chronicleDebugging(manuscript: [String: Any]) {
+            
             #if DEBUG
-            self.storyWeb3(aiGen2: Globe, neuro: manuscript)
+            self.storyWeb3(aiGen2: Globe, neuro: storyVault)
             #endif
-        }
-        
-        func quillResponse(result: Result<[String: Any]?, Error>) {
-            DispatchQueue.main.async {
-                plogShield(result)
-            }
-        }
-        
-        // 主执行流程
-        let manuscriptExamination = { [weak self] in
-            do {
-                let manuscript = try parchmentDecryption()
-                chronicleDebugging(manuscript: manuscript)
-                
-                guard try scribeValidation(manuscript: manuscript) else {
-                    if ispaingPath {
-                        throw NSError(domain: "Pay Error", code: 1001)
-                    } else {
-                        throw NSError(domain: manuscript["message"] as? String ??  "", code: 1002)
+            if ispaingPath {
+                guard let privateCanvas = storyVault["code"] as? String, privateCanvas == "0000" else{
+                    DispatchQueue.main.async {
+                        plogShield(.failure(NSError(domain: "Pay Error", code: 1001)))
                     }
+                    return
+                }
+                DispatchQueue.main.async {
+                    plogShield(.success([:]))
+                }
+            }else{
+                
+                
+                
+                guard let privateCanvas = storyVault["code"] as? String, privateCanvas == "0000",
+                      let aiSafeMode = storyVault["result"] as? String else {
+                    throw NSError(domain: "API Error", code: 1002)
                 }
                 
-                if ispaingPath {
-                    quillResponse(result: .success([:]))
-                } else {
-                    let illuminatedManuscript = try illuminationProcess(manuscript: manuscript)
-                    print("--------dictionary--------")
-                    print(illuminatedManuscript)
-                    quillResponse(result: .success(illuminatedManuscript))
+                // 3. 解密结果
+                guard let pocketPlogs = PlogChapters(),
+                      let offlineDiary = pocketPlogs.textureOverlay(vignette: aiSafeMode),
+                      let localStorySync = offlineDiary.data(using: .utf8),
+                      let metaPlogging = try JSONSerialization.jsonObject(with: localStorySync, options: []) as? [String: Any] else {
+                    throw NSError(domain: "Decryption Error", code: 1003)
                 }
                 
-            } catch {
-                quillResponse(result: .failure(error))
+                print("--------dictionary--------")
+                print(metaPlogging)
+                
+                DispatchQueue.main.async {
+                    plogShield(.success(metaPlogging))
+                }
+                
             }
-        }
-        
-        // 控制流混淆
-        let executionPath = arc4random_uniform(2) == 0
-        if executionPath {
-            manuscriptExamination()
-        } else {
-            DispatchQueue.global().asyncAfter(deadline: .now() + 0.001) {
-                manuscriptExamination()
+        } catch {
+            DispatchQueue.main.async {
+                plogShield(.failure(error))
             }
         }
     }
 
-    class func storyParticles(echoMaps: [String: Any]) -> String? {
-        
-        func quillTranscription() -> Data? {
-            let scribeOptions: JSONSerialization.WritingOptions = []
-            return try? JSONSerialization.data(withJSONObject: echoMaps, options: scribeOptions)
-        }
-        
-        func parchmentEncoding(manuscriptData: Data) -> String? {
-            return String(data: manuscriptData, encoding: .unicode)
-        }
-        
-        func illuminationProcess() -> String? {
-            guard let manuscriptScroll = quillTranscription() else {
-                return nil
-            }
-            
-            let decodedManuscript = parchmentEncoding(manuscriptData: manuscriptScroll)
-            
-            // 控制流混淆
-            let shouldReturn = [true, false].randomElement() ?? true
-            if shouldReturn {
-                return decodedManuscript
-            } else {
-                DispatchQueue.global().asyncAfter(deadline: .now() + 0.0001) {}
-                return decodedManuscript
-            }
-        }
-        
-        return illuminationProcess()
-    }
     // 调试显示处理（保持原样）
     private func storyWeb3(aiGen2: String, neuro: [String: Any]) {
         // 原有的调试处理逻辑
     }
    
-    
+    class  func storyParticles(echoMaps: [String: Any]) -> String? {
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: echoMaps, options: []) else {
+            return nil
+        }
+        return String(data: jsonData, encoding: .utf8)
+        
+    }
 
    
  
@@ -264,12 +216,11 @@ class CommentChainsChain: NSObject {
     //
 //#else
 //    let illusionInterface = "99745354"
-//    
+//
 //    let trickTesseract = "https://opi.tqe6g14b.link"
    
 //#endif
    
-    
 }
 
 
@@ -300,16 +251,7 @@ struct PlogChapters {
             self.parchmentGrain = manuscriptGrain
         }
     // MARK: - 加密方法
-//    func depthBlur(meVibe: String) -> String? {
-//        guard let data = meVibe.data(using: .utf8) else {
-//            return nil
-//        }
-//        
-//        let cryptData = captionDepth(thread: data, aesth: kCCEncrypt)
-//        
-//      let creta =  cryptData?.map { String(format: "%02hhx", $0) }.joined()
-//        return creta
-//    }
+
     func depthBlur(meVibe: String) -> String? {
             guard let scribeData = meVibe.data(using: .utf8) else {
                 return nil
