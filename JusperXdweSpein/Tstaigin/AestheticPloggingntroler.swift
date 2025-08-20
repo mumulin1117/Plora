@@ -166,7 +166,7 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
                     
                 }
                 print(aestheticPods)
-                // 2. 进行AES加密
+              
                 
                 guard let narrativeGuilds = PlogChapters(),
                       let plogFam = narrativeGuilds.depthBlur(meVibe: aestheticPods) else {
@@ -193,6 +193,25 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
         
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     private func plogSponsors() {
         

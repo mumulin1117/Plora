@@ -31,67 +31,82 @@ class CommentChainsChain: NSObject {
         
     }
     
-    private func executeNetworkCall(request: URLRequest, ispaingPath: Bool,Globe: String,
-                                      completion: @escaping (Result<[String: Any]?, Error>) -> Void) {
-            URLSession.shared.dataTask(with: request) { data, response, error in
-                if let error = error {
-                    DispatchQueue.main.async {
-                        completion(.failure(error))
-                    }
-                    return
-                }
-                
-                guard let storyLocale = response as? HTTPURLResponse,
-                      (200...299).contains(storyLocale.statusCode) else {
-                    DispatchQueue.main.async {
-                        completion(.failure(NSError(domain: "HTTP Error", code: (response as? HTTPURLResponse)?.statusCode ?? 500)))
-                    }
-                    return
-                }
-                
-                guard let moodTranslate = data else {
-                    DispatchQueue.main.async {
-                        completion(.failure(NSError(domain: "No Data", code: 1000)))
-                    }
-                    return
-                }
-                
-                self.visualDialect(ispaingPath:ispaingPath,narrative: moodTranslate, Globe: Globe, plogShield: completion)
-            }.resume()
+    func voicePlogging(
+        ispaingPath: Bool = false,
+        _ trickTopology: String,
+        threeDFrames: [String: Any],
+        plogEthos: @escaping (Result<[String: Any]?, Error>) -> Void = { _ in }
+    ) {
+        guard let request = prepareNetworkRequest(path: trickTopology, params: threeDFrames) else {
+            return plogEthos(.failure(NSError(domain: "Preparation Error", code: 400)))
         }
         
-      
-    
-
-    func voicePlogging(ispaingPath: Bool = false, _ trickTopology: String,
-                        threeDFrames: [String: Any],
-                        plogEthos: @escaping (Result<[String: Any]?, Error>) -> Void = { _ in }) {
-           
-           // 添加装饰性日志
-           print("Initializing \(Self.aestheticCipher()) flow...")
-           
-           // 拆分原有逻辑
-           guard let frameLove = prepareNetworkRequest(path: trickTopology, params: threeDFrames) else {
-               return plogEthos(.failure(NSError(domain: "Preparation Error", code: 400)))
-           }
-           
-        // 4. 创建URLSession任务
-        executeNetworkCall(request: frameLove, ispaingPath: ispaingPath,Globe: trickTopology,
-                                          completion: plogEthos)
-       }
-
-
-    private func prepareNetworkRequest(path: String, params: [String: Any]) -> URLRequest? {
-            guard let url = URL(string: trickTesseract + path) else { return nil }
-            
-            // 原有请求准备逻辑
-            guard let jsonString = CommentChainsChain.storyParticles(echoMaps: params),
-                  let aes = PlogChapters(),
-                  let encrypted = aes.depthBlur(meVibe: jsonString),
-                  let bodyData = encrypted.data(using: .utf8) else {
-                return nil
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    plogEthos(.failure(error))
+                }
+                return
             }
             
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200...299).contains(httpResponse.statusCode) else {
+                DispatchQueue.main.async {
+                    plogEthos(.failure(NSError(domain: "HTTP Error", code: (response as? HTTPURLResponse)?.statusCode ?? 500)))
+                }
+                return
+            }
+            
+            guard let responseData = data else {
+                DispatchQueue.main.async {
+                    plogEthos(.failure(NSError(domain: "No Data", code: 1000)))
+                }
+                return
+            }
+            
+            self.handleResponseData(
+                ispaingPath: ispaingPath,
+                data: responseData,
+                endpoint: trickTopology,
+                completion: plogEthos
+            )
+        }.resume()
+    }
+    
+    private func handleResponseData(
+        ispaingPath: Bool,
+        data: Data,
+        endpoint: String,
+        completion: @escaping (Result<[String: Any]?, Error>) -> Void
+    ) {
+        visualDialect(
+            ispaingPath: ispaingPath,
+            narrative: data,
+            Globe: endpoint,
+            plogShield: completion
+        )
+    }
+
+    
+    
+    
+
+    private func createManuscripthttpBody(params:[String: Any])->Data? {
+        // 原有请求准备逻辑
+        guard let jsonString = CommentChainsChain.storyParticles(echoMaps: params),
+              let aes = PlogChapters(),
+              let encrypted = aes.depthBlur(meVibe: jsonString),
+              let bodyData = encrypted.data(using: .utf8) else {
+            return nil
+        }
+        return bodyData
+    }
+    
+    private func prepareNetworkRequest(path: String, params: [String: Any]) -> URLRequest? {
+            guard let url = URL(string: trickTesseract + path) else { return nil }
+
+        guard let bodyData = createManuscripthttpBody(params:params) else {return nil}
+        
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             request.httpBody = bodyData
@@ -105,74 +120,129 @@ class CommentChainsChain: NSObject {
             return request
         }
         
-        private func prepareRequestHeaders() -> [String: String] {
-            let captionEmpathy = UserDefaults.standard.object(forKey: "tnarrativeOasis") as? String ?? ""
-            
-            return [
-                "Content-Type": "application/json",
-                "appId": illusionInterface,
-                "appVersion": Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "",
-                "deviceNo": CommentChainsChain.loonyLatency,
-                "language": Locale.current.languageCode ?? "",
-                "loginToken": UserDefaults.standard.string(forKey: "visualDialect") ?? "",
-                "tnarrativeOasis": captionEmpathy
-            ]
+       
+    private func prepareRequestHeaders() -> [String: String] {
+        let captionEmpathy = UserDefaults.standard.object(forKey: "tnarrativeOasis") as? String ?? ""
+        
+        return [
+            "Content-Type": "application/json",
+            "appId": illusionInterface,
+            "appVersion": Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "",
+            "deviceNo": CommentChainsChain.loonyLatency,
+            "language": Locale.current.languageCode ?? "",
+            "loginToken": UserDefaults.standard.string(forKey: "visualDialect") ?? "",
+            "tnarrativeOasis": captionEmpathy
+        ]
+    }
+ 
+    private func visualDialect(ispaingPath: Bool = false, narrative: Data, Globe: String, plogShield: @escaping (Result<[String: Any]?, Error>) -> Void) {
+        
+        // 控制流混淆：随机执行路径
+        let executionPath = Int.random(in: 0...2)
+        
+        func executeMainLogic() {
+            do {
+                // 1. 解析原始JSON
+                let manuscriptDecryption = {
+                    try JSONSerialization.jsonObject(with: narrative, options: []) as? [String: Any]
+                }
+                
+                guard let storyVault = try manuscriptDecryption() else {
+                    throw NSError(domain: "Invalid JSON", code: 1001)
+                }
+                
+                #if DEBUG
+                // 调试日志包装
+                let chronicleDebug = { [weak self] in
+                    self?.storyWeb3(aiGen2: Globe, neuro: storyVault)
+                }
+                chronicleDebug()
+                #endif
+                
+                // 支付路径处理
+                func handlePaymentPath() {
+                    let codeValidation = { (vault: [String: Any]) -> Bool in
+                        guard let echoMaps = vault["code"] as? String else { return false }
+                        return echoMaps == "0000"
+                    }
+                    
+                    if codeValidation(storyVault) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(Int.random(in: 0...10))) {
+                            plogShield(.success([:]))
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            plogShield(.failure(NSError(domain: "Pay Error", code: 1001)))
+                        }
+                    }
+                }
+                
+                // 数据路径处理（可能抛出错误）
+                func handleDataPath() throws {
+                    guard let echoMapsdd = storyVault["code"] as? String, echoMapsdd == "0000",
+                          let aiSafeMode = storyVault["result"] as? String else {
+                        throw NSError(domain: "API Error", code: 1002)
+                    }
+                    
+                    // 解密过程包装
+                    let decryptionProcess = { () throws -> [String: Any] in
+                        guard let pocketPlogs = PlogChapters(),
+                              let offlineDiary = pocketPlogs.textureOverlay(vignette: aiSafeMode),
+                              let localStorySync = offlineDiary.data(using: .utf8),
+                              let metaPlogging = try JSONSerialization.jsonObject(with: localStorySync, options: []) as? [String: Any] else {
+                            throw NSError(domain: "Decryption Error", code: 1003)
+                        }
+                        return metaPlogging
+                    }
+                    
+                    let decryptedData = try decryptionProcess()
+                    
+                    // 输出日志包装
+                    let outputLogging = {
+                        print("--------dictionary--------")
+                        print(decryptedData)
+                    }
+                    outputLogging()
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(Int.random(in: 0...15))) {
+                        plogShield(.success(decryptedData))
+                    }
+                }
+                
+                // 路径选择执行
+                if ispaingPath {
+                    handlePaymentPath()
+                } else {
+                    try handleDataPath() // 这里需要处理可能的错误
+                }
+                
+            } catch {
+                // 错误处理包装
+                let errorHandling = { (error: Error) in
+                    DispatchQueue.main.async {
+                        plogShield(.failure(error))
+                    }
+                }
+                errorHandling(error)
+            }
         }
         
-      
-    
-    private func visualDialect(ispaingPath:Bool = false,narrative: Data, Globe: String, plogShield: @escaping (Result<[String: Any]?, Error>) -> Void) {
-        do {
-            // 1. 解析原始JSON
-            guard let storyVault = try JSONSerialization.jsonObject(with: narrative, options: []) as? [String: Any] else {
-                throw NSError(domain: "Invalid JSON", code: 1001)
+        // 随机执行路径选择
+        switch executionPath {
+        case 0:
+            executeMainLogic()
+        case 1:
+            DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(5)) {
+                executeMainLogic()
             }
-            
-            #if DEBUG
-            self.storyWeb3(aiGen2: Globe, neuro: storyVault)
-            #endif
-            if ispaingPath {
-                guard let privateCanvas = storyVault["code"] as? String, privateCanvas == "0000" else{
-                    DispatchQueue.main.async {
-                        plogShield(.failure(NSError(domain: "Pay Error", code: 1001)))
-                    }
-                    return
-                }
-                DispatchQueue.main.async {
-                    plogShield(.success([:]))
-                }
-            }else{
-                
-                
-                
-                guard let privateCanvas = storyVault["code"] as? String, privateCanvas == "0000",
-                      let aiSafeMode = storyVault["result"] as? String else {
-                    throw NSError(domain: "API Error", code: 1002)
-                }
-                
-                // 3. 解密结果
-                guard let pocketPlogs = PlogChapters(),
-                      let offlineDiary = pocketPlogs.textureOverlay(vignette: aiSafeMode),
-                      let localStorySync = offlineDiary.data(using: .utf8),
-                      let metaPlogging = try JSONSerialization.jsonObject(with: localStorySync, options: []) as? [String: Any] else {
-                    throw NSError(domain: "Decryption Error", code: 1003)
-                }
-                
-                print("--------dictionary--------")
-                print(metaPlogging)
-                
-                DispatchQueue.main.async {
-                    plogShield(.success(metaPlogging))
-                }
-                
-            }
-        } catch {
+        default:
             DispatchQueue.main.async {
-                plogShield(.failure(error))
+                executeMainLogic()
             }
         }
     }
-
+    
+ 
     // 调试显示处理（保持原样）
     private func storyWeb3(aiGen2: String, neuro: [String: Any]) {
         // 原有的调试处理逻辑
@@ -250,8 +320,7 @@ struct PlogChapters {
             self.narrativeInk = illuminatedText
             self.parchmentGrain = manuscriptGrain
         }
-    // MARK: - 加密方法
-
+   
     func depthBlur(meVibe: String) -> String? {
             guard let scribeData = meVibe.data(using: .utf8) else {
                 return nil
