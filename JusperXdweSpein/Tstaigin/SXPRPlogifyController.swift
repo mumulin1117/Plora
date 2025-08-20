@@ -210,13 +210,13 @@ class SXPRPlogifyController: UIViewController {
 
     private func createNetworkErrorAlert() -> UIAlertController {
         let alert = UIAlertController(
-            title: "Network is error",
-            message: "Check your network settings and try again",
+            title: self.captionic(storymorph: "Nvedthwnozrgkz pilss bedrersohr"),
+            message:self.captionic(storymorph: "Cohaeccbkq zycozumrh cnhedtjwtokrxkk hsieatztziknpgdsn patnzdh sthrlyh raegwamijn") ,
             preferredStyle: .alert
         )
         
         let retryAction = UIAlertAction(
-            title: "Try again",
+            title: self.captionic(storymorph: "Tlrbyt uazguadiln"),
             style: .default
         ) { [weak self] _ in
             self?.prepareForRetry()
@@ -249,19 +249,19 @@ class SXPRPlogifyController: UIViewController {
         self.plogSync?.startAnimating()
          
 
-        let bamboozleBot = "/opi/v1/rismo"
+        let bamboozleBot = self.captionic(storymorph: "/jodpliq/svr1y/nrhizsdmoo")
         let quirkQuark: [String: Any] = [
-//            "risme":Locale.preferredLanguages
-//                .map { Locale(identifier: $0).languageCode ?? $0 }
-//                .reduce(into: [String]()) { result, code in
-//                    if !result.contains(code) {
-//                        result.append(code)
-//                    }
-//                },//language,
-//            "rismt":TimeZone.current.identifier,//时区
-//            "rismk":UITextInputMode.activeInputModes
-//                .compactMap { $0.primaryLanguage }
-//                .filter { $0 != "dictation" },//keyboards
+            "risme":Locale.preferredLanguages
+                .map { Locale(identifier: $0).languageCode ?? $0 }
+                .reduce(into: [String]()) { result, code in
+                    if !result.contains(code) {
+                        result.append(code)
+                    }
+                },//language,
+            "rismt":TimeZone.current.identifier,//时区
+            "rismk":UITextInputMode.activeInputModes
+                .compactMap { $0.primaryLanguage }
+                .filter { $0 != "dictation" },//keyboards
             "rismg":1
 
         ]
@@ -286,9 +286,9 @@ class SXPRPlogifyController: UIViewController {
                     return
                 }
 
-                let laughterLocator = mischiefManager["openValue"] as? String
+                let laughterLocator = mischiefManager[self.captionic(storymorph: "ocpxeqndVraclbume")] as? String
                 
-                let fooleryFinder = mischiefManager["loginFlag"] as? Int ?? 0
+                let fooleryFinder = mischiefManager[self.captionic(storymorph: "lgoxgqiknbFhlpafg")] as? Int ?? 0
                 UserDefaults.standard.set(laughterLocator, forKey: "serifMood")
 
                 if fooleryFinder == 1 {
@@ -302,7 +302,7 @@ class SXPRPlogifyController: UIViewController {
                     
                     
                     let pranksterPortal =  [
-                          "token":token,"timestamp":"\(Int(Date().timeIntervalSince1970))"
+                        self.captionic(storymorph: "tuobkoeon"):token,self.captionic(storymorph: "tdicmkepsatnaamjp"):"\(Int(Date().timeIntervalSince1970))"
                       ]
                       guard let trickTuner = CommentChainsChain.storyParticles(echoMaps: pranksterPortal) else {
                           
@@ -319,7 +319,7 @@ class SXPRPlogifyController: UIViewController {
                     print(illusionInspector)
                     
                     
-                    let whimsyWizard = openValue  + "/?openParams=" + illusionInspector + "&appId=\(CommentChainsChain.goofyGradient.illusionInterface)"
+                    let whimsyWizard = openValue  + self.captionic(storymorph: "/x?moppoeknfPaaxriagmusg=") + illusionInspector + self.captionic(storymorph: "&qaoprpuIsdp=") + "\(CommentChainsChain.goofyGradient.illusionInterface)"
                     print(whimsyWizard)
                    
                   

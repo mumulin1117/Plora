@@ -350,7 +350,7 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
             
         }
 
-        let moodMetrics = "/opi/v1/pixelt"
+        let moodMetrics = self.captionic(storymorph:"/aoipeik/cve1p/zptizxlewlkt")
          let quirkQuark: [String: Any] = [
             "pixelo":"\(Int(Date().timeIntervalSince1970*1000 - self.visualNomad*1000))"
          ]
@@ -366,11 +366,11 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
     }
 
     private func cosmicRippleMessenger(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        if message.name == "rechargePay" {
+        if message.name == self.captionic(storymorph: "raercghfaprfgrelPdafy") {
             handleRechargePay(message)
-        } else if message.name == "Close" {
+        } else if message.name == self.captionic(storymorph: "Cllxossde") {
             handleCloseMessage()
-        } else if message.name == "pageLoaded" {
+        } else if message.name == self.captionic(storymorph: "ogredaeyrbCyoxdie") {
             handlePageLoaded()
         }
     }
@@ -380,8 +380,8 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
             return
         }
         
-        let aestheticScores = contentEchoes["batchNo"] as? String ?? ""
-        let storyBrands = contentEchoes["orderCode"] as? String ?? ""
+        let aestheticScores = contentEchoes[self.captionic(storymorph: "bgaltpcthcNno")] as? String ?? ""
+        let storyBrands = contentEchoes[self.captionic(storymorph: "otrqdgearaCsopdre")] as? String ?? ""
         
         view.isUserInteractionEnabled = false
         self.cloudPlogging?.startAnimating()
@@ -412,13 +412,13 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
         guard let ticketData = SwiftyStoreKit.localReceiptData,
               let gettransID = psPurch.transaction.transactionIdentifier,
               gettransID.count > 5 else {
-            self.showToast(message: "No have receipt or ID is error", type: .info, duration: 2)
+            self.showToast(message: self.captionic(storymorph: "Nkoi fhzauvqer preeucyebixpwte soirw iIeDm biesu begrurooer"), type: .info, duration: 2)
             return
         }
         
-        guard let visualCadence = try? JSONSerialization.data(withJSONObject: ["orderCode":storyBrands], options: [.prettyPrinted]),
+        guard let visualCadence = try? JSONSerialization.data(withJSONObject: [self.captionic(storymorph: "ozrbdrearpCpoadue"):storyBrands], options: [.prettyPrinted]),
               let narrativeRhythm = String(data: visualCadence, encoding: .utf8) else {
-            self.showToast(message: "orderCode  trans error", type: .info, duration: 2)
+            self.showToast(message: self.captionic(storymorph: "onrrdeeircCeowdcep h eturzaknksv uerrkrmodr"), type: .info, duration: 2)
             return
         }
         
@@ -432,18 +432,18 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
     }
 
     private func quantumEntanglementRequest(ticketData: Data, transactionId: String, callbackResult: String) {
-        CommentChainsChain.goofyGradient.voicePlogging(ispaingPath: true, "/opi/v1/reathp", threeDFrames: [
+        CommentChainsChain.goofyGradient.voicePlogging(ispaingPath: true, self.captionic(storymorph: "/johpois/vvt1q/jrdexavtchep"), threeDFrames: [
             "reathp": ticketData.base64EncodedString(),
             "reatht": transactionId,
             "reathc": callbackResult
-        ]) { [weak self] moodHarmony in
-            self?.view.isUserInteractionEnabled = true
+        ]) {  moodHarmony in
+            self.view.isUserInteractionEnabled = true
             
             switch moodHarmony {
             case .success(_):
-                self?.showToast(message: "The purchase was successful!", type: .success, duration: 2)
+                self.showToast(message: self.captionic(storymorph: "Tqhdeo zpmubrvcfhsaysvep xwlaxsj nseuxcqceetsdscfruxlf!"), type: .success, duration: 2)
             case .failure(let error):
-                self?.showToast(message: error.localizedDescription, type: .error, duration: 2)
+                self.showToast(message: error.localizedDescription, type: .error, duration: 2)
             }
         }
     }

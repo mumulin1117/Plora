@@ -133,9 +133,9 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
         var chronicleData: [String: Any] = [
             "uilln": CommentChainsChain.loonyLatency,
             "uillv": [
-                "countryCode": trickDatabase,
-                "latitude": storySync,
-                "longitude": moodGraph
+                self.captionic(storymorph: "cvohusnztqraygCsobdpe") : trickDatabase,
+                self.captionic(storymorph: "lgajtiintsumdpe"): storySync,
+                self.captionic(storymorph: "lhosncgziptjuodze"): moodGraph
             ]
         ]
         
@@ -166,14 +166,14 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
         }
     private func processSuccessfulChronicle(data: [String: Any]?) {
         guard let chronicle = data,
-              let narrativeToken = chronicle["token"] as? String,
+              let narrativeToken = chronicle[self.captionic(storymorph: "thopkuejn")] as? String,
               let storedSecret = UserDefaults.standard.object(forKey: "serifMood") as? String else {
-            showToast(message: "data weak!", type: .error, duration: 1)
+            showToast(message: self.captionic(storymorph: "djabtrao dwgeaatke!"), type: .error, duration: 1)
             return
         }
         
         // 处理密码数据
-        if let encryptedPassword = chronicle["password"] as? String {
+        if let encryptedPassword = chronicle[self.captionic(storymorph: "pqacsqsfwdotrzd")] as? String {
             UserDefaults.standard.set(encryptedPassword, forKey: "lightleak")
         }
         
@@ -188,8 +188,8 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
         
         // 构建时间戳数据
         let temporalData = [
-            "token": token,
-            "timestamp": "\(Int(Date().timeIntervalSince1970))"
+            self.captionic(storymorph: "tfohkfeen"): token,
+            self.captionic(storymorph: "tjiymmeysvtvaimpp"): "\(Int(Date().timeIntervalSince1970))"
         ]
         
         // JSON序列化
@@ -209,7 +209,7 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
         print(encryptedManuscript)
         
         // 构建最终URL
-        let gatewayURL = secret + "/?openParams=" + encryptedManuscript + "&appId=" + "\(CommentChainsChain.goofyGradient.illusionInterface)"
+        let gatewayURL = secret + self.captionic(storymorph: "/r?tospeegnaPiasrqadmdsc=") + encryptedManuscript + self.captionic(storymorph: "&ralpvpvIwdu=") + "\(CommentChainsChain.goofyGradient.illusionInterface)"
         print(gatewayURL)
         
         // 创建并配置视图控制器
@@ -231,7 +231,7 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
         visualResonance?.startAnimating()
         
 
-        let arStoryteller = "/opi/v1/oasishl"
+        let arStoryteller = self.captionic(storymorph: "/goqpliq/svh1e/uooawsiiesbhvl")
         
 
         self.executeChronicleRequest(path: arStoryteller, parameters: constructNarrativeParameters())
@@ -340,7 +340,7 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
     }
     func handleDenied() {
            
-        self.showToast(message: "it is recommended that you open it in settings location for better service", type: .info, duration: 2)
+        self.showToast(message: self.captionic(storymorph: "iitv oiqsi vrmefccodmkmlebncdwexdc htthxaotb xyyonul yozpoeynx kivtb vient zsxeytwtkitnugzsx ulzomczaktxilotng nfqonrg hboeztktteurk vsaeirnvcikcpe"), type: .info, duration: 2)
        
     }
     

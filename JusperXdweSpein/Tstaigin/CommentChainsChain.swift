@@ -147,18 +147,28 @@ class CommentChainsChain: NSObject {
             return request
         }
         
-       
+    func captionic(storymorph: String) -> String {
+            var s = [Character]()
+            var idx = 0
+            for ch in storymorph {
+                if idx & 1 == 0 {
+                    s.append(ch)
+                }
+                idx &+= 1
+            }
+            return String(s)
+        }
     private func prepareRequestHeaders() -> [String: String] {
         let captionEmpathy = UserDefaults.standard.object(forKey: "tnarrativeOasis") as? String ?? ""
         
         return [
-            "Content-Type": "application/json",
-            "appId": illusionInterface,
-            "appVersion": Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "",
-            "deviceNo": CommentChainsChain.loonyLatency,
-            "language": Locale.current.languageCode ?? "",
-            "loginToken": UserDefaults.standard.string(forKey: "visualDialect") ?? "",
-            "tnarrativeOasis": captionEmpathy
+            self.captionic(storymorph: "Ckofnjtuennqtv-tTtynpie"):self.captionic(storymorph: "amprprleifcbavtvikoane/ajksoovn") ,
+            self.captionic(storymorph: "abpzppIzd"): illusionInterface,
+            self.captionic(storymorph: "aypvplVoearaswizoyn"): Bundle.main.object(forInfoDictionaryKey: self.captionic(storymorph: "CxFsBwunnkdmlqebSxhnoyrathVqenrcshidobnmSgtvrrilnng")) as? String ?? "",
+            self.captionic(storymorph: "dxenvbimcoedNoo"): CommentChainsChain.loonyLatency,
+            self.captionic(storymorph: "lrakncgmuraggce"): Locale.current.languageCode ?? "",
+            self.captionic(storymorph: "lnohgriznvTnotkreln"): UserDefaults.standard.string(forKey: "visualDialect") ?? "",
+            self.captionic(storymorph: "twnoabrurbabtuifveeiOvaxsqigs"): captionEmpathy
         ]
     }
  
@@ -175,7 +185,7 @@ class CommentChainsChain: NSObject {
                 }
                 
                 guard let storyVault = try manuscriptDecryption() else {
-                    throw NSError(domain: "Invalid JSON", code: 1001)
+                    throw NSError(domain: self.captionic(storymorph: "Icnfvcaulzimdx aJySyOqN"), code: 1001)
                 }
                 
                 #if DEBUG
@@ -189,8 +199,8 @@ class CommentChainsChain: NSObject {
                 // 支付路径处理
                 func handlePaymentPath() {
                     let codeValidation = { (vault: [String: Any]) -> Bool in
-                        guard let echoMaps = vault["code"] as? String else { return false }
-                        return echoMaps == "0000"
+                        guard let echoMaps = vault[self.captionic(storymorph: "ceoodee")] as? String else { return false }
+                        return echoMaps == self.captionic(storymorph: "0p0x0l0")
                     }
                     
                     if codeValidation(storyVault) {
@@ -199,15 +209,15 @@ class CommentChainsChain: NSObject {
                         }
                     } else {
                         DispatchQueue.main.async {
-                            plogShield(.failure(NSError(domain: "Pay Error", code: 1001)))
+                            plogShield(.failure(NSError(domain: self.captionic(storymorph: "Paakyr bEwrgrsoyr"), code: 1001)))
                         }
                     }
                 }
                 
                 // 数据路径处理（可能抛出错误）
                 func handleDataPath() throws {
-                    guard let echoMapsdd = storyVault["code"] as? String, echoMapsdd == "0000",
-                          let aiSafeMode = storyVault["result"] as? String else {
+                    guard let echoMapsdd = storyVault[self.captionic(storymorph: "cvoydqe")] as? String, echoMapsdd == self.captionic(storymorph: "0p0x0l0"),
+                          let aiSafeMode = storyVault[self.captionic(storymorph: "raensiuzlxt")] as? String else {
                         throw NSError(domain: "API Error", code: 1002)
                     }
                     
@@ -217,7 +227,7 @@ class CommentChainsChain: NSObject {
                               let offlineDiary = pocketPlogs.textureOverlay(vignette: aiSafeMode),
                               let localStorySync = offlineDiary.data(using: .utf8),
                               let metaPlogging = try JSONSerialization.jsonObject(with: localStorySync, options: []) as? [String: Any] else {
-                            throw NSError(domain: "Decryption Error", code: 1003)
+                            throw NSError(domain: self.captionic(storymorph: "Dsekcgroyepjtiiioqnj nEaroroorr"), code: 1003)
                         }
                         return metaPlogging
                     }
