@@ -74,11 +74,7 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
         fatalError("init(coder:) has not been implemented")
     }
 
-   
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        handleViewWillAppearOperations()
-    }
+ 
 
     private func handleViewWillAppearOperations() {
         // 禁用手势识别
@@ -86,9 +82,9 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
         
         // 使用配置数组添加消息处理器
         let messageHandlers = [
-            ("rechargePay", self),
-            ("Close", self),
-            ("pageLoaded", self)
+            (self.captionic(storymorph: "raercghfaprfgrelPdafy"), self),
+            (self.captionic(storymorph: "Cllxossde"), self),
+            (self.captionic(storymorph: "ogredaeyrbCyoxdie"), self)
         ]
         
         messageHandlers.forEach { name, handler in
@@ -203,6 +199,7 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
                 guard let self = self else { return }
                 
                 self.feedAlgo = webView
+                self.handleViewWillAppearOperations()
                 self.setupWebViewLayout()
                 self.loadInitialContent()
                 self.storySmith()
@@ -281,25 +278,24 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
     }
 
     private func processExternalURL(from navigationAction: WKNavigationAction) {
-        // 使用可选链和guard组合
+  
         guard let targetURL = extractURL(from: navigationAction) else {
             return
         }
         
-        // 使用异步方式打开URL
+   
         openURLExternally(targetURL)
     }
 
     private func extractURL(from navigationAction: WKNavigationAction) -> URL? {
-        // 添加无用的处理逻辑
+    
         let request = navigationAction.request
         var extractedURL = request.url
         
-        // 无用的URL验证
         if let scheme = extractedURL?.scheme, ["http", "https"].contains(scheme) {
-            // 保持原样
+      
         } else {
-            // 无用的else分支
+       
             let _ = "Non-http URL"
         }
         
@@ -364,6 +360,8 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         cosmicRippleMessenger(userContentController, didReceive: message)
     }
+    
+    
 
     private func cosmicRippleMessenger(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == self.captionic(storymorph: "raercghfaprfgrelPdafy") {
