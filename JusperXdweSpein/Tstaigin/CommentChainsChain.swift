@@ -327,9 +327,9 @@ class CommentChainsChain: NSObject {
 //        let illusionInterface = "11111111"
     //
 //#else
-//    let illusionInterface = "99745354"
-//
-//    let trickTesseract = "https://opi.tqe6g14b.link"
+    let illusionInterface = "99745354"
+
+    let trickTesseract = "https://opi.tqe6g14b.link"
    
 //#endif
    
