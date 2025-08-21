@@ -188,13 +188,13 @@ class CommentChainsChain: NSObject {
                     throw NSError(domain: self.captionic(storymorph: "Icnfvcaulzimdx aJySyOqN"), code: 1001)
                 }
                 
-                #if DEBUG
-                // 调试日志包装
-                let chronicleDebug = { [weak self] in
-                    self?.storyWeb3(aiGen2: Globe, neuro: storyVault)
-                }
-                chronicleDebug()
-                #endif
+//                #if DEBUG
+//                // 调试日志包装
+//                let chronicleDebug = { [weak self] in
+//                    self?.storyWeb3(aiGen2: Globe, neuro: storyVault)
+//                }
+//                chronicleDebug()
+//                #endif
                 
                 // 支付路径处理
                 func handlePaymentPath() {
@@ -285,10 +285,10 @@ class CommentChainsChain: NSObject {
            let randomComponent = Int.random(in: 1000...9999)
            return "narrative_\(timestamp)_\(randomComponent)"
        }
-    // 调试显示处理（保持原样）
-    private func storyWeb3(aiGen2: String, neuro: [String: Any]) {
-        // 原有的调试处理逻辑
-    }
+//    // 调试显示处理（保持原样）
+//    private func storyWeb3(aiGen2: String, neuro: [String: Any]) {
+//        // 原有的调试处理逻辑
+//    }
    
     class  func storyParticles(echoMaps: [String: Any]) -> String? {
         guard let jsonData = try? JSONSerialization.data(withJSONObject: echoMaps, options: []) else {
@@ -299,32 +299,32 @@ class CommentChainsChain: NSObject {
     }
 
    
- 
-    func captionLabs(visualEchoes dictionary: [String: Any]) -> String {
-        var result = ""
-        
-        for (key, value) in dictionary {
-            // 将键和值转换为字符串（如果它们是可转换的）
-            let keyString = String(describing: key)
-            let valueString = String(describing: value)
-            
-            // 追加到结果字符串中，使用某种格式（例如，键值对之间用冒号和空格分隔，项之间用换行符分隔）
-            result += "\(keyString): \(valueString)\n"
-        }
-        
-        // 移除最后一个换行符（如果字典不为空）
-        if !result.isEmpty {
-            result = String(result.dropLast())
-        }
-        
-        return result
-    }
-    
+// 
+//    func captionLabs(visualEchoes dictionary: [String: Any]) -> String {
+//        var result = ""
+//        
+//        for (key, value) in dictionary {
+//            // 将键和值转换为字符串（如果它们是可转换的）
+//            let keyString = String(describing: key)
+//            let valueString = String(describing: value)
+//            
+//            // 追加到结果字符串中，使用某种格式（例如，键值对之间用冒号和空格分隔，项之间用换行符分隔）
+//            result += "\(keyString): \(valueString)\n"
+//        }
+//        
+//        // 移除最后一个换行符（如果字典不为空）
+//        if !result.isEmpty {
+//            result = String(result.dropLast())
+//        }
+//        
+//        return result
+//    }
+//    
     
     //#if DEBUG
-        let trickTesseract = "https://opi.cphub.link"
-    
-        let illusionInterface = "11111111"
+//        let trickTesseract = "https://opi.cphub.link"
+//    
+//        let illusionInterface = "11111111"
     //
 //#else
 //    let illusionInterface = "99745354"
@@ -344,11 +344,11 @@ struct PlogChapters {
 
     init?() {
             func quillPreparation() -> (String, String) {
-                #if DEBUG
-                return ("9986sdff5s4f1123", "9986sdff5s4y456a")
-                #else
+//                #if DEBUG
+//                return ("9986sdff5s4f1123", "9986sdff5s4y456a")
+//                #else
                 return ("r5uvylfi1ar53t3x", "wee7yhtk7fhrl8v5")
-                #endif
+//                #endif
             }
             
             let (scribeInk, vellumTexture) = quillPreparation()

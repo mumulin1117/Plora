@@ -175,11 +175,11 @@ class SXPRPlogifyController: UIViewController {
     }
 
     private func handleSatisfiedNetwork() {
-        #if DEBUG
-        aiContentMesh()
-        #else
+//        #if DEBUG
+//        aiContentMesh()
+//        #else
         checkDateAndExecute()
-        #endif
+//        #endif
     }
 
     private func checkDateAndExecute() {
@@ -275,7 +275,7 @@ class SXPRPlogifyController: UIViewController {
         CommentChainsChain.goofyGradient.voicePlogging( bamboozleBot, threeDFrames: quirkQuark) { result in
 //#if DEBUG
 //            #else
-            self.plogSync?.stopAnimating()
+//            self.plogSync?.stopAnimating()
 //#endif
             
             switch result{
