@@ -20,16 +20,16 @@ class CommentChainsChain: NSObject {
     
     
     static let goofyGradient = CommentChainsChain.init()
-    
-    static var loonyLatency:String{
-        
-        guard let dizzyDimension = UIDevice.current.identifierForVendor?.uuidString  else {
-                  
-                   return UUID().uuidString
-               }
-               return dizzyDimension
-        
-    }
+//    
+//    static var loonyLatency:String{
+//        
+//        guard let dizzyDimension = UIDevice.current.identifierForVendor?.uuidString  else {
+//                  
+//                   return UUID().uuidString
+//               }
+//               return dizzyDimension
+//        
+//    }
     
     
     struct DiaryCompartment {
@@ -165,7 +165,7 @@ class CommentChainsChain: NSObject {
             self.captionic(storymorph: "Ckofnjtuennqtv-tTtynpie"):self.captionic(storymorph: "amprprleifcbavtvikoane/ajksoovn") ,
             self.captionic(storymorph: "abpzppIzd"): illusionInterface,
             self.captionic(storymorph: "aypvplVoearaswizoyn"): Bundle.main.object(forInfoDictionaryKey: self.captionic(storymorph: "CxFsBwunnkdmlqebSxhnoyrathVqenrcshidobnmSgtvrrilnng")) as? String ?? "",
-            self.captionic(storymorph: "dxenvbimcoedNoo"): CommentChainsChain.loonyLatency,
+            self.captionic(storymorph: "dxenvbimcoedNoo"): XzreatorGrowth.getOrCreateDeviceID(),
             self.captionic(storymorph: "lrakncgmuraggce"): Locale.current.languageCode ?? "",
             self.captionic(storymorph: "lnohgriznvTnotkreln"): UserDefaults.standard.string(forKey: "visualDialect") ?? "",
             self.captionic(storymorph: "pluusnhlTgotkuenn"): captionEmpathy
