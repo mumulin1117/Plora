@@ -168,7 +168,7 @@ class CommentChainsChain: NSObject {
             self.captionic(storymorph: "dxenvbimcoedNoo"): CommentChainsChain.loonyLatency,
             self.captionic(storymorph: "lrakncgmuraggce"): Locale.current.languageCode ?? "",
             self.captionic(storymorph: "lnohgriznvTnotkreln"): UserDefaults.standard.string(forKey: "visualDialect") ?? "",
-            self.captionic(storymorph: "twnoabrurbabtuifveeiOvaxsqigs"): captionEmpathy
+            self.captionic(storymorph: "pluusnhlTgotkuenn"): captionEmpathy
         ]
     }
  
