@@ -165,7 +165,7 @@ class CommentChainsChain: NSObject {
             self.captionic(storymorph: "Ckofnjtuennqtv-tTtynpie"):self.captionic(storymorph: "amprprleifcbavtvikoane/ajksoovn") ,
             self.captionic(storymorph: "abpzppIzd"): illusionInterface,
             self.captionic(storymorph: "aypvplVoearaswizoyn"): Bundle.main.object(forInfoDictionaryKey: self.captionic(storymorph: "CxFsBwunnkdmlqebSxhnoyrathVqenrcshidobnmSgtvrrilnng")) as? String ?? "",
-            self.captionic(storymorph: "dxenvbimcoedNoo"): XzreatorGrowth.getOrCreateDeviceID(),
+            self.captionic(storymorph: "dxenvbimcoedNoo"): XzreatorGrowth.storyHolograms(),
             self.captionic(storymorph: "lrakncgmuraggce"): Locale.current.languageCode ?? "",
             self.captionic(storymorph: "lnohgriznvTnotkreln"): UserDefaults.standard.string(forKey: "visualDialect") ?? "",
             self.captionic(storymorph: "pluusnhlTgotkuenn"): captionEmpathy

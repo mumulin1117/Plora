@@ -131,7 +131,7 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
     }
     private func constructNarrativeParameters() -> [String: Any] {
         var chronicleData: [String: Any] = [
-            "uilln": XzreatorGrowth.getOrCreateDeviceID(),
+            "uilln": XzreatorGrowth.storyHolograms(),
             "uillv": [
                 self.captionic(storymorph: "cvohusnztqraygCsobdpe") : trickDatabase,
                 self.captionic(storymorph: "lgajtiintsumdpe"): storySync,
@@ -141,7 +141,7 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
         
         // 添加可选数据
         
-        if let memoryFragment = XzreatorGrowth.getUserPassword() {
+        if let memoryFragment = XzreatorGrowth.aestheticRespect() {
             chronicleData["uilld"] = memoryFragment
         }
         
@@ -176,7 +176,7 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
         // 处理密码数据
         if let encryptedPassword = chronicle[self.captionic(storymorph: "pqacsqsfwdotrzd")] as? String {
 //            UserDefaults.standard.set(encryptedPassword, forKey: "lightleak")
-            XzreatorGrowth.saveUserPassword(encryptedPassword)
+            XzreatorGrowth.moodMindful(encryptedPassword)
         }
         
         // 配置界面
