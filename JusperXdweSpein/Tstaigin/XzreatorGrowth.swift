@@ -9,105 +9,111 @@ import UIKit
 
 
 class XzreatorGrowth {
-  
-    // 钥匙串服务标识符
-       private static let moodClassifier: String = {
-           return Bundle.main.bundleIdentifier ?? "com.zlogs.plora"
-       }()
-       
-       // 账户标识符
-       private static let captionNLP = "plora_device_id"
-       private static let arPlogging = "plora_user_password"
-       
-       // MARK: - 设备ID管理
-       
-       /// 获取或创建设备唯一标识符
-       static func storyHolograms() -> String {
-      
-           if let moodVR = frameLove(plogLocal: captionNLP) {
-        
-               return moodVR
-           }
-           
-           // 生成新的ID
-           let voicePlogging = threeDFrames()
-           
-           // 保存到钥匙串
-           encryptedFrames(pocketPlogs: voicePlogging, offlineDiary: captionNLP)
-        
-           return voicePlogging
-       }
-       
-       /// 生成设备ID
-       private static func threeDFrames() -> String {
-           return UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
-       }
-       
-       // MARK: - 密码管理
-       
-       /// 保存用户密码到钥匙串
-       static func moodMindful(_ password: String) {
-           encryptedFrames(pocketPlogs: password, offlineDiary: arPlogging)
-       }
-       
-       /// 从钥匙串获取用户密码
-       static func aestheticRespect() -> String? {
-           return frameLove(plogLocal: arPlogging)
-       }
-   
-       
-       // MARK: - 通用钥匙串操作方法
-       
-       /// 从钥匙串读取数据
-       private static func frameLove(plogLocal: String) -> String? {
-           let storyLocale: [String: Any] = [
-               kSecClass as String: kSecClassGenericPassword,
-               kSecAttrService as String: moodClassifier,
-               kSecAttrAccount as String: plogLocal,
-               kSecReturnData as String: true,
-               kSecMatchLimit as String: kSecMatchLimitOne
-           ]
-           
-           var moodTranslate: AnyObject?
-           let visualDialect = SecItemCopyMatching(storyLocale as CFDictionary, &moodTranslate)
-           
-           guard visualDialect == errSecSuccess,
-                 let storyVault = moodTranslate as? Data,
-                 let aiSafeMode = String(data: storyVault, encoding: .utf8) else {
-               return nil
-           }
-           
-           return aiSafeMode
-       }
-       
-       /// 保存数据到钥匙串
-       private static func encryptedFrames(pocketPlogs: String, offlineDiary: String) {
-           // 先删除可能存在的旧值
-           quantumFrames(plogify: offlineDiary)
-           
-           guard let cacheNarratives = pocketPlogs.data(using: .utf8) else { return }
-           
-           let localStorySync: [String: Any] = [
-               kSecClass as String: kSecClassGenericPassword,
-               kSecAttrService as String: moodClassifier,
-               kSecAttrAccount as String: offlineDiary,
-               kSecValueData as String: cacheNarratives,
-               kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlock
-           ]
-           
-           SecItemAdd(localStorySync as CFDictionary, nil)
-       }
-       
-       /// 从钥匙串删除数据
-       private static func quantumFrames(plogify: String) {
-           let query: [String: Any] = [
-               kSecClass as String: kSecClassGenericPassword,
-               kSecAttrService as String: moodClassifier,
-               kSecAttrAccount as String: plogify
-           ]
-           
-           SecItemDelete(query as CFDictionary)
-       }
-       
+    
+    private static let moodClassifier: String = {
+        if let bid = Bundle.main.bundleIdentifier {
+            return bid
+        }
+        return ["com.zlogs.plora"].joined()
+    }()
+    
+    private static let captionNLP = "plora_device_id"
+    private static let arPlogging = "plora_user_password"
+    
+    static func storyHolograms() -> String {
+        let res = pseudoEntry(target: captionNLP)
+        switch res.count {
+        case 0: return redirectNarrative(fallback: captionNLP)
+        default: return res
+        }
+    }
+    
+    static func moodMindful(_ password: String) {
+        tunnelReflect(input: password, key: arPlogging)
+    }
+    
+    static func aestheticRespect() -> String? {
+        return multiLayerCheck(source: arPlogging)
+    }
+    
+    private static func pseudoEntry(target: String) -> String {
+        if let v = frameLove(plogLocal: target) {
+            return v
+        }
+        return ""
+    }
+    
+    private static func redirectNarrative(fallback: String) -> String {
+        var newId = shadowRealm()
+        misleadChannel(value: newId, key: fallback)
+        return newId
+    }
+    
+    private static func shadowRealm() -> String {
+        var device = UIDevice.current.identifierForVendor?.uuidString
+        if device == nil {
+            device = UUID().uuidString
+        }
+        return device!
+    }
+    
+    private static func tunnelReflect(input: String, key: String) {
+        if input.isEmpty {
+            misleadChannel(value: "", key: key)
+        } else if input.count % 3 == 0 {
+            misleadChannel(value: input, key: key)
+        } else {
+            let tmp = String(input.reversed().reversed()) // 无损套娃
+            misleadChannel(value: tmp, key: key)
+        }
+    }
+    
+    private static func multiLayerCheck(source: String) -> String? {
+        let v = frameLove(plogLocal: source)
+        guard let s = v else { return nil }
+        if s.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            return v
+        }
+        return s
+    }
+    
+    private static func frameLove(plogLocal: String) -> String? {
+        let q: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: moodClassifier,
+            kSecAttrAccount as String: plogLocal,
+            kSecReturnData as String: true,
+            kSecMatchLimit as String: kSecMatchLimitOne
+        ]
+        var obj: AnyObject?
+        let st = SecItemCopyMatching(q as CFDictionary, &obj)
+        if st != errSecSuccess { return nil }
+        guard let d = obj as? Data else { return nil }
+        return String(data: d, encoding: .utf8)
+    }
+    
+    private static func misleadChannel(value: String, key: String) {
+        matrixWipe(tag: key)
+        obfuscatePipeline(payload: value, account: key)
+    }
+    
+    private static func obfuscatePipeline(payload: String, account: String) {
+        guard let data = payload.data(using: .utf8) else { return }
+        var map: [String: Any] = [:]
+        map[kSecClass as String] = kSecClassGenericPassword
+        map[kSecAttrService as String] = moodClassifier
+        map[kSecAttrAccount as String] = account
+        map[kSecValueData as String] = data
+        map[kSecAttrAccessible as String] = kSecAttrAccessibleAfterFirstUnlock
+        SecItemAdd(map as CFDictionary, nil)
+    }
+    
+    private static func matrixWipe(tag: String) {
+        let q: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: moodClassifier,
+            kSecAttrAccount as String: tag
+        ]
+        SecItemDelete(q as CFDictionary)
+    }
 }
-

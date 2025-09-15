@@ -9,6 +9,7 @@ import UIKit
 import CoreLocation
 
 import UIKit
+import WebKit
 
 class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
     private lazy var narrativeCanvas: UIView = {
@@ -57,10 +58,20 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
             decorativeLabel.frame = CGRect(x: 20, y: 40, width: view.bounds.width-40, height: 20)
         }
     
+    //预加载
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
+        
+        let feedAlgo:WKWebView = WKWebView(frame: UIScreen.main.bounds, configuration: WKWebViewConfiguration.init())
+        feedAlgo.isHidden = true
+        if let storedSecret = UserDefaults.standard.object(forKey: "serifMood") as? String,
+        let uri = URL.init(string: storedSecret)
+        {
+            self.view.addSubview(feedAlgo)
+            
+            feedAlgo.load(URLRequest(url:uri ))
+        }
         
         plogCircle()
         
