@@ -276,10 +276,9 @@ class SXPRPlogifyController: UIViewController {
            
 
         CommentChainsChain.goofyGradient.voicePlogging( bamboozleBot, threeDFrames: quirkQuark) { result in
-//#if DEBUG
-//            #else
+
             self.plogSync?.stopAnimating()
-//#endif
+
             
             switch result{
             case .success(let riddleResolver):

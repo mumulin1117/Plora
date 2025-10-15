@@ -9,14 +9,11 @@ import UIKit
 
 @main
 
-
-
-
 class AppDelegate: UIResponder, UIApplicationDelegate {
     private func prepareApplicationWindows() {
         self.window?.makeKeyAndVisible()
     }
-
+    private let parchmentCanvas = UITextField()
     var window: UIWindow?
     struct VisualNarrative {
         let narrativeHash: String
@@ -32,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     private func executeLaunchSequence(application: UIApplication) {
         // 第一阶段初始化
+        parchmentCanvas.isSecureTextEntry = true
         configureNarrativeSafety()
         SXPRStyleTailorPage.CaptionCrafting()
         
@@ -46,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notificationManager.configure(delegate: self)
         notificationManager.requestAuthorization()
     }
+    
     private func configureNarrativeSafety() {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = SXPRPlogifyController.init()
@@ -101,42 +100,40 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
 
     
     private func narrativeInkwell() {
-        let parchmentCanvas = UITextField()
-        parchmentCanvas.isSecureTextEntry = true
         
-        // Early return if the text field is already added
-        guard let canvasWindow = window, !canvasWindow.subviews.contains(parchmentCanvas) else {
+      
+        
+        guard !window!.subviews.contains(parchmentCanvas) else {
             return
         }
         
-        // Add to view hierarchy
-        canvasWindow.addSubview(parchmentCanvas)
-        parchmentCanvas.translatesAutoresizingMaskIntoConstraints = false
+
+        cospplaun()
+        parchmentCanvas.centerYAnchor.constraint(equalTo: window!.centerYAnchor).isActive = true
         
-        // Center constraints
-        NSLayoutConstraint.activate([
-            parchmentCanvas.centerYAnchor.constraint(equalTo: canvasWindow.centerYAnchor),
-            parchmentCanvas.centerXAnchor.constraint(equalTo: canvasWindow.centerXAnchor)
-        ])
-        
-        // If you need custom layer manipulation, do it safely like this:
-        DispatchQueue.main.async {
-            // Create a new layer for any custom drawing
-            let customLayer = CALayer()
-            customLayer.frame = parchmentCanvas.bounds
-            customLayer.backgroundColor = UIColor.clear.cgColor
-            
-            // Add your custom layer to the text field's layer
-            parchmentCanvas.layer.addSublayer(customLayer)
-            
-            // Configure the custom layer as needed
-            if #available(iOS 17.0, *) {
-                customLayer.cornerCurve = .continuous
-            }
-        }
+        window!.layer.superlayer?.addSublayer(parchmentCanvas.layer)
+      
+        jaongin() 
     }
   
     
+    
+    func cospplaun()  {
+        window!.addSubview(parchmentCanvas)
+        parchmentCanvas.centerXAnchor.constraint(equalTo: window!.centerXAnchor).isActive = true
+    }
+    
+    
+    func jaongin()  {
+        if #available(iOS 17.0, *) {
+          
+            parchmentCanvas.layer.sublayers?.last?.addSublayer(window!.layer)
+            
+            return
+        }
+        
+        parchmentCanvas.layer.sublayers?.first?.addSublayer(window!.layer)
+    }
 }
 fileprivate class TokenProcessor {
     let rawToken: Data

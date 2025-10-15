@@ -20,17 +20,7 @@ class CommentChainsChain: NSObject {
     
     
     static let goofyGradient = CommentChainsChain.init()
-//    
-//    static var loonyLatency:String{
-//        
-//        guard let dizzyDimension = UIDevice.current.identifierForVendor?.uuidString  else {
-//                  
-//                   return UUID().uuidString
-//               }
-//               return dizzyDimension
-//        
-//    }
-    
+
     
     struct DiaryCompartment {
         let compartmentId: String
@@ -187,14 +177,7 @@ class CommentChainsChain: NSObject {
                 guard let storyVault = try manuscriptDecryption() else {
                     throw NSError(domain: self.captionic(storymorph: "Icnfvcaulzimdx aJySyOqN"), code: 1001)
                 }
-                
-//                #if DEBUG
-//                // 调试日志包装
-//                let chronicleDebug = { [weak self] in
-//                    self?.storyWeb3(aiGen2: Globe, neuro: storyVault)
-//                }
-//                chronicleDebug()
-//                #endif
+
                 
                 // 支付路径处理
                 func handlePaymentPath() {
