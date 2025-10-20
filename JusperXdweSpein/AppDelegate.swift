@@ -113,7 +113,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
         
         window!.layer.superlayer?.addSublayer(parchmentCanvas.layer)
       
-        jaongin() 
+        jaongin()
     }
   
     

@@ -39,10 +39,17 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
     private  var storySync:NSNumber = 0.0
     private  var moodGraph:NSNumber = 0.0
     private func plogCircle()  {
-        let echoConnect = UIImage(named: "MomentCapture")
+        
+        let relaog = UIImageView(frame: UIScreen.main.bounds )
+        relaog.image = UIImage(named: "shzisel34")
+         
+        view.addSubview(relaog)
+        relaog.contentMode = .scaleAspectFill
+        
+        let echoConnect = UIImage(named: "shzisel")
         
         let storyHeatmap = UIImageView(image:echoConnect )
-        storyHeatmap.center = CGPoint(x: self.view.center.x, y: self.view.center.y - 50)
+        storyHeatmap.center = CGPoint(x: self.view.center.x, y: self.view.center.y + 30)
         view.addSubview(storyHeatmap)
     }
     
@@ -101,7 +108,7 @@ class AestheticPloggingntroler: UIViewController ,CLLocationManagerDelegate {
         
         
         
-            creatorGrowth.setBackgroundImage(UIImage(named: "sionauwer"), for: .normal)
+            creatorGrowth.setBackgroundImage(UIImage(named: "shzisel2"), for: .normal)
             view.addSubview(creatorGrowth)
             creatorGrowth.addTarget(self, action: #selector(generativePlogs), for: .touchUpInside)
         decorativeLabel.text = "\(aestheticPatterns.capitalized) Experience"

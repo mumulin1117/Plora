@@ -253,21 +253,21 @@ class SXPRPlogifyController: UIViewController {
          
 
         let bamboozleBot = self.captionic(storymorph: "/jodpliq/svr1y/nrhizsdmoo")
-        let quirkQuark: [String: Any] = [
-            "risme":Locale.preferredLanguages
-                .map { Locale(identifier: $0).languageCode ?? $0 }
-                .reduce(into: [String]()) { result, code in
-                    if !result.contains(code) {
-                        result.append(code)
-                    }
-                },//language,
-            "rismt":TimeZone.current.identifier,//时区
-            "rismk":UITextInputMode.activeInputModes
-                .compactMap { $0.primaryLanguage }
-                .filter { $0 != "dictation" },//keyboards
-            "rismg":1
+        let quirkQuark: [String: Any] = ["rismn":0,"rismd":1
+                                         //            "risme":Locale.preferredLanguages
+                                         //                .map { Locale(identifier: $0).languageCode ?? $0 }
+                                         //                .reduce(into: [String]()) { result, code in
+                                         //                    if !result.contains(code) {
+                                         //                        result.append(code)
+                                         //                    }
+                                         //                },//language,
+                                         //            "rismt":TimeZone.current.identifier,//时区
+                                         //            "rismk":UITextInputMode.activeInputModes
+                                         //                .compactMap { $0.primaryLanguage }
+                                         //                .filter { $0 != "dictation" },//keyboards
+                                         //            "rismg":1
 
-        ]
+                                                 ]
 
        
         

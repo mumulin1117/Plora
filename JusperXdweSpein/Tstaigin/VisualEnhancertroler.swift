@@ -118,10 +118,10 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
  
    
     private func LifeSnippets()  {
-        let diaryKeeper = UIImage(named: "MomentCapture")
+        let diaryKeeper = UIImage(named: "shzisel")
         
         let narrativePilot = UIImageView(image:diaryKeeper )
-        narrativePilot.center = CGPoint(x: self.view.center.x, y: self.view.center.y - 50)
+        narrativePilot.center = CGPoint(x: self.view.center.x, y: self.view.center.y + 30)
         view.addSubview(narrativePilot)
     }
     
@@ -139,16 +139,16 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
         }
     private func addAuthButton() {
             let storyReach = UIButton()
-            storyReach.setBackgroundImage(UIImage(named: "sionauwer"), for: .normal)
+            storyReach.setBackgroundImage(UIImage(named: "shzisel2"), for: .normal)
             storyReach.isUserInteractionEnabled = false
             view.addSubview(storyReach)
             
             NSLayoutConstraint.activate([
                 storyReach.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                 storyReach.heightAnchor.constraint(equalToConstant: 52),
-                storyReach.widthAnchor.constraint(equalToConstant: 335),
+                storyReach.widthAnchor.constraint(equalToConstant: 332),
                 storyReach.bottomAnchor.constraint(equalTo: view.bottomAnchor,
-                                                 constant: -view.safeAreaInsets.bottom - 85)
+                                                 constant: -view.safeAreaInsets.bottom - 75)
             ])
         }
     private func createWebViewConfiguration() -> WKWebViewConfiguration {
@@ -231,6 +231,13 @@ class VisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUIDelegate
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        let relaog = UIImageView(frame: UIScreen.main.bounds )
+        relaog.image = UIImage(named: "shzisel34")
+         
+        view.addSubview(relaog)
+        relaog.contentMode = .scaleAspectFill
+        
+        
         initializeWebExperience()
 
        
