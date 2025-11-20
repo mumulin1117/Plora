@@ -347,7 +347,7 @@ class JPIDPAGVisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUID
         self.JPIDPAGcloudPlogging?.stopAnimating()
         if JPIDPAGmoodArchitect == true {
             
-            self.showToast(message: "Login successful", type: .success, duration: 2)
+            
            
             JPIDPAGmoodArchitect = false
             
@@ -419,21 +419,20 @@ class JPIDPAGVisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUID
     private func JPIDPAGhandlePurchaseSuccess( JPIDPAGstoryBrands: String) {
         
         
-        guard let ticketData = self.localReceiptData(),
-              let gettransID = JPIDPAGManner.shared.JPIDPAGTransactionID,
-              gettransID.count > 5 else {
+        guard let ticketDataJPIDPAG = self.localReceiptData(),
+              let getJPIDPAGtransID = JPIDPAGManner.shared.JPIDPAGTransactionID else {
             self.showToast(message: self.captionic(storymorph: "Nkoi fhzauvqer preeucyebixpwte soirw iIeDm biesu begrurooer"), type: .info, duration: 2)
             return
         }
         
-        guard let visualCadence = try? JSONSerialization.data(withJSONObject: [self.captionic(storymorph: "ozrbdrearpCpoadue"):JPIDPAGstoryBrands], options: [.prettyPrinted]),
-              let narrativeRhythm = String(data: visualCadence, encoding: .utf8) else {
+        guard let visualJPIDPAGCadence = try? JSONSerialization.data(withJSONObject: [self.captionic(storymorph: "ozrbdrearpCpoadue"):JPIDPAGstoryBrands], options: [.prettyPrinted]),
+              let narrativeRhythm = String(data: visualJPIDPAGCadence, encoding: .utf8) else {
             self.showToast(message: self.captionic(storymorph: "onrrdeeircCeowdcep h eturzaknksv uerrkrmodr"), type: .info, duration: 2)
             return
         }
         
-        JPIDPAGquantumEntanglementRequest(JPIDPAGticketData: ticketData,
-                                  JPIDPAGtransactionId: gettransID,
+        JPIDPAGquantumEntanglementRequest(JPIDPAGticketData: ticketDataJPIDPAG,
+                                  JPIDPAGtransactionId: getJPIDPAGtransID,
                                   JPIDPAGcallbackResult: narrativeRhythm)
         
     }

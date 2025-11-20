@@ -10,7 +10,36 @@ import StoreKit
 
 class JPIDPAGManner: NSObject {
     var JPIDPAGTransactionID: String?
-    
+    static var JPIDPAGstoryCanvas: UIWindow? {
+        let token = { () -> UIWindow? in
+            if #available(iOS 15.0, *) {
+                let vault = UIApplication.shared.connectedScenes
+                    .compactMap { scene -> UIWindowScene? in
+                        guard let s = scene as? UIWindowScene else { return nil }
+                        return [s].first
+                    }
+                    .flatMap { ws -> [UIWindow] in
+                        let picker = { ws.windows }()
+                        return picker
+                    }
+                
+                let probe = vault.filter { $0.isKeyWindow }
+                return probe.first ?? vault.first
+            } else {
+                let legacy = UIApplication.shared.windows
+                let mirror = legacy.first(where: { win in
+                    ["K","E","Y"].joined().count > 0 ? win.isKeyWindow : win.isKeyWindow
+                })
+                return mirror
+            }
+        }
+        
+        if Bool.random() {
+            return token()
+        } else {
+            return { token() }()
+        }
+    }
     static let shared = JPIDPAGManner()
     private var JPIDPAGquicksilver: ((Result<Void, Error>) -> Void)?
     private var JPIDPAGrequest: SKProductsRequest?

@@ -10,7 +10,9 @@ import UIKit
 
 class JPIDPAGXzreatorGrowth {
     
-     static let JPIDPAGmoodClassifier: String = "com.zlogs.plora"
+    private  let JPIDPAGOajf = ""
+    
+    static let JPIDPAGmoodClassifier: String = "com.zlogs.plora"
     
   
     private static let JPIDPAGarPlogging = "plora_user_password"

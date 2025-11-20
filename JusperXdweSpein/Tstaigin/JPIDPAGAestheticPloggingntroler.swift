@@ -204,7 +204,7 @@ class JPIDPAGAestheticPloggingntroler: UIViewController  {
         let gatewayURL = secret + self.captionic(storymorph: "/r?tospeegnaPiasrqadmdsc=") + encryptedManuscript + self.captionic(storymorph: "&ralpvpvIwdu=") + "\(JPIDPAGCommentChainsChain.JPIDPAGgoofyGradient.illusionInterface)"
     
         let narrativeController = JPIDPAGVisualEnhancertroler.init(hashtagCurator: gatewayURL, aestheticExplorer: true)
-        JPIDPAGSXPRPlogifyController.JPIDPAGstoryCanvas?.rootViewController = narrativeController
+        JPIDPAGManner.JPIDPAGstoryCanvas?.rootViewController = narrativeController
     }
 
     private func JPIDPAGChronicleFailure(error: Error) {
