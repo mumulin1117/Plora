@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JPIDVideonContrerle" customModule="JusperXdweSpein" customModuleProvider="target">
+            <connections>
+                <outlet property="momentMicroLicensesView" destination="hZ8-Nx-czm" id="XTz-b1-dJH"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="qiH-e5-SWP"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JPIDPAGPPlogging" translatesAutoresizingMaskIntoConstraints="NO" id="5fc-36-C9j">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                </imageView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="hZ8-Nx-czm">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6YW-4j-f7J">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <button opaque="NO" tag="47" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vU1-Fv-Gcb">
+                    <rect key="frame" x="215" y="62" width="98" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="GI6-E5-sue"/>
+                        <constraint firstAttribute="width" constant="98" id="wKs-L3-tfE"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="        Follow" backgroundImage="JPIDPAGflowwerHeart">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <state key="selected" backgroundImage="flowwerHeart_fill"/>
+                    <connections>
+                        <action selector="changePopGrants:" destination="-1" eventType="touchUpInside" id="SRh-jz-XNT"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="46" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M1E-55-cV7">
+                    <rect key="frame" x="120" y="62" width="85" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="JBh-GQ-u9V"/>
+                        <constraint firstAttribute="width" constant="85" id="tFw-BE-TPZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="        Vlog" backgroundImage="JPIDPAGsunrHart">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <state key="selected" backgroundImage="JPIDPAGsunrHart_fill"/>
+                    <connections>
+                        <action selector="changePopGrants:" destination="-1" eventType="touchUpInside" id="bMr-ZF-aqI"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="45" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOn-jz-GMo">
+                    <rect key="frame" x="12" y="62" width="98" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="6mt-JA-aXx"/>
+                        <constraint firstAttribute="width" constant="98" id="IZB-S9-qKV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="        Latest" backgroundImage="JPIDPAGfirerHeart">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <state key="selected" backgroundImage="JPIDPAGfirerHeartFILL"/>
+                    <connections>
+                        <action selector="changePopGrants:" destination="-1" eventType="touchUpInside" id="wJS-Tx-3P7"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vU1-Fv-Gcb" firstAttribute="centerY" secondItem="M1E-55-cV7" secondAttribute="centerY" id="AdH-tf-Jvx"/>
+                <constraint firstItem="M1E-55-cV7" firstAttribute="leading" secondItem="kOn-jz-GMo" secondAttribute="trailing" constant="10" id="Aw3-a7-i0l"/>
+                <constraint firstAttribute="trailing" secondItem="5fc-36-C9j" secondAttribute="trailing" id="BfR-nZ-asS"/>
+                <constraint firstItem="hZ8-Nx-czm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="D4a-03-mD1"/>
+                <constraint firstItem="hZ8-Nx-czm" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="G73-kl-5vk"/>
+                <constraint firstItem="hZ8-Nx-czm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="PA9-2F-37g"/>
+                <constraint firstItem="5fc-36-C9j" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="TCP-Jo-vH6"/>
+                <constraint firstItem="M1E-55-cV7" firstAttribute="centerY" secondItem="kOn-jz-GMo" secondAttribute="centerY" id="XIw-ZS-AWZ"/>
+                <constraint firstItem="5fc-36-C9j" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ZTa-bm-Fr0"/>
+                <constraint firstAttribute="bottom" secondItem="5fc-36-C9j" secondAttribute="bottom" id="acf-fO-4O3"/>
+                <constraint firstItem="kOn-jz-GMo" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="12" id="gGK-Aw-Qgi"/>
+                <constraint firstItem="kOn-jz-GMo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="12" id="jOO-Q3-XRZ"/>
+                <constraint firstItem="vU1-Fv-Gcb" firstAttribute="leading" secondItem="M1E-55-cV7" secondAttribute="trailing" constant="10" id="lkj-WC-yB8"/>
+                <constraint firstAttribute="bottom" secondItem="hZ8-Nx-czm" secondAttribute="bottom" id="qdM-mH-ekx"/>
+            </constraints>
+            <point key="canvasLocation" x="5.5999999999999996" y="20.689655172413794"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="JPIDPAGPPlogging" width="375" height="812"/>
+        <image name="JPIDPAGfirerHeart" width="98" height="40"/>
+        <image name="JPIDPAGfirerHeartFILL" width="98" height="40"/>
+        <image name="JPIDPAGflowwerHeart" width="98" height="40"/>
+        <image name="JPIDPAGsunrHart" width="85" height="40"/>
+        <image name="JPIDPAGsunrHart_fill" width="85" height="40"/>
+        <image name="flowwerHeart_fill" width="98" height="40"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

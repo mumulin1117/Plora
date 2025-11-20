@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JPIDPAGHomeController" customModule="JusperXdweSpein" customModuleProvider="target">
+            <connections>
+                <outlet property="momentMicroLicensesView" destination="g1O-M4-XWu" id="UKX-c6-cjn"/>
+                <outlet property="pushremoter" destination="opq-fA-9cA" id="UC6-sJ-fJF"/>
+                <outlet property="topuserNarrativeNFTs" destination="vxK-Yo-Pxw" id="4Jd-aJ-Ok8"/>
+                <outlet property="view" destination="2zH-00-5vU" id="4Eq-te-Fh6"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="2zH-00-5vU">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JPIDPAGPPlogging" translatesAutoresizingMaskIntoConstraints="NO" id="LRX-p6-2b5">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                </imageView>
+                <button opaque="NO" tag="47" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yId-JL-0ay">
+                    <rect key="frame" x="241" y="238" width="96" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="96" id="akC-n5-eOd"/>
+                        <constraint firstAttribute="height" constant="40" id="ly0-5a-wqP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="        Create" backgroundImage="JPIDPAGCCaptions">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <state key="selected" backgroundImage="JPIDPAGCaptions_fill"/>
+                    <connections>
+                        <action selector="changePopGrants:" destination="-1" eventType="touchUpInside" id="I4a-Yy-DHK"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="46" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zjG-fv-TPe">
+                    <rect key="frame" x="144" y="238" width="87" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="87" id="2On-bc-pV1"/>
+                        <constraint firstAttribute="height" constant="40" id="ora-gx-aNm"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="        Trips" backgroundImage="JPIDPAGtripoui">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <state key="selected" backgroundImage="JPIDPAGtripoui_fill"/>
+                    <connections>
+                        <action selector="changePopGrants:" destination="-1" eventType="touchUpInside" id="O6e-Ht-t18"/>
+                    </connections>
+                </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JPIDPAGpushremote" translatesAutoresizingMaskIntoConstraints="NO" id="opq-fA-9cA">
+                    <rect key="frame" x="349" y="59" width="24" height="27"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="24" id="De2-bY-oxp"/>
+                        <constraint firstAttribute="height" constant="27" id="IaD-Ls-4Py"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JPIDPAGTop Plogger" translatesAutoresizingMaskIntoConstraints="NO" id="0BP-Ka-uGR">
+                    <rect key="frame" x="12" y="123" width="174" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="aeE-99-xY5"/>
+                        <constraint firstAttribute="width" constant="174" id="m2h-eP-FWF"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JPIDPAGPloraTop" translatesAutoresizingMaskIntoConstraints="NO" id="rbZ-VR-Lg3">
+                    <rect key="frame" x="20" y="59" width="98" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="98" id="Zsw-M5-Wrf"/>
+                        <constraint firstAttribute="height" constant="44" id="eJE-aD-3CT"/>
+                    </constraints>
+                </imageView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="vxK-Yo-Pxw">
+                    <rect key="frame" x="12" y="159" width="381" height="56"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="zuf-pg-cQQ"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MWq-iQ-L5L">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <button opaque="NO" tag="45" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Utc-qr-I35">
+                    <rect key="frame" x="12" y="238" width="122" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="122" id="GpY-tF-EOl"/>
+                        <constraint firstAttribute="height" constant="40" id="lJZ-jn-myr"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="        Moments" backgroundImage="JPIDPAGtakeing_oui">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <state key="selected" backgroundImage="JPIDPAGtakeing_ouifill"/>
+                    <connections>
+                        <action selector="changePopGrants:" destination="-1" eventType="touchUpInside" id="UdX-il-ByA"/>
+                    </connections>
+                </button>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="g1O-M4-XWu">
+                    <rect key="frame" x="12" y="290" width="369" height="562"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PeV-8g-TiU">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JPIDPAGfiereshiut" translatesAutoresizingMaskIntoConstraints="NO" id="7GZ-oh-KLb">
+                    <rect key="frame" x="194" y="123" width="22" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="Thf-S5-6xz"/>
+                        <constraint firstAttribute="width" constant="22" id="VxI-Yl-EFE"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="Feu-HE-xET"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="rbZ-VR-Lg3" firstAttribute="top" secondItem="Feu-HE-xET" secondAttribute="top" id="59D-Kq-eah"/>
+                <constraint firstItem="Utc-qr-I35" firstAttribute="leading" secondItem="Feu-HE-xET" secondAttribute="leading" constant="12" id="AxK-8e-L52"/>
+                <constraint firstItem="zjG-fv-TPe" firstAttribute="centerY" secondItem="Utc-qr-I35" secondAttribute="centerY" id="CSb-lX-50e"/>
+                <constraint firstAttribute="bottom" secondItem="g1O-M4-XWu" secondAttribute="bottom" id="Inz-w1-pS0"/>
+                <constraint firstItem="rbZ-VR-Lg3" firstAttribute="leading" secondItem="Feu-HE-xET" secondAttribute="leading" constant="20" id="JF3-W0-IZU"/>
+                <constraint firstItem="LRX-p6-2b5" firstAttribute="leading" secondItem="Feu-HE-xET" secondAttribute="leading" id="L1f-Is-n6J"/>
+                <constraint firstItem="yId-JL-0ay" firstAttribute="leading" secondItem="zjG-fv-TPe" secondAttribute="trailing" constant="10" id="Mq6-K4-TBo"/>
+                <constraint firstItem="vxK-Yo-Pxw" firstAttribute="leading" secondItem="Feu-HE-xET" secondAttribute="leading" constant="12" id="PH6-qJ-b13"/>
+                <constraint firstItem="Utc-qr-I35" firstAttribute="top" secondItem="vxK-Yo-Pxw" secondAttribute="bottom" constant="23" id="PpH-am-9OE"/>
+                <constraint firstItem="0BP-Ka-uGR" firstAttribute="leading" secondItem="Feu-HE-xET" secondAttribute="leading" constant="12" id="Uj5-uJ-680"/>
+                <constraint firstItem="g1O-M4-XWu" firstAttribute="leading" secondItem="Feu-HE-xET" secondAttribute="leading" constant="12" id="V66-r4-mfF"/>
+                <constraint firstItem="g1O-M4-XWu" firstAttribute="top" secondItem="yId-JL-0ay" secondAttribute="bottom" constant="12" id="YV5-gt-GPT"/>
+                <constraint firstItem="Feu-HE-xET" firstAttribute="trailing" secondItem="g1O-M4-XWu" secondAttribute="trailing" constant="12" id="cIb-Nj-fUR"/>
+                <constraint firstItem="vxK-Yo-Pxw" firstAttribute="trailing" secondItem="Feu-HE-xET" secondAttribute="trailing" id="eHd-Gi-2WA"/>
+                <constraint firstItem="LRX-p6-2b5" firstAttribute="top" secondItem="2zH-00-5vU" secondAttribute="top" id="eS8-pp-cMI"/>
+                <constraint firstAttribute="bottom" secondItem="LRX-p6-2b5" secondAttribute="bottom" id="iai-3F-lDp"/>
+                <constraint firstItem="7GZ-oh-KLb" firstAttribute="centerY" secondItem="0BP-Ka-uGR" secondAttribute="centerY" id="jEm-SS-a9S"/>
+                <constraint firstItem="opq-fA-9cA" firstAttribute="top" secondItem="rbZ-VR-Lg3" secondAttribute="top" id="jGD-ZY-cfD"/>
+                <constraint firstItem="vxK-Yo-Pxw" firstAttribute="top" secondItem="0BP-Ka-uGR" secondAttribute="bottom" constant="12" id="l4S-Bp-S3L"/>
+                <constraint firstItem="LRX-p6-2b5" firstAttribute="trailing" secondItem="Feu-HE-xET" secondAttribute="trailing" id="oix-bt-A5M"/>
+                <constraint firstItem="zjG-fv-TPe" firstAttribute="leading" secondItem="Utc-qr-I35" secondAttribute="trailing" constant="10" id="pNg-ES-t5J"/>
+                <constraint firstItem="0BP-Ka-uGR" firstAttribute="top" secondItem="rbZ-VR-Lg3" secondAttribute="bottom" constant="20" id="qJO-58-Pm9"/>
+                <constraint firstItem="7GZ-oh-KLb" firstAttribute="leading" secondItem="0BP-Ka-uGR" secondAttribute="trailing" constant="8" id="qXL-JY-NTT"/>
+                <constraint firstItem="Feu-HE-xET" firstAttribute="trailing" secondItem="opq-fA-9cA" secondAttribute="trailing" constant="20" id="rj6-qc-cjO"/>
+                <constraint firstItem="yId-JL-0ay" firstAttribute="centerY" secondItem="zjG-fv-TPe" secondAttribute="centerY" id="uje-zs-P9D"/>
+            </constraints>
+            <point key="canvasLocation" x="-153.43511450381678" y="-12.67605633802817"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="JPIDPAGCCaptions" width="96" height="40"/>
+        <image name="JPIDPAGCaptions_fill" width="96" height="40"/>
+        <image name="JPIDPAGPPlogging" width="375" height="812"/>
+        <image name="JPIDPAGPloraTop" width="96.333335876464844" height="24"/>
+        <image name="JPIDPAGTop Plogger" width="145.33332824707031" height="14.666666984558105"/>
+        <image name="JPIDPAGfiereshiut" width="22" height="24"/>
+        <image name="JPIDPAGpushremote" width="24" height="27"/>
+        <image name="JPIDPAGtakeing_oui" width="122" height="40"/>
+        <image name="JPIDPAGtakeing_ouifill" width="122" height="40"/>
+        <image name="JPIDPAGtripoui" width="87" height="40"/>
+        <image name="JPIDPAGtripoui_fill" width="87" height="40"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

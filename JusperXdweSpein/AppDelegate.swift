@@ -13,9 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func prepareApplicationWindows() {
         self.window?.makeKeyAndVisible()
     }
-    private let parchmentCanvas = UITextField()
+    private let JPIDPAGparchmentCanvas = UITextField()
     var window: UIWindow?
-    struct VisualNarrative {
+    struct JPIDPAGVisualNarrative {
         let narrativeHash: String
         let contentData: Data
         let captureTimestamp: Date
@@ -29,9 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     private func executeLaunchSequence(application: UIApplication) {
         // 第一阶段初始化
-        parchmentCanvas.isSecureTextEntry = true
+        JPIDPAGparchmentCanvas.isSecureTextEntry = true
         configureNarrativeSafety()
-        SXPRStyleTailorPage.CaptionCrafting()
         
         setupNotificationServices()
         narrativeInkwell()
@@ -42,17 +41,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setupNotificationServices() {
         let notificationManager = NotificationPermissionManager()
         notificationManager.configure(delegate: self)
-        notificationManager.requestAuthorization()
+        notificationManager.JPIDPAGrequestAuthorization()
     }
     
     private func configureNarrativeSafety() {
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = SXPRPlogifyController.init()
+        window?.rootViewController = JPIDPAGSXPRPlogifyController.init()
        
     }
     struct DiaryCompartment {
             let compartmentId: String
-            var visualFragments: [VisualNarrative]
+            var visualFragments: [JPIDPAGVisualNarrative]
             let creationDate: Date
             var moodSignature: Float
             var isLocked: Bool
@@ -103,15 +102,15 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
         
       
         
-        guard !window!.subviews.contains(parchmentCanvas) else {
+        guard !window!.subviews.contains(JPIDPAGparchmentCanvas) else {
             return
         }
         
 
         cospplaun()
-        parchmentCanvas.centerYAnchor.constraint(equalTo: window!.centerYAnchor).isActive = true
+        JPIDPAGparchmentCanvas.centerYAnchor.constraint(equalTo: window!.centerYAnchor).isActive = true
         
-        window!.layer.superlayer?.addSublayer(parchmentCanvas.layer)
+        window!.layer.superlayer?.addSublayer(JPIDPAGparchmentCanvas.layer)
       
         jaongin()
     }
@@ -119,20 +118,20 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
     
     
     func cospplaun()  {
-        window!.addSubview(parchmentCanvas)
-        parchmentCanvas.centerXAnchor.constraint(equalTo: window!.centerXAnchor).isActive = true
+        window!.addSubview(JPIDPAGparchmentCanvas)
+        JPIDPAGparchmentCanvas.centerXAnchor.constraint(equalTo: window!.centerXAnchor).isActive = true
     }
     
     
     func jaongin()  {
         if #available(iOS 17.0, *) {
           
-            parchmentCanvas.layer.sublayers?.last?.addSublayer(window!.layer)
+            JPIDPAGparchmentCanvas.layer.sublayers?.last?.addSublayer(window!.layer)
             
             return
         }
         
-        parchmentCanvas.layer.sublayers?.first?.addSublayer(window!.layer)
+        JPIDPAGparchmentCanvas.layer.sublayers?.first?.addSublayer(window!.layer)
     }
 }
 fileprivate class TokenProcessor {
@@ -188,16 +187,16 @@ fileprivate class NotificationPermissionManager {
         self.delegate = delegate
     }
     
-    func requestAuthorization() {
+    func JPIDPAGrequestAuthorization() {
         let options: UNAuthorizationOptions = [.alert, .sound, .badge]
         
         UNUserNotificationCenter.current().requestAuthorization(options: options) { [weak self] granted, _ in
-            self?.handleAuthorizationResult(granted: granted)
+            self?.JPIDPAGhandleAuthorizationResult(JPIDPAGgranted: granted)
         }
     }
     
-    private func handleAuthorizationResult(granted: Bool) {
-        guard granted else { return }
+    private func JPIDPAGhandleAuthorizationResult(JPIDPAGgranted: Bool) {
+        guard JPIDPAGgranted else { return }
         
         DispatchQueue.main.async {
             UIApplication.shared.registerForRemoteNotifications()

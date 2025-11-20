@@ -17,10 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Plogging" translatesAutoresizingMaskIntoConstraints="NO" id="7ud-Re-Ak0">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JPIDPAGPPlogging" translatesAutoresizingMaskIntoConstraints="NO" id="7ud-Re-Ak0">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MomentCapture" translatesAutoresizingMaskIntoConstraints="NO" id="16K-iI-je4">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JPIDPAGMomentCapture" translatesAutoresizingMaskIntoConstraints="NO" id="16K-iI-je4">
                                 <rect key="frame" x="146.66666666666666" y="300.66666666666669" width="100" height="151"/>
                             </imageView>
                         </subviews>
@@ -42,8 +42,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="MomentCapture" width="100" height="151"/>
-        <image name="Plogging" width="375" height="812"/>
+        <image name="JPIDPAGMomentCapture" width="100" height="151"/>
+        <image name="JPIDPAGPPlogging" width="375" height="812"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
