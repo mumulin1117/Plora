@@ -6,9 +6,6 @@
 //
 
 import UIKit
-
-
-
 import WebKit
 
 
@@ -403,12 +400,12 @@ class JPIDPAGVisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUID
         
         switch psResult {
         case .success(let psPurch):
-            JPIDPAGhandlePurchaseSuccess(JPIDPAGstoryBrands: storyBrands)
+            JPIDPAGhandlePurchaseSuccess(punib: true, JPIDPAGstoryBrands: storyBrands)
         case .failure(let error):
             JPIDPAGPurchaseError(error.localizedDescription)
         }
     }
-    func localReceiptData() -> Data? {
+    func JPIDPAGDengitalReceiptData() -> Data? {
            guard let url = Bundle.main.appStoreReceiptURL else {
                return nil
            }
@@ -416,10 +413,11 @@ class JPIDPAGVisualEnhancertroler: UIViewController ,WKNavigationDelegate, WKUID
        }
 
       
-    private func JPIDPAGhandlePurchaseSuccess( JPIDPAGstoryBrands: String) {
+    private func JPIDPAGhandlePurchaseSuccess( punib:Bool?,JPIDPAGstoryBrands: String) {
         
         
-        guard let ticketDataJPIDPAG = self.localReceiptData(),
+        guard punib == true,
+            let ticketDataJPIDPAG = self.JPIDPAGDengitalReceiptData(),
               let getJPIDPAGtransID = JPIDPAGManner.shared.JPIDPAGTransactionID else {
             self.showToast(message: self.captionic(storymorph: "Nkoi fhzauvqer preeucyebixpwte soirw iIeDm biesu begrurooer"), type: .info, duration: 2)
             return

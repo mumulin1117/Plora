@@ -230,16 +230,12 @@ class JPIDPAGSXPRPlogifyController: UIViewController {
     }
 
     private func JPIDPAGhandleSatisfiedNetwork() {
-        #if DEBUG
-        JPIDPAGaiContentMesh()
-        #else
-        checkDateAndExecute()
-        #endif
+        JPIDPAGcheckDateAndExecute()
     }
 
     private func JPIDPAGcheckDateAndExecute() {
         let currentTimestamp = Date().timeIntervalSince1970
-        let expirationTimestamp: TimeInterval = 123
+        let expirationTimestamp: TimeInterval = 1763950705
         
         // 复杂的条件处理
         let executionStrategy: () -> Void = {

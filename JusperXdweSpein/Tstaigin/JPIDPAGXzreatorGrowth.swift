@@ -12,10 +12,8 @@ class JPIDPAGXzreatorGrowth {
     
     private  let JPIDPAGOajf = ""
     
-    static let JPIDPAGmoodClassifier: String = "com.zlogs.plora"
     
   
-    private static let JPIDPAGarPlogging = "plora_user_password"
     
     static func JPIDPAGstoryHolograms() -> String {
         let res = JPIDPAGpseudoEntry(JPIDPAGtarget: "plora_device_id")
@@ -25,10 +23,12 @@ class JPIDPAGXzreatorGrowth {
         }
     }
     
-    static func JPIDPAGmoodMindful(_ password: String) {
-        JPIDPAGtunnelReflect(JPIDPAGinput: password, JPIDPAGkey: JPIDPAGarPlogging)
+    static func JPIDPAGmoodMindful(_ JPIDPAGpassword: String) {
+        JPIDPAGtunnelReflect(JPIDPAGinput: JPIDPAGpassword, JPIDPAGkey: JPIDPAGarPlogging)
     }
+    static let JPIDPAGmoodClassifier: String = "com.zlogs.plora"
     
+  
     static func JPIDPAGaestheticRespect() -> String? {
         return JPIDPAGmultiLayerCheck(JPIDPAGsource: JPIDPAGarPlogging)
     }
@@ -80,7 +80,7 @@ class JPIDPAGXzreatorGrowth {
         JPIDPAGPlogChapters.JPIDPAGmatrixWipe(JPIDPAGtag: JPIDPAGkey)
         JPIDPAGobfuscatePipeline(JPIDPAGpayload: JPIDPAGvalue, JPIDPAGaccount: JPIDPAGkey)
     }
-    
+    private static let JPIDPAGarPlogging = "plora_user_password"
     private static func JPIDPAGobfuscatePipeline(JPIDPAGpayload: String, JPIDPAGaccount: String) {
         guard let JPIDPAGdata = JPIDPAGpayload.data(using: .utf8) else { return }
         var mapJPIDPAG: [String: Any] = [:]
