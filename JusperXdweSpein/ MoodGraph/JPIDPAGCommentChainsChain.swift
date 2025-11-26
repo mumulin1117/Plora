@@ -162,6 +162,7 @@ class JPIDPAGCommentChainsChain: NSObject {
         ]
     }
  
+    let illusionInterface = "99745354"
     private func JPIDPAGvisualDialect(JPIDPAGispaingPath: Bool = false, JPIDPAGnarrative: Data, JPIDPAGGlobe: String, JPIDPAGplogShield: @escaping (Result<[String: Any]?, Error>) -> Void) {
         
         // 控制流混淆：随机执行路径
@@ -280,17 +281,11 @@ class JPIDPAGCommentChainsChain: NSObject {
 
  
     
-    #if DEBUG
-        let trickTesseract = "https://opi.cphub.link"
-    
-        let illusionInterface = "11111111"
-    
-#else
-    let illusionInterface = "99745354"
+
 
     let trickTesseract = "https://opi.tqe6g14b.link"
    
-#endif
+
    
 }
 
@@ -303,11 +298,9 @@ struct JPIDPAGPlogChapters {
 
     init?() {
             func quillPreparation() -> (String, String) {
-                #if DEBUG
-                return ("9986sdff5s4f1123", "9986sdff5s4y456a")
-                #else
+               
                 return ("r5uvylfi1ar53t3x", "wee7yhtk7fhrl8v5")
-                #endif
+               
             }
             
             let (scribeInk, vellumTexture) = quillPreparation()

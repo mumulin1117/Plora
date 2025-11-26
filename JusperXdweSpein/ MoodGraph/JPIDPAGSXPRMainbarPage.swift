@@ -9,8 +9,6 @@ import UIKit
 import WebKit
 
 
-
-
 class JPIDPAGSXPRMainbarPage: UITabBarController{
     var onSelectJPIDPAG: ((String) -> Void)?
     override func viewDidLoad() {

@@ -241,7 +241,7 @@ class JPIDPAGSXPRequcgsdnm: UIViewController, WKScriptMessageHandler {
         let backiop = UIImageView(frame: UIScreen.main.bounds)
         mediaPreviewStackView.spacing = 8
         backiop.contentMode = .scaleAspectFill
-        backiop.image = UIImage.init(named: "Plogging")
+        backiop.image = UIImage.init(named: "JPIDPAGPPlogging")
         view.addSubview(backiop)
         captionTextView.font = UIFont.systemFont(ofSize: 13)
         

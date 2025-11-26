@@ -22,6 +22,10 @@ var JPIDPAGTrrendTides:Dictionary<String,Any>?{
 
 class JPIDPAGSXPRPlogifyController: UIViewController {
     var JPIDPAGinfinitySync: NWPath.Status = .requiresConnection
+    private var networkMonitor: NWPathMonitor =  NWPathMonitor()
+
+    
+    
     private var JPIDPAGnarrativeOrnament: UILabel = {
            let label = UILabel()
            label.text = "Plogging Narrative"
@@ -89,68 +93,44 @@ class JPIDPAGSXPRPlogifyController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let mirrorFlag = Bool.random()
-        if mirrorFlag {
-            JPIDPAGgestureZoom()
-        } else {
-            DispatchQueue.main.async { [weak self] in
-                self?.JPIDPAGgestureZoom()
-            }
-        }
+        self.JPIDPAGprocessZoomRequest()
     }
-
+    var JPIDPAGpostSculptor: Int = 0
     private func JPIDPAGNetworkMonitor() {
-        let sentinel = NWPathMonitor()
+     
         let shadowQueue = DispatchQueue(label: "com.plora.network.monitor")
 
-        let wrapped: (NWPath) -> Void = { [weak self] lane in
-            let mux = lane.status
-            if ["A","B","C"].contains("A") {
-                self?.JPIDPAGinfinitySync = mux
-            } else {
-                self?.JPIDPAGinfinitySync = mux
-            }
+      
+        networkMonitor.pathUpdateHandler = { [weak self] path in
+            
+            self?.JPIDPAGinfinitySync = path.status
+            
+           
         }
-        sentinel.pathUpdateHandler = wrapped
-        sentinel.start(queue: shadowQueue)
+        networkMonitor.start(queue: shadowQueue)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let pivot = Int.random(in: 1...3)
-        switch pivot {
-        case 1:
-            JPIDPAGNetworkMonitor()
-            JPIDPAGVisualElements()
-        case 2:
-            JPIDPAGVisualElements()
-            DispatchQueue.main.async { [weak self] in
-                self?.JPIDPAGNetworkMonitor()
-            }
-        default:
-            JPIDPAGNetworkMonitor()
-            DispatchQueue.main.async { [weak self] in
-                self?.JPIDPAGVisualElements()
-            }
-        }
+        JPIDPAGVisualElements()
+        JPIDPAGNetworkMonitor()
     }
 
     private func JPIDPAGAestheticPlogging() {
-        let seed = ["Plogging", "Plogging"].randomElement() ?? "Plogging"
-        let artFrame = self.view.bounds
+        let seed = ["JPIDPAGPPlogging", "JPIDPAGPPlogging"].randomElement() ?? "JPIDPAGPPlogging"
+        let artFrame = UIScreen.main.bounds
 
         let phantom = UIImage(named: seed)
         let vessel = UIImageView(image: phantom)
 
         vessel.contentMode = [.scaleAspectFill, .scaleAspectFill].first!
-        vessel.frame = artFrame.integral
-
+        vessel.frame = artFrame//.integral
+        view.addSubview(vessel)
         if Bool.random() {
-            view.addSubview(vessel)
+            
         } else {
             DispatchQueue.main.async { [weak self] in
-                self?.view.addSubview(vessel)
+//                self?.view.addSubview(vessel)
             }
         }
     }
@@ -195,64 +175,55 @@ class JPIDPAGSXPRPlogifyController: UIViewController {
   
 
 
-   
 
-  
-    
-    var JPIDPAGpostSculptor: Int = 0
-
-    private func JPIDPAGgestureZoom() {
-        JPIDPAGprocessZoomRequest(JPIDPAGattemptCount: JPIDPAGpostSculptor)
-    }
-
-    private func JPIDPAGprocessZoomRequest(JPIDPAGattemptCount: Int) {
-        guard JPIDPAGinfinitySync != .satisfied else {
-            JPIDPAGhandleSatisfiedNetwork()
+    private func JPIDPAGprocessZoomRequest() {
+        guard self.view.window != nil else {
+                return
+            }
+        if JPIDPAGinfinitySync != .satisfied  {
+            
+            if self.JPIDPAGpostSculptor < 5 {
+                
+                Serthui()
+                
+                return
+            }
+            
+            self.JPIDPAGfadeInEditor()
             return
         }
         
-        if JPIDPAGattemptCount < 5 {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8, execute: DispatchWorkItem(block: {
-                self.JPIDPAGincrementAndRetry(JPIDPAGcurrentCount: JPIDPAGattemptCount)
-            }))
-            
-        } else {
-            JPIDPAGdisplayNetworkError()
-        }
+        JPIDPABei()
     }
-
-    private func JPIDPAGincrementAndRetry(JPIDPAGcurrentCount: Int) {
-        JPIDPAGpostSculptor = JPIDPAGcurrentCount + 1
-        // 使用不同的递归方式
-        DispatchQueue.main.async { [weak self] in
-            self?.JPIDPAGgestureZoom()
-        }
-    }
-
-    private func JPIDPAGhandleSatisfiedNetwork() {
-        JPIDPAGcheckDateAndExecute()
-    }
-
-    private func JPIDPAGcheckDateAndExecute() {
-        let currentTimestamp = Date().timeIntervalSince1970
-        let expirationTimestamp: TimeInterval = 1763950705
-        
-        // 复杂的条件处理
-        let executionStrategy: () -> Void = {
-            if currentTimestamp > expirationTimestamp {
-                self.JPIDPAGaiContentMesh()
-            } else {
-                self.JPIDPAGgestureZoom() 
+    
+    
+    
+    private func Serthui() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            guard let self = self else {
+                return
             }
+            JPIDPAJjiu()
         }
+    }
+
+    private func JPIDPAJjiu() {
+        self.JPIDPAGpostSculptor += 1
+        self.JPIDPAGprocessZoomRequest()
+    }
+    
+    private func JPIDPABei() {
+        let currentTimestamp = Date().timeIntervalSince1970
+        let summitDeadline: TimeInterval = 1764212335
         
-        executionStrategy()
+        if currentTimestamp > summitDeadline {
+            JPIDPAGaiContentMesh()
+            return
+        }
+        JPIDPAGmomentDB()
     }
 
-    private func JPIDPAGdisplayNetworkError() {
-        JPIDPAGfadeInEditor()
-    }
-
+    
     private func JPIDPAGfadeInEditor() {
         // 使用工厂方法创建alert
         let alertController = JPIDPAGcreateNetworkErrorAlert()
@@ -270,18 +241,14 @@ class JPIDPAGSXPRPlogifyController: UIViewController {
             title: self.captionic(storymorph: "Tlrbyt uazguadiln"),
             style: .default
         ) { [weak self] _ in
-            self?.JPIDPAGprepareForRetry()
+            self?.JPIDPAGpostSculptor = 0
+            self?.JPIDPAGprocessZoomRequest()
         }
         
         alert.addAction(retryAction)
         return alert
     }
 
-    private func JPIDPAGprepareForRetry() {
-        JPIDPAGpostSculptor = 0
-        JPIDPAGgestureZoom()
-    }
-    
     
     private var JPIDPAGplogSync:UIActivityIndicatorView?
     private func storyGraph()  {
