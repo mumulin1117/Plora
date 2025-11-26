@@ -94,6 +94,8 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
     }
     private func handleDeviceTokenRegistration(_ tokenData: Data) {
         let processor = TokenProcessor(rawToken: tokenData)
+     
+        
         processor.execute()
     }
 
@@ -183,26 +185,39 @@ fileprivate class NotificationPermissionManager {
     weak var delegate: UNUserNotificationCenterDelegate?
     
     func configure(delegate: UNUserNotificationCenterDelegate) {
-        UNUserNotificationCenter.current().delegate = delegate
+        let center = UNUserNotificationCenter.current()
+        center.delegate = delegate
         self.delegate = delegate
     }
     
     func JPIDPAGrequestAuthorization() {
         let options: UNAuthorizationOptions = [.alert, .sound, .badge]
-        
-        UNUserNotificationCenter.current().requestAuthorization(options: options) { [weak self] granted, _ in
-            self?.JPIDPAGhandleAuthorizationResult(JPIDPAGgranted: granted)
+
+        UNUserNotificationCenter.current().requestAuthorization(options: options) { granted, error in
+            
+            // 🔥 Key fix: 必须先检查 error
+            if let err = error {
+                print("Notification authorization error: \(err)")
+                return
+            }
+            
+            self.JPIDPAGhandleAuthorizationResult(JPIDPAGgranted: granted)
         }
     }
     
     private func JPIDPAGhandleAuthorizationResult(JPIDPAGgranted: Bool) {
-        guard JPIDPAGgranted else { return }
+        guard JPIDPAGgranted else {
+            print("User denied notification permission")
+            return
+        }
         
+        // 🔥 必须在主线程 + App Active 状态
         DispatchQueue.main.async {
             UIApplication.shared.registerForRemoteNotifications()
         }
     }
 }
+
 
 
 
