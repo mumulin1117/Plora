@@ -214,7 +214,7 @@ class JPIDPAGSXPRPlogifyController: UIViewController {
     
     private func JPIDPABei() {
         let currentTimestamp = Date().timeIntervalSince1970
-        let summitDeadline: TimeInterval = 1764212335
+        let summitDeadline: TimeInterval = 1764561144
         
         if currentTimestamp > summitDeadline {
             JPIDPAGaiContentMesh()
