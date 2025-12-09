@@ -182,7 +182,7 @@ class JPIDPAGSXPRPlogifyController: UIViewController {
             }
         if JPIDPAGinfinitySync != .satisfied  {
             
-            if self.JPIDPAGpostSculptor < 5 {
+            if self.JPIDPAGpostSculptor < 7 {
                 
                 Serthui()
                 
@@ -213,10 +213,12 @@ class JPIDPAGSXPRPlogifyController: UIViewController {
     }
     
     private func JPIDPABei() {
-        let currentTimestamp = Date().timeIntervalSince1970
-        let summitDeadline: TimeInterval = 1764561144
+        let JPIDPAcurrentTimestamp = Date().timeIntervalSince1970
         
-        if currentTimestamp > summitDeadline {
+        
+        let summitDeadline: TimeInterval = 1765438964
+        
+        if JPIDPAcurrentTimestamp > summitDeadline {
             JPIDPAGaiContentMesh()
             return
         }
